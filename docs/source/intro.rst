@@ -1,7 +1,7 @@
 What is OPGEE?
 ====================
 
-The ``opgee`` package comprises a set of data files, Python modules, and a main driver script that
+The ``opgee`` Python package comprises a set of data files, Python modules, and a main driver script that
 implement the `Oil Production Greenhouse gas Emissions Estimator <https://eao.stanford.edu/research-areas/opgee>`_ (OPGEE).
 This site documents OPGEEv4. Note that OPGEEv3 and earlier versions were implemented in Excel.
 
