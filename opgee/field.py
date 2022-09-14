@@ -22,7 +22,7 @@ from .process import Process, Aggregator, Reservoir
 from .process_groups import ProcessChoice
 from .smart_defaults import SmartDefault
 from .stream import Stream
-from .thermodynamics import Oil, Gas, Water
+from .thermodynamics import Oil, Gas, Water, MultiOil
 from .processes.steam_generator import SteamGenerator
 from .utils import getBooleanXML, flatten, roundup
 
@@ -109,7 +109,7 @@ class Field(Container):
         self.process_data = {}
 
         # Set in _after_init()
-        self.oil = self.gas = self.water = self.steam_generator = None
+        self.m_oil = self.oil = self.gas = self.water = self.steam_generator = None
 
         self.wellhead_tp = None
 
@@ -167,6 +167,7 @@ class Field(Container):
         self.oil = Oil(self)
         self.gas = Gas(self)
         self.water = Water(self)
+        self.m_oil = MultiOil(self)
         self.steam_generator = SteamGenerator(self)
 
         # TODO: unused
