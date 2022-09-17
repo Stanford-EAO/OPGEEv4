@@ -17,6 +17,7 @@ from . import ureg
 from .core import OpgeeObject, STP, TemperaturePressure
 from .error import ModelValidationError
 from .stream import PHASE_LIQUID, Stream, PHASE_GAS, PHASE_SOLID
+from .table_manager import TableManager
 
 
 class ChemicalInfo(OpgeeObject):
@@ -751,8 +752,12 @@ class MultiOil(AbstractSubstance):
         # standard conditions; unit = fraction
         # reservoir_temperature: (float) average reservoir temperature; unit = F
         # reservoir_pressure: (float) average reservoir pressure; unit = psia
+
         self.chemicals = Chemicals({name: Chemical(name) for name in ChemicalInfo.names()}, cache=True)
+        CH4 = Chemical("CH4")
+        self.chemicals.append(CH4)
         self.thm = Thermo(self.chemicals)
+        print(self.thm)
         self.API = API = field.attr("API")
         self.gas_comp = field.attrs_with_prefix('gas_comp_')  #: get the list of gas compositions
         self.gas_oil_ratio = field.attr('GOR')  #: (scf/bbl_oil) get the ratio of gas to oil
@@ -773,26 +778,30 @@ class MultiOil(AbstractSubstance):
         """
         #thm = thermosteam.Thermo(self.chemicals)
 
-        # print('MultiOil class self.gas_oil_ratio', self.gas_oil_ratio)  #: 2429.3 scf/bbl_oil
+        #self.pubchem_cid = TableManager().get_table("pubchem-cid")
+        #self.chemicals = Chemicals({name: Chemical("PubChem={id}".format(id=self.pubchem_cid.at[name, 'PubChem'])) for name in ChemicalInfo.names()}, cache=True)
 
         # s0 at standard condition
+        print(self.gas_comp['C1'] * self.gas_oil_ratio / 100)
         s0 = MultiStream(ID='default',
-                                     #: gas_comp (percentage*100) * GOR scf/bbl /100 -> scf/bbl
-                                     g=[('N2', self.gas_comp['N2'] * self.gas_oil_ratio / 100),  #: scf
-                                        ('CO2', self.gas_comp['CO2'] * self.gas_oil_ratio / 100),
-                                        ('C1', self.gas_comp['C1'] * self.gas_oil_ratio / 100),
-                                        ('C2', self.gas_comp['C2'] * self.gas_oil_ratio / 100),
-                                        ('C3', self.gas_comp['C3'] * self.gas_oil_ratio / 100),
-                                        ('C4', self.gas_comp['C4'] * self.gas_oil_ratio / 100),
-                                        ('H2S', self.gas_comp['H2S'] * self.gas_oil_ratio / 100)],
-                                     l=[('C5', 5.614583 / 6),  #: scf converted from 1 barrel
-                                        ('C6', 5.614583 / 6),
-                                        ('C7', 5.614583 / 6),
-                                        ('C8', 5.614583 / 6),
-                                        ('C9', 5.614583 / 6),
-                                        ('C10', 5.614583 / 6)],
-                                     units='scf/hr',
-                                     thermo=self.thm)
+                         #: gas_comp (percentage*100) * GOR scf/bbl /100 -> scf/bbl
+                         g=[('N2', self.gas_comp['N2'] * self.gas_oil_ratio / 100),  #: scf
+                            ('CO2', self.gas_comp['CO2'] * self.gas_oil_ratio / 100),
+                            ('CH4', self.gas_comp['C1'] * self.gas_oil_ratio / 100),
+                            ('C2', self.gas_comp['C2'] * self.gas_oil_ratio / 100),
+                            #('C3', self.gas_comp['C3'] * self.gas_oil_ratio / 100),
+                            ('C4', self.gas_comp['C4'] * self.gas_oil_ratio / 100),
+                            ('H2S', self.gas_comp['H2S'] * self.gas_oil_ratio / 100)],
+                         l=[('C5', 5.614583 / 6),  #: scf converted from 1 barrel
+                            ('C6', 5.614583 / 6),
+                            ('C7', 5.614583 / 6),
+                            ('C8', 5.614583 / 6),
+                            ('C9', 5.614583 / 6),
+                            ('C10', 5.614583 / 6)],
+                         units='scf/hr',
+                         thermo=self.thm)
+        print(s0.print())
+
         return s0
 
     def _molar_frac_to_scf_bbl(self, quant):
@@ -892,7 +901,7 @@ class MultiOil(AbstractSubstance):
         :return: (float) saturated formation volume factor (unit = fraction)
         """
         s1 = self.s0
-        s1.vle(T=self.res_tp.T, P=self.res_tp.P)
+        s1.vle(T=self.res_tp.T.to("K").m, P=self.res_tp.P.to('Pa').m)
         result = s1['l'].F_vol / self.s0['l'].F_vol
         return result
 
@@ -901,7 +910,7 @@ class MultiOil(AbstractSubstance):
         s1 = self.s0
         s1.vle(T=self.res_tp.T.to('K').magnitude, P=self.res_tp.P.to('Pa').magnitude)
         result = s1.F_vol / self.s0.F_vol
-        return result
+        return ureg.Quantity(result, "frac")
 
     def isothermal_compressibility_X(self, T=None):
         """
