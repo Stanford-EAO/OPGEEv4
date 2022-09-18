@@ -3,6 +3,7 @@ import pytest
 from opgee.core import TemperaturePressure
 from opgee.stream import Stream
 from opgee import ureg
+from thermosteam import Chemical, Chemicals, Thermo, Stream, MultiStream
 
 
 @pytest.fixture(scope="module")
@@ -16,14 +17,22 @@ def moil_instance(test_model):
     field = test_model.get_field("test")
     return field.m_oil
 
+
+def test_thermos():
+    chem = Chemical('C18')
+    print(chem.show())
+
+
 # 1 GAS SPECIFIC GRAVITY
 def test_gas_specific_gravity(oil_instance):
     gas_SG = oil_instance.gas_specific_gravity
     assert gas_SG == ureg.Quantity(pytest.approx(0.622999935), "frac")
 
+
 def test_gas_specific_gravity_mo(moil_instance):
     gas_SG = moil_instance.gas_specific_gravity
     assert gas_SG == ureg.Quantity(pytest.approx(62.2999935), "percent")
+
 
 # 6 BUBBLE POINT SOLUTION GOR
 def test_bubble_point_solution_GOR(oil_instance):
@@ -35,7 +44,7 @@ def test_bubble_point_solution_GOR(oil_instance):
 #       GOR from input is separator, this is bubble point???
 def test_bubble_point_solution_GOR_mo(moil_instance):
     GOR = moil_instance.gas_oil_ratio
-    gor_bubble = moil_instance.bubble_point_solution_GOR(GOR)
+      gor_bubble = moil_instance.bubble_point_solution_GOR(GOR)
     assert gor_bubble == ureg.Quantity(pytest.approx(2429.299), "scf/bbl_oil")
 
 

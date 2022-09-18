@@ -11,6 +11,7 @@ import math
 import pandas as pd
 import pint
 from pyXSteam.XSteam import XSteam
+import thermosteam
 from thermosteam import Chemical, Chemicals, Mixture, Thermo, Stream, MultiStream
 
 from . import ureg
@@ -26,7 +27,7 @@ class ChemicalInfo(OpgeeObject):
     def __init__(self):
         dict_non_hydrocarbon = {name: Chemical(name) for name in Stream.non_hydrocarbon_gases}
         series = Stream.pubchem_cid_df.PubChem
-        self._chemical_dict = chemical_dict = {name : Chemical(f"PubChem={num}") for name, num in series.items()}
+        self._chemical_dict = chemical_dict = {name: Chemical(f"PubChem={num}") for name, num in series.items()}
         chemical_dict.update(dict_non_hydrocarbon)
         self._mol_weights = pd.Series({name: chemical.MW for name, chemical in chemical_dict.items()},
                                       dtype="pint[g/mole]")
@@ -712,7 +713,7 @@ class Oil(AbstractSubstance):
         :return:(float) liquid fuel composition (unit = mol/kg)
         """
         low_bound = 4
-        high_bound = 70 # 45   # TODO: changed temporarily to handle exported CSV field definitions
+        high_bound = 70  # 45   # TODO: changed temporarily to handle exported CSV field definitions
 
         if API.m < low_bound or API.m > high_bound:
             raise ModelValidationError(f"{API.m} is less than {low_bound} or greater than {high_bound}")
@@ -735,7 +736,7 @@ class Oil(AbstractSubstance):
 
 class MultiOil(AbstractSubstance):
     """
-    Describes thermodynamic properties of crude oil with specified components.
+    Describes thermodynamic properties of crude oil as composite oil.
     """
 
     def __init__(self, field):
@@ -746,22 +747,25 @@ class MultiOil(AbstractSubstance):
         """
         super(MultiOil, self).__init__(field)
 
-        # API: (float) API gravity
+        # API: (float) API gravity; unit = dimensionless
         # gas_comp: (panda.Series, float) Produced gas composition; unit = fraction
         # gas_oil_ratio: (float) The ratio of the volume of gas that comes out of solution to the volume of oil at
         # standard conditions; unit = fraction
         # reservoir_temperature: (float) average reservoir temperature; unit = F
         # reservoir_pressure: (float) average reservoir pressure; unit = psia
+        # therm: (Thermo) defines the thermodynamic package used for this crude oil, containing chemicals, T&P, etc
+        # s0: (Stream) the stream object that defines the crude oil composition with flow rates at standard condition
+        # oil_LHV_mass: (Quantity, float) oil lower heating value per mass; unit = btu/lb
+        # component_LHV_mass["oil"]: (Quantity, float) oil lower heating value per mass; unit = joule/gram
+        # oil_specific_gravity: (Quantity, float) oil relative density to water at standard condition; unit = frac
+        # total_molar_weight: (Quantity, float) oil molar weight; unit = g·pct/mol
+        # gas_specific_gravity: (Quantity, float) gas components relative density to dry air at
+        # standard condition; unit = frac
 
-        self.chemicals = Chemicals({name: Chemical(name) for name in ChemicalInfo.names()}, cache=True)
-        CH4 = Chemical("CH4")
-        self.chemicals.append(CH4)
-        self.thm = Thermo(self.chemicals)
-        print(self.thm)
         self.API = API = field.attr("API")
         self.gas_comp = field.attrs_with_prefix('gas_comp_')  #: get the list of gas compositions
         self.gas_oil_ratio = field.attr('GOR')  #: (scf/bbl_oil) get the ratio of gas to oil
-        self.s0 = self._create_stream()
+        self.therm, self.s0 = self._create_stream()
         self.oil_LHV_mass = self.mass_energy_density()  #: called s0 inside function
         self.component_LHV_mass['oil'] = self.oil_LHV_mass.to("joule/gram")
         self.oil_specific_gravity = ureg.Quantity(141.5 / (131.5 + API.m), "frac")
@@ -770,39 +774,38 @@ class MultiOil(AbstractSubstance):
 
     def _create_stream(self):
         """
-        Create a MultiStream obj with specified oil composition (gas comp and Cs)
+        Create a MultiStream obj with specified oil composition (gas components and carbohydrates)
         at standard conditions (T=298K, P=101325.0Pa)
         then using VLE (vapor liquid equilibrium to convert to reservoir condition)
 
-        :return: (thermosteam.MultiStream object) at reservoir condition, liquid phase
+        :return: (MultiStream) at reservoir condition, liquid phase
         """
-        #thm = thermosteam.Thermo(self.chemicals)
 
-        #self.pubchem_cid = TableManager().get_table("pubchem-cid")
-        #self.chemicals = Chemicals({name: Chemical("PubChem={id}".format(id=self.pubchem_cid.at[name, 'PubChem'])) for name in ChemicalInfo.names()}, cache=True)
+        # self.pubchem_cid = TableManager().get_table("pubchem-cid")
+
+        chemicals = Chemicals({name: Chemical(name) for name in ChemicalInfo.names()}, cache=True)
+        chemicals.append(Chemical("CH4"))
+        therm = Thermo(chemicals)
+
+        #checmical list info
+        chemicalList = ['C5', 'C6', 'C7','C8', 'C9', 'C10', 'C11', 'C12', 'C13', 'C14', 'C15', 'C16', 'C17']
 
         # s0 at standard condition
-        print(self.gas_comp['C1'] * self.gas_oil_ratio / 100)
         s0 = MultiStream(ID='default',
                          #: gas_comp (percentage*100) * GOR scf/bbl /100 -> scf/bbl
                          g=[('N2', self.gas_comp['N2'] * self.gas_oil_ratio / 100),  #: scf
                             ('CO2', self.gas_comp['CO2'] * self.gas_oil_ratio / 100),
                             ('CH4', self.gas_comp['C1'] * self.gas_oil_ratio / 100),
                             ('C2', self.gas_comp['C2'] * self.gas_oil_ratio / 100),
-                            #('C3', self.gas_comp['C3'] * self.gas_oil_ratio / 100),
+                            ('C3', self.gas_comp['C3'] * self.gas_oil_ratio / 100),
                             ('C4', self.gas_comp['C4'] * self.gas_oil_ratio / 100),
                             ('H2S', self.gas_comp['H2S'] * self.gas_oil_ratio / 100)],
-                         l=[('C5', 5.614583 / 6),  #: scf converted from 1 barrel
-                            ('C6', 5.614583 / 6),
-                            ('C7', 5.614583 / 6),
-                            ('C8', 5.614583 / 6),
-                            ('C9', 5.614583 / 6),
-                            ('C10', 5.614583 / 6)],
+                         l=[(i, 5.614583 / 13) for i in chemicalList],
                          units='scf/hr',
-                         thermo=self.thm)
+                         thermo=therm)
         print(s0.print())
 
-        return s0
+        return therm, s0
 
     def _molar_frac_to_scf_bbl(self, quant):
         # TODO simple util func for unit conversion from molar fraction to scf/bbl
@@ -849,7 +852,7 @@ class MultiOil(AbstractSubstance):
 
         :return: (pint.Quantity) unit:scf/bbl
         """
-        s1 = MultiStream("s1", thermo=self.thm)
+        s1 = MultiStream("s1", thermo=self.therm)
         s1.copy_like(self.s0)
 
         t = self.res_tp.T.to('K').m if T is None else T.to('K').m
@@ -859,15 +862,15 @@ class MultiOil(AbstractSubstance):
         s1.vle(T=t, P=p)
         s1.show()
 
-        print(s1.phase) #l
+        print(s1.phase)  # l
 
         s1.vle(T=298.15, P=101325)
-        #print(s1.phase)  # gl
-        #print(s1.vapor_fraction)  # 1.2656400497209265e-05
+        # print(s1.phase)  # gl
+        # print(s1.vapor_fraction)  # 1.2656400497209265e-05
         s1.show()
         g = ureg.Quantity(s1['g'].F_vol, 'm3').to('scf')
         l = ureg.Quantity(s1['l'].F_vol, 'm3').to('bbl_oil')
-        return g/l
+        return g / l
 
     def reservoir_solution_GOR(self):
         """
@@ -884,12 +887,12 @@ class MultiOil(AbstractSubstance):
         return self.solution_gas_oil_ratio(P=9439 * ureg.Unit('psia'))
 
     def formation_volume_factor(self):
-        s1 = MultiStream("s1", thermo=self.thm)
+        s1 = MultiStream("s1", thermo=self.therm)
         s1.copy_like(self.s0)
 
         vol_std = s1.F_mol
         s1.vle(T=self.res_tp.T.to('K').m, P=self.res_tp.P.to('Pa').m)
-        vol_res = s1.F_vol # TODO unable to evaluate C3 at T=366K P=1e7Pa / 1556Psia
+        vol_res = s1.F_vol  # TODO unable to evaluate C3 at T=366K P=1e7Pa / 1556Psia
         result = vol_res / vol_std
         return result
 
@@ -960,7 +963,7 @@ class MultiOil(AbstractSubstance):
         s1 = self.s0['l']
 
         if total_flow is not None:
-            ratio = total_flow/s1.get_flow('ton/day').sum()
+            ratio = total_flow / s1.get_flow('ton/day').sum()
             s1.rescale(ratio)
 
         results = s1.get_property('vol', 'bbl/day').sum()
@@ -1001,7 +1004,7 @@ class MultiOil(AbstractSubstance):
             s1.rescale(ratio)
 
         result = s1.get_property('LHV', 'british_thermal_unit/day') / 1000000
-        return ureg.Quantity(result,'mmBtu/day')
+        return ureg.Quantity(result, 'mmBtu/day')
 
     @staticmethod
     def specific_heat(oil_instance, T=None):
@@ -1015,9 +1018,9 @@ class MultiOil(AbstractSubstance):
 
         if T is not None:
             T = T.to('K').m
-            s1.set_property('T', T, units = 'K')
+            s1.set_property('T', T, units='K')
         result = s1.get_property('Cp', 'british_thermal_unit/lb/degF')
-        result = ureg.Quantity(result,"btu/lb/degF")
+        result = ureg.Quantity(result, "btu/lb/degF")
         return result
 
     @staticmethod
