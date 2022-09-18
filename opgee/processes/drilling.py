@@ -8,11 +8,11 @@
 #
 import numpy as np
 
-from ..process import Process
-from ..log import getLogger
 from opgee import ureg
-from ..energy import EN_DIESEL
 from ..emissions import EM_COMBUSTION, EM_LAND_USE
+from ..energy import EN_DIESEL
+from ..log import getLogger
+from ..process import Process
 
 _logger = getLogger(__name__)
 
@@ -26,7 +26,10 @@ class Drilling(Process):
         self.fracture_consumption_tbl = field.model.fracture_energy
         self.pressure_gradient_fracturing = field.attr("pressure_gradient_fracturing")
         self.volume_per_well_fractured = field.attr("volume_per_well_fractured")
-        self.oil_sands_mine = field.attr("oil_sands_mine")
+        self.oil_sand_mine = field.attr("oil_sands_mine")
+        if self.oil_sand_mine != "None":
+            self.set_enabled(False)
+            return
         self.land_use_EF = field.model.land_use_EF
         self.ecosystem_richness = field.attr("ecosystem_richness")
         self.field_development_intensity = field.attr("field_development_intensity")
@@ -37,9 +40,7 @@ class Drilling(Process):
         field = self.field
         fracture_energy_constant = self.get_fracture_constant()
         fracture_diesel_use = self.get_fracture_diesel(fracture_energy_constant)
-        fracture_fuel_consumption = \
-            self.fraction_wells_fractured * field.get_process_data("num_wells") * fracture_diesel_use \
-                if self.oil_sands_mine != "None" else ureg.Quantity(0., "gallon")
+        fracture_fuel_consumption = self.fraction_wells_fractured * field.get_process_data("num_wells") * fracture_diesel_use
         fracture_energy_consumption = fracture_fuel_consumption * field.model.const("diesel-LHV")
         tot_energy_consumption = fracture_energy_consumption + field.get_process_data("drill_energy_consumption")
         wellhead_LHV_rate = field.get_process_data("wellhead_LHV_rate")
@@ -47,9 +48,9 @@ class Drilling(Process):
         diesel_consumption = wellhead_LHV_rate / cumulative_export_LHV * tot_energy_consumption
 
         # calculate land use emissions
-        land_use_intensity_df = self.land_use_EF.loc["Oil sands mining"] if self.oil_sands_mine != "None" else self.land_use_EF.loc[self.ecosystem_richness]
+        land_use_intensity_df = self.land_use_EF.loc["Oil sands mining"]
         land_use_intensity = land_use_intensity_df.loc[self.field_development_intensity]
-        land_use_emission = land_use_intensity.sum() * field.get_process_data("export_oil_LHV")
+        land_use_emission = land_use_intensity.sum() * field.get_process_data("exported_oil_LHV")
 
         # energy-use
         energy_use = self.energy

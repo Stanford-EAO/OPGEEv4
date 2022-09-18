@@ -8,11 +8,12 @@
 #
 import pandas as pd
 
+from .core import STP
 from .core import TemperaturePressure
+from .error import OpgeeException
 from .log import getLogger
 from .stream import PHASE_LIQUID, Stream
 from .thermodynamics import Oil, Gas, Water
-from .core import STP
 
 _logger = getLogger(__name__)
 
@@ -55,6 +56,8 @@ def combine_streams(streams, API):
         stream = Stream('combined',
                         TemperaturePressure(temperature, max(STP.P, min_pressure)),
                         comp_matrix=comp_matrix)
+    else:
+        stream = Stream('empty_stream', tp=STP)
     return stream
 
 

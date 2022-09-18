@@ -17,7 +17,8 @@ from .log import getLogger
 
 _logger = getLogger(__name__)
 
-def ipython_info(): # pragma: no cover
+
+def ipython_info():  # pragma: no cover
     ip = False
     if 'ipykernel' in sys.modules:
         ip = 'notebook'
@@ -25,12 +26,13 @@ def ipython_info(): # pragma: no cover
         ip = 'terminal'
     return ip
 
+
 #
 # Custom argparse "action" to parse comma-delimited strings to lists
 #
 class ParseCommaList(argparse.Action):
     def __init__(self, option_strings, dest, nargs=None, **kwargs):
-        if nargs is not None: # pragma: no cover
+        if nargs is not None:  # pragma: no cover
             raise ValueError(f"nargs not allowed with {option_strings}")
 
         super(ParseCommaList, self).__init__(option_strings, dest, **kwargs)
@@ -38,9 +40,11 @@ class ParseCommaList(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         setattr(namespace, self.dest, values.split(','))
 
+
 def splitAndStrip(s, delim):
     items = [item.strip() for item in s.split(delim)]
     return items
+
 
 def mkdirs(newdir, mode=0o770):
     """
@@ -57,10 +61,12 @@ def mkdirs(newdir, mode=0o770):
         if e.errno != EEXIST:
             raise
 
+
 def removeTree(path, ignore_errors=True):
     import shutil
     _logger.debug(f"shutil.rmtree('{path}')")
     shutil.rmtree(path, ignore_errors=ignore_errors)
+
 
 # Not used currently
 # def rmlink(path):
@@ -109,7 +115,7 @@ def getBooleanXML(value):
     :raises: OpgeeException
     """
     false = ["false", "no", "0", "0.0", "none"]
-    true  = ["true", "yes", "1", "1.0"]
+    true = ["true", "yes", "1", "1.0"]
     valid = true + false
 
     val = str(value).strip().lower()
@@ -118,9 +124,11 @@ def getBooleanXML(value):
 
     return (val in true)
 
+
 # Function to return current function name, or the caller, and so on up
 # the stack, based on value of n.
 getFuncName = lambda n=0: sys._getframe(n + 1).f_code.co_name
+
 
 def to_int(s):
     f = float(s)
@@ -130,9 +138,11 @@ def to_int(s):
 
     raise TypeError(f"coercible: Refusing to truncate float {s} to int")
 
+
 # pseudo-type
 def binary(value):
     return 1 if getBooleanXML(value) else 0
+
 
 def coercible(value, pytype, raiseError=True):
     """
@@ -156,7 +166,7 @@ def coercible(value, pytype, raiseError=True):
         if pytype == 'float':
             pytype_func = float
         elif pytype == 'int':
-            pytype_func = lambda s: to_int(s)   # allow "24.0" to be truncated to 24
+            pytype_func = lambda s: to_int(s)  # allow "24.0" to be truncated to 24
         elif pytype == 'str':
             pytype_func = str
         elif pytype == 'binary':
@@ -177,7 +187,9 @@ def coercible(value, pytype, raiseError=True):
 
     return value
 
+
 TRIAL_STRING_DELIMITER = ','
+
 
 def parseTrialString(string):
     """
@@ -200,6 +212,7 @@ def parseTrialString(string):
         res = res.union(set(r))
     return list(res)
 
+
 def flatten(listOfLists):
     """
     Flatten one level of nesting given a list of lists. That is, convert
@@ -212,8 +225,10 @@ def flatten(listOfLists):
 
     return list(chain.from_iterable(listOfLists))
 
+
 def roundup(value, digits):
     return round(value + 0.5, digits)
+
 
 def mkdirs(newdir, mode=0o770):
     """
@@ -222,13 +237,14 @@ def mkdirs(newdir, mode=0o770):
     :param newdir: the directory to create (along with any needed parent directories)
     :return: nothing
     """
-    import errno    # PyCharm thinks this doesn't exist but it does.
+    import errno  # PyCharm thinks this doesn't exist but it does.
 
     try:
         os.makedirs(newdir, mode)
     except OSError as e:
         if e.errno != errno.EEXIST:
             raise
+
 
 def loadModuleFromPath(module_path, raiseError=True):
     """
@@ -265,6 +281,7 @@ def loadModuleFromPath(module_path, raiseError=True):
 
     return module
 
+
 def getResource(relpath):
     """
     Extract a resource (e.g., file) from the given relative path in
@@ -282,6 +299,7 @@ def getResource(relpath):
         raise OpgeeException(f"Resource '{relpath}' was not found in the opgee package: {e}")
 
     return contents.decode('utf-8')
+
 
 def dequantify_dataframe(df):
     import pandas as pd

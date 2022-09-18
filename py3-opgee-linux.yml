@@ -1,0 +1,40 @@
+name: opgee
+channels:
+  - anaconda
+  - conda-forge
+  - defaults
+dependencies:
+  - colour
+  - dash>=2.5.1
+  - graphviz
+  - python-graphviz
+  - ipython
+  - ipyparallel
+  - jinja2
+  - llvm-openmp
+  - lxml>=4.9.0
+  - networkx
+  - nuitka
+  - numba
+  - numpy
+  - ordered-set
+  - pandas
+  - pint
+  - pint-pandas
+  - pip
+  - pydot
+  - pytest
+  - python=3.8
+  - semver
+  - setuptools
+  - sphinx>=4.3.0
+  - sphinx-argparse>=0.2.5
+  - sphinx_rtd_theme>=0.5.1
+  - sphinxcontrib-serializinghtml
+  - pip:
+    # These next three fail if upgraded beyond these versions
+    - thermo==0.2.10    # several tests fail when using v0.2.21
+    - thermosteam==0.28.12
+    - pyXSteam==0.4.8
+    - dash-cytoscape>=0.3.0
+    - ray

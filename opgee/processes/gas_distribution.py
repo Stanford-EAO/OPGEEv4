@@ -7,9 +7,9 @@
 # See LICENSE.txt for license details.
 #
 from ..emissions import EM_FUGITIVES
+from ..import_export import NATURAL_GAS
 from ..log import getLogger
 from ..process import Process
-from ..import_export import NATURAL_GAS
 
 _logger = getLogger(__name__)
 

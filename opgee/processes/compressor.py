@@ -6,10 +6,9 @@
 # Copyright (c) 2021-2022 The Board of Trustees of the Leland Stanford Junior University.
 # See LICENSE.txt for license details.
 #
+from .shared import get_energy_consumption
 from .. import ureg
 from ..core import OpgeeObject
-from ..error import ModelValidationError
-from .shared import get_energy_consumption
 
 _power = [1, 1 / 2, 1 / 3, 1 / 4, 1 / 5]
 

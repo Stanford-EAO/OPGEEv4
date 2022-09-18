@@ -31,11 +31,13 @@ class GasGathering(Process):
         loss_rate = self.venting_fugitive_rate()
         gas_fugitives = self.set_gas_fugitives(input, loss_rate)
 
-        gas_to_dehydration = self.find_output_stream("gas")
-        gas_to_dehydration.copy_flow_rates_from(input)
-        gas_to_dehydration.subtract_rates_from(gas_fugitives)
+        output_gas = self.find_output_stream("gas for gas dehydration", raiseError=False)
+        if output_gas is None:
+            output_gas = self.find_output_stream("gas for gas partition")
+        output_gas.copy_flow_rates_from(input)
+        output_gas.subtract_rates_from(gas_fugitives)
 
-        self.set_iteration_value(gas_to_dehydration.total_flow_rate())
+        self.set_iteration_value(output_gas.total_flow_rate())
 
         # emissions
         emissions = self.emissions

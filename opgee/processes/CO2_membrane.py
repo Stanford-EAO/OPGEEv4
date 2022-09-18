@@ -9,7 +9,6 @@
 from ..log import getLogger
 from ..process import Process
 from ..stream import PHASE_GAS
-from ..core import TemperaturePressure
 
 _logger = getLogger(__name__)
 
@@ -37,6 +36,6 @@ class CO2Membrane(Process):
         gas_to_AGR.multiply_factor_from_series(AGR_mol_fracs, PHASE_GAS)
 
         gas_to_compressor = self.find_output_stream("gas for CO2 compressor")
-        gas_to_compressor.tp.set(T=field.stp.T, P=input.pressure * 0.33)
+        gas_to_compressor.tp.set(T=field.stp.T, P=input.tp.P * 0.33)
         gas_to_compressor.copy_flow_rates_from(input)
         gas_to_compressor.multiply_factor_from_series(self.membrane_comp, PHASE_GAS)

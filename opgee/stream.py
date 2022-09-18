@@ -6,18 +6,19 @@
 # Copyright (c) 2021-2022 The Board of Trustees of the Leland Stanford Junior University.
 # See LICENSE.txt for license details.
 #
+import re
 from copy import copy
+
 import pandas as pd
 import pint
-import re
 
 from . import ureg
 from .attributes import AttributeMixin
 from .core import XmlInstantiable, elt_name, magnitude, TemperaturePressure
 from .error import OpgeeException, ModelValidationError
 from .log import getLogger
-from .utils import getBooleanXML, coercible
 from .table_manager import TableManager
+from .utils import getBooleanXML, coercible
 
 _logger = getLogger(__name__)
 
@@ -261,7 +262,7 @@ class Stream(XmlInstantiable, AttributeMixin):
 
     def hydrocarbon_rate(self, phase):
         """
-        Summarize rates for each hydrocarbons
+        Summarize rates for each hydrocarbon
 
         :param phase: (str) the name of a phase of matter ('gas', 'liquid' or 'solid')
         :return: (float) the summation of flow rates of all hydrocarbons

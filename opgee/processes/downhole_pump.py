@@ -8,13 +8,13 @@
 #
 import numpy as np
 
+from .shared import get_energy_carrier, get_energy_consumption_stages
 from .. import ureg
 from ..core import TemperaturePressure
 from ..emissions import EM_COMBUSTION, EM_FUGITIVES
 from ..log import getLogger
 from ..process import Process
 from ..stream import Stream
-from .shared import get_energy_carrier, get_energy_consumption_stages
 
 _logger = getLogger(__name__)
 
@@ -37,14 +37,13 @@ class DownholePump(Process):
         self.prime_mover_type = self.attr("prime_mover_type")
 
         self.oil_sand_mine = field.attr("oil_sands_mine")
+        if self.oil_sand_mine != "None":
+            self.set_enabled(False)
+            return
 
     def run(self, analysis):
         self.print_running_msg()
         field = self.field
-
-        if self.oil_sand_mine != "None":
-            self.enabled = False
-            return
 
         # mass rate
         input = self.find_input_stream("crude oil")

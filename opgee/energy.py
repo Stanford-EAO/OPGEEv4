@@ -7,9 +7,9 @@
 # See LICENSE.txt for license details.
 #
 import pandas as pd
+
 from .core import OpgeeObject
 from .error import OpgeeException
-
 from .log import getLogger
 
 _logger = getLogger(__name__)

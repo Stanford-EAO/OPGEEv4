@@ -9,12 +9,12 @@
 import pandas as pd
 
 from .. import ureg
+from ..core import STP
 from ..emissions import EM_COMBUSTION, EM_FLARING
 from ..energy import EN_NATURAL_GAS, EN_ELECTRICITY, EN_UPG_PROC_GAS, EN_PETCOKE
 from ..log import getLogger
 from ..process import Process
 from ..stream import PHASE_GAS
-from ..core import STP
 from ..stream import Stream
 
 _logger = getLogger(__name__)
@@ -77,6 +77,9 @@ class HeavyOilUpgrading(Process):
                                               self.oil.component_LHV_molar[self.upgrader_gas_comp.index] *
                                               self.mole_to_scf).sum()
         SCO_bitumen_ratio = heavy_oil_upgrading_table["SCO/bitumen ratio"]
+
+        field.save_process_data(SCO_bitumen_ratio=SCO_bitumen_ratio) # used in the Flaring process
+
         SCO_API = heavy_oil_upgrading_table["API gravity of resuling upgraded product output"]
         SCO_specific_gravity = field.oil.specific_gravity(SCO_API)
 
@@ -140,9 +143,10 @@ class HeavyOilUpgrading(Process):
                                  self.oil.component_MW[self.upgrader_gas_comp.index] *
                                  proc_gas_flared *
                                  self.mole_to_scf)
-        flaring_gas = self.find_output_stream("gas for flaring")
-        flaring_gas.set_rates_from_series(proc_gas_flaring_rate, PHASE_GAS)
-        flaring_gas.set_tp(STP)
+        flaring_gas = self.find_output_stream("gas for flaring", raiseError=False)
+        if flaring_gas:
+            flaring_gas.set_rates_from_series(proc_gas_flaring_rate, PHASE_GAS)
+            flaring_gas.set_tp(STP)
 
         # energy use
         energy_use = self.energy

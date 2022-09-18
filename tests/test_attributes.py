@@ -2,7 +2,7 @@ import pytest
 from lxml import etree as ET
 from opgee import ureg
 from opgee.analysis import Analysis
-from opgee.attributes import ClassAttrs, AttributeMixin
+from opgee.attributes import ClassAttrs, AttributeMixin, AttrDefs
 from opgee.core import instantiate_subelts
 from opgee.error import OpgeeException, AttributeError
 from opgee.model import Model
@@ -12,7 +12,7 @@ from opgee.model import Model
 def attr_classes():
     xml = ET.XML("""
 <AttrDefs>
-  <ClassAttrs name="Model">
+  <ClassAttrs name="Analysis">
     <Options name="GWP_time_horizon" default="100">
       <Option>20</Option>
       <Option>100</Option>
@@ -30,7 +30,9 @@ def attr_classes():
     <AttrDef name="GWP_horizon" options="GWP_time_horizon" type="int" unit="years"/>
     <AttrDef name="GWP_version" options="GWP_version" type="str"/>
     <AttrDef name="functional_unit" options="functional_unit" type="str"/>
-
+  </ClassAttrs>
+  
+  <ClassAttrs name="Model">
     <!-- Maximum number of iterations for process loops -->
     <AttrDef name="maximum_iterations" type="int">10</AttrDef>
 
@@ -39,6 +41,7 @@ def attr_classes():
   </ClassAttrs>
 </AttrDefs>
 """)
+    AttrDefs.load_attr_defs(xml)
     attr_class_dict = instantiate_subelts(xml, ClassAttrs, as_dict=True)
     return attr_class_dict
 
@@ -55,7 +58,7 @@ def attr_dict_1():
 
 
 @pytest.fixture
-def attr_dict_2():
+def attr_dict_2(attr_classes):
     xml = ET.XML("""
 <Analysis>
   <A name="GWP_horizon">20</A>
@@ -99,7 +102,7 @@ def test_exceptions(attr_classes, attr_dict_1):
 
 def test_string_rep(attr_classes):
     name = 'functional_unit'
-    adef = attr_classes['Model'].attribute(name)
+    adef = attr_classes['Analysis'].attribute(name)
     s = str(adef)
     assert s == f"<AttrDef name='{name}' type='{adef.pytype}' default='{adef.default}' options='{adef.option_set}'>"
 

@@ -6,18 +6,16 @@
 # Copyright (c) 2021-2022 The Board of Trustees of the Leland Stanford Junior University.
 # See LICENSE.txt for license details.
 #
+from .compressor import Compressor
+from .shared import get_energy_carrier
 from .. import ureg
-from ..emissions import EM_COMBUSTION, EM_FUGITIVES
 from ..core import TemperaturePressure
+from ..emissions import EM_COMBUSTION, EM_FUGITIVES
 from ..error import OpgeeException
+from ..import_export import NATURAL_GAS
 from ..log import getLogger
 from ..process import Process
 from ..stream import PHASE_GAS, Stream
-import pint
-
-from .compressor import Compressor
-from .shared import get_energy_carrier
-from ..import_export import NATURAL_GAS
 
 _logger = getLogger(__name__)
 

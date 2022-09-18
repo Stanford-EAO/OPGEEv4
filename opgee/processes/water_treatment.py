@@ -10,9 +10,9 @@ from .. import ureg
 from ..core import TemperaturePressure
 from ..energy import EN_ELECTRICITY
 from ..error import OpgeeException
+from ..import_export import WATER
 from ..log import getLogger
 from ..process import Process
-from ..import_export import ImportExport, WATER
 
 _logger = getLogger(__name__)
 
@@ -49,17 +49,20 @@ class WaterTreatment(Process):
         self.init_intermediate_results(["Produced Water", "Makeup Water"])
 
         self.oil_sand_mine = field.attr("oil_sands_mine")
+        # oil sand mining has no water treatment (TODO: add this comment to the rest of process)
+        if self.oil_sand_mine != "None":
+            self.set_enabled(False)
+            return
 
     def run(self, analysis):
         self.print_running_msg()
         field = self.field
 
-        if self.oil_sand_mine != "None":
-            self.enabled = False
-            return
-
         # mass rate
         input = self.find_input_streams("water", combine=True)
+        if input.is_uninitialized():
+            return
+
         prod_water_mass_rate = input.liquid_flow_rate("H2O")
 
         water = self.field.water

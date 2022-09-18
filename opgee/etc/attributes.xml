@@ -46,6 +46,8 @@
       <AttrDef name="GWP_horizon" options="GWP horizon" type="int" unit="years"/>
       <AttrDef name="GWP_version" options="GWP version" type="str"/>
       <AttrDef name="functional_unit" options="Functional unit" type="str"/>
+
+<!--      TODO: Deprecated!-->
       <AttrDef name="energy_basis" options="Energy basis" type="str"/>
 
       <!-- We need this at the Analysis level to ensure all fields are evaluated to same bounds -->
@@ -96,8 +98,8 @@
       <AttrDef name="depth" unit="ft" desc="Field depth" type="float" GT="0" LE="36000">7240.0</AttrDef>
 
       <AttrDef name="oil_prod" unit="bbl_oil/d" desc="Oil production volume" type="float" GT="0">2098.0</AttrDef>
-      <AttrDef name="num_prod_wells" desc="Number of producing wells" type="int" GT="0">24</AttrDef>
-      <AttrDef name="num_water_inj_wells" desc="Number of water injecting wells" type="int" GE="0">20</AttrDef>
+      <AttrDef name="num_prod_wells" unit="dimensionless" desc="Number of producing wells" type="int" GT="0">24</AttrDef>
+      <AttrDef name="num_water_inj_wells" unit="dimensionless" desc="Number of water injecting wells" type="int" GE="0">20</AttrDef>
       <AttrDef name="well_diam" unit="in" desc="Well diameter" type="float" GT="0">2.78</AttrDef>
       <AttrDef name="prod_index" unit="bbl_oil/(psia*day)" type="float" desc="Productivity index">17.0</AttrDef>
       <AttrDef name="res_press" unit="psia" desc="Average reservoir pressure" type="float">1556.6</AttrDef>
@@ -137,7 +139,7 @@
 
       <AttrDef name="GOR" desc="Gas-to-oil ratio" unit="scf/bbl_oil" type="float">2429.3</AttrDef>
 
-      <AttrDef name="WOR" desc="Water-to-oil ratio" unit="bbl_water/bbl_oil" type="float">6.0</AttrDef>
+      <AttrDef name="WOR" desc="Water-to-oil ratio" unit="bbl_water/bbl_oil" type="float" GT="0">6.0</AttrDef>
       <AttrDef name="WIR" desc="Water injection ratio" unit="bbl_water/bbl_oil" type="float">7.0</AttrDef>
       <AttrDef name="GLIR" desc="Gas lifting injection ratio" unit="scf/bbl_liquid" type="float">364.0</AttrDef>
       <AttrDef name="GFIR" desc="Gas flooding injection ratio" unit="scf/bbl_oil" type="float">3644.0</AttrDef>
@@ -162,8 +164,8 @@
         <Option>Hydroconversion</Option>
         <Option desc="Combined hydroconversion and fluid coking">Combined</Option>
       </Options>
-      <Options name="gas_processing_path" default="Acid Gas">
-        <Option>None</Option>
+      <Options name="gas_processing_path" default="Acid Wet Gas">
+        <Option desc="">None</Option>
         <Option desc="Dehydrator">Minimal</Option>
         <Option desc="Dehydrator + Amine Process">Acid Gas</Option>
         <Option desc="Dehydrator + Demethanizer">Wet Gas</Option>

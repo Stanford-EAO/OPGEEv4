@@ -13,9 +13,9 @@ Introduction
 
    intro
    install
-   calculation
    config
    attributes
+   calculation
    monte-carlo
    tutorial
 

@@ -36,6 +36,7 @@ class CO2InjectionWells(Process):
     def run(self, analysis):
         self.print_running_msg()
 
+
 class GasFloodWells(Process):
     def run(self, analysis):
         self.print_running_msg()
@@ -49,8 +50,6 @@ class SteamInjectionWells(Process):
 class SeparationTemporary(Process):
     def run(self, analysis):
         self.print_running_msg()
-
-
 
 
 class FluidProduction(Process):
@@ -67,6 +66,7 @@ class SourGasInjectionWells(Process):
     def run(self, analysis):
         self.print_running_msg()
 
+
 class GasTransmissionCompressors(Process):
     def run(self, analysis):
         self.print_running_msg()
@@ -75,7 +75,6 @@ class GasTransmissionCompressors(Process):
 class GasPartitionA(Process):
     def run(self, analysis):
         self.print_running_msg()
-
 
 
 class GasPartitionB(Process):
@@ -112,6 +111,7 @@ class GasStorageWells(Process):
     def run(self, analysis):
         self.print_running_msg()
 
+
 class PetcokeTransport(Process):
     def run(self, analysis):
         self.print_running_msg()
@@ -129,6 +129,7 @@ class SurveyTruck(Process):
     def __str__(self):
         return f'<SurveyTruck>'
 
+
 class SurveyShip(Process):
     def run(self, analysis):
         self.print_running_msg()
@@ -140,6 +141,7 @@ class SurveyShip(Process):
 class DrillingAndDevelopment(Process):
     def run(self, analysis):
         self.print_running_msg()
+
 
 class LandUse(Process):
     def run(self, analysis):

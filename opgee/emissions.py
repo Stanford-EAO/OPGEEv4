@@ -12,8 +12,8 @@ import pint
 from . import ureg
 from .core import OpgeeObject, magnitude
 from .error import OpgeeException
-from .stream import Stream
 from .log import getLogger
+from .stream import Stream
 
 _logger = getLogger(__name__)
 

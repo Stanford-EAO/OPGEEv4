@@ -6,6 +6,8 @@
 # Copyright (c) 2021-2022 The Board of Trustees of the Leland Stanford Junior University.
 # See LICENSE.txt for license details.
 #
+import pint
+
 from . import ureg
 from .analysis import Analysis
 from .container import Container
@@ -82,10 +84,6 @@ class Model(Container):
         self.demethanizer = tbl_mgr.get_table("demethanizer")
         self.upstream_CI = tbl_mgr.get_table("upstream-CI")
 
-        # TODO: Is this table necessary?
-        self.product_boundaries = tbl_mgr.get_table("product-boundaries")
-
-        self.component_LHV = tbl_mgr.get_table("component-LHV")
         self.pubchem_cid = tbl_mgr.get_table("pubchem-cid")
 
         # TBD: should these be settable per Analysis?
@@ -170,6 +168,9 @@ class Model(Container):
 
         def partial_ci(obj):
             ghgs = obj.emissions.data.sum(axis='columns')['GHG']
+            if not isinstance(ghgs, pint.Quantity):
+                ghgs = ureg.Quantity(ghgs, "tonne/day")
+
             ci = ghgs / energy
             # convert to g/MJ, but we don't need units in CSV file
             return ci.to("grams/MJ").m
@@ -217,6 +218,22 @@ class Model(Container):
         _logger.info(f"Writing '{csvpath}'")
         df.to_csv(csvpath, index=False)
 
+    def save_for_comparison(self, tuples, csvpath):
+        import pandas as pd
+        from opgee.core import magnitude
+
+        df = pd.DataFrame()
+
+        for (field, analysis) in tuples:
+            procs = field.processes()
+            energy_by_proc = {proc.name : magnitude(proc.energy.rates().sum()) for proc in procs}
+            df[field.name] = pd.Series(energy_by_proc)
+
+        df.index.name = 'process'
+        df.sort_index(axis='rows', inplace=True)
+
+        _logger.info(f"Writing '{csvpath}'")
+        df.to_csv(csvpath)
 
     @classmethod
     def from_xml(cls, elt):

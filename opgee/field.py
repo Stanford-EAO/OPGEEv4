@@ -8,10 +8,10 @@
 #
 import networkx as nx
 import pint
+
 from . import ureg
 from .config import getParamAsList
 from .container import Container
-from .constants import petrocoke_LHV
 from .core import elt_name, instantiate_subelts, dict_from_list, TemperaturePressure, STP
 from .energy import Energy
 from .error import (OpgeeException, OpgeeStopIteration, OpgeeMaxIterationsReached,
@@ -20,6 +20,7 @@ from .import_export import ImportExport
 from .log import getLogger
 from .process import Process, Aggregator, Reservoir
 from .process_groups import ProcessChoice
+from .processes.steam_generator import SteamGenerator
 from .smart_defaults import SmartDefault
 from .stream import Stream
 from .thermodynamics import Oil, Gas, Water, MultiOil
@@ -170,21 +171,14 @@ class Field(Container):
         self.m_oil = MultiOil(self)
         self.steam_generator = SteamGenerator(self)
 
-        # TODO: unused
-        # imp_exp = self.import_export.imports_exports()
-
-        # TODO: unused
-        # self.product_names = imp_exp.index.drop(WATER)
-
-        # TODO: the only use of this is in a function that isn't called. Maybe deprecated.
-        self.product_boundaries = model.product_boundaries
-
-        self.product_LHV = model.component_LHV
-        self.product_LHV.loc['oil'] = self.oil.mass_energy_density()
-        self.product_LHV.loc['PC'] = petrocoke_LHV
-
-        self.resolve_process_choices()
+        SmartDefault.apply_defaults(None, self)
+        self.resolve_process_choices()  # allows smart defaults to set process choices
         self._check_run_after_procs()       # TBD: write test (also, move call to validate()?
+
+        # TBD: Document the "_after_init" processing order
+        # for iterator in [self.processes(), self.streams()]:
+        for obj in self.processes():
+            obj._after_init()
 
         # we use networkx to reason about the directed graph of Processes (nodes)
         # and Streams (edges).
@@ -195,10 +189,7 @@ class Field(Container):
         # if cycles:
         #     _logger.debug(f"Field '{self.name}' has cycles: {cycles}")
 
-        # TBD: document the "_after_init" processing order
-        for iterator in [self.processes(), self.streams()]:
-            for obj in iterator:
-                obj._after_init()
+
 
     def __str__(self):
         return f"<Field '{self.name}'>"
@@ -226,6 +217,10 @@ class Field(Container):
         start_procs = {p for p in self.processes() if p.impute_start} or {stream.src_proc for stream in start_streams}
 
         start_count = len(start_procs)
+        # No impute
+        if start_count == 0:
+            return
+
         if start_count != 1:
             procs = f": {start_procs}" if start_count else ""
 
@@ -252,7 +247,7 @@ class Field(Container):
         :return: None
         """
         if self.is_enabled():
-            _logger.debug(f"Running '{self}'")
+            _logger.info(f"Running '{self}'")
 
             # Cache the sets of processes within and outside the current boundary. We use
             # this information in compute_carbon_intensity() to ignore irrelevant procs.
@@ -260,9 +255,9 @@ class Field(Container):
             self.procs_beyond_boundary = boundary_proc.beyond_boundary()
 
             self.reset()
-            if smart_defaults:
-                SmartDefault.apply_defaults(analysis, self)
-                self.resolve_process_choices()  # allows smart defaults to set process choices
+            # if smart_defaults:
+            #     SmartDefault.apply_defaults(analysis, self)
+            #     self.resolve_process_choices()  # allows smart defaults to set process choices
 
             self._impute()
             self.reset_iteration()
@@ -433,6 +428,7 @@ class Field(Container):
         - Cycles cannot span the current boundary.
         - Aggregators cannot span the current boundary.
         - The chosen system boundary is defined for this field
+        - Logical contradictions in attribute some settings
 
         :return: none
         :raises ModelValidationError: raised if any validation condition is violated.
@@ -470,9 +466,12 @@ class Field(Container):
                     if (is_inside and proc in beyond) or (is_beyond and proc not in beyond):
                         msgs.append(f"{agg} spans the {proc.boundary} boundary.")
 
+        if self.attr("steam_flooding") and not self.attr("SOR"):
+            msgs.append("SOR cannot be 0 when steam_flooding is chosen")
+
         if msgs:
             msg = "\n - ".join(msgs)
-            raise ModelValidationError(f"Field validation failed:{msg}")
+            raise ModelValidationError(f"Field validation failed: {msg}")
 
     def report(self, include_streams=False):
         """
@@ -524,12 +523,17 @@ class Field(Container):
         :return: (4-tuple of sets of Processes)
         """
         processes = self.processes()
-        cycles = self.cycles
 
-        procs_in_cycles = set(flatten(cycles)) if cycles else set()
+        enabled_procs_cycles = []
+        for cycle in self.cycles:
+            for proc in cycle:
+                if proc.enabled:
+                    enabled_procs_cycles.append(proc)
+
+        procs_in_cycles = set(enabled_procs_cycles) if enabled_procs_cycles else set()
         cycle_dependent = set()
 
-        if cycles:
+        if enabled_procs_cycles:
             for process in processes:
                 if process not in procs_in_cycles and self._depends_on_cycle(process):
                     cycle_dependent.add(process)
@@ -657,8 +661,19 @@ class Field(Container):
 
         :return: (iterator of `Process` (subclasses) instances) in this `Field`
         """
+        procs = [proc for proc in self.all_processes() if proc.is_enabled()]
+        return procs
+
+    def all_processes(self):
+        """
+        Gets all instances of subclasses of `Process` for this `Field`, including
+        disabled Processes.
+
+        :return: (iterator of `Process` (subclasses) instances) in this `Field`
+        """
         return self.process_dict.values()
 
+    # TBD: not used currently
     def process_choice_node(self, name, raiseError=True):
         """
         Find a `ProcessChoice` instance by name.
@@ -703,7 +718,7 @@ class Field(Container):
         process = self.process_dict.get(name)
 
         if process is None and raiseError:
-            raise OpgeeException(f"Process named '{name}' was not found in field '{self.name}'")
+            raise OpgeeException(f"Process '{name}' was not found in field '{self.name}'")
 
         return process
 
@@ -798,27 +813,31 @@ class Field(Container):
             else:
                 return None
 
-    def resolve_process_choices(self):
+    def resolve_process_choices(self, process_choice_dict=None):
         """
         Disable all processes referenced in a `ProcessChoice`, then enable only the processes
         in the selected `ProcessGroup`. The name of each `ProcessChoice` must also identify an
         field-level attribute, whose value indicates the user's choice of `ProcessGroup`.
 
+        :param process_choice_dict: (dict) optional dictionary for nested process choices. Used
+            in recursive calls only.
         :return: None
         """
         attr_dict = self.attr_dict
-        # self.dump()
+
+        if process_choice_dict is None: # might be an empty dict, but that's ok
+            process_choice_dict = self.process_choice_dict
 
         #
         # Turn off all processes identified in groups, then turn on those in the selected groups.
         #
-        for choice_name, choice in self.process_choice_dict.items():
+        to_enable = []
+        for choice_name, choice in process_choice_dict.items():
             attr = attr_dict.get(choice_name)
             if attr is None:
                 raise OpgeeException(
                     f"ProcessChoice '{choice_name}' has no corresponding attribute in field '{self.name}'")
 
-            to_enable = []
             selected_group_name = attr.value.lower()
 
             for group_name, group in choice.groups_dict.items():
@@ -828,20 +847,23 @@ class Field(Container):
                     to_enable.extend(procs)
                     to_enable.extend(streams)
 
-                # disable all object in all groups
+                    # Handle nested process groups in the enabled group
+                    self.resolve_process_choices(process_choice_dict=group.process_choice_dict)
+
+                # disable all objects in all groups
                 for obj in procs + streams:
                     obj.set_enabled(False)
 
-            # enable the chosen procs and streams
-            for obj in to_enable:
-                obj.set_enabled(True)
+        # enable the chosen procs and streams
+        for obj in to_enable:
+            obj.set_enabled(True)
 
     def sum_process_energy(self, processes_to_exclude=None) -> Energy:
 
         total = Energy()
         processes_to_exclude = processes_to_exclude or []
         for proc in self.processes():
-            if proc.enabled and proc.name not in processes_to_exclude:
+            if proc.name not in processes_to_exclude:
                 total.add_rates_from(proc.energy)
 
         return total
@@ -1054,11 +1076,11 @@ class Field(Container):
         # High: =IF(J70=1,0,0) # TODO: high intensity isn't used?
         return 'Low' if offshore else 'Med'
 
-    @SmartDefault.register('common_gas_process_choice', ['gas_processing_path'])
-    def common_gas_process_choice_default(self, gas_processing_path):
-        # Disable the ancillary group of gas-related processes when there is no
-        # gas processing path selected. Otherwise enable all of those processes.
-        return 'None' if gas_processing_path == 'None' else 'All'
+    @SmartDefault.register('common_gas_process_choice', ['oil_sands_mine'])
+    def common_gas_process_choice_default(self, oil_sands_mine):
+        # Disable the ancillary group of gas-related processes when there is oil sand mine.
+        # Otherwise enable all of those processes.
+        return 'None' if oil_sands_mine != 'None' else 'All'
 
 
     # TODO: decide how to handle "associated gas defaults", which is just global vs CA-LCFS values currently

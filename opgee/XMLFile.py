@@ -8,8 +8,8 @@
 from lxml import etree as ET
 
 from .config import getConfigDict, getParam
-from .log import getLogger
 from .error import XmlFormatError
+from .log import getLogger
 
 _logger = getLogger(__name__)
 

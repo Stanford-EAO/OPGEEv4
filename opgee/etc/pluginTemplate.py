@@ -11,14 +11,12 @@ class MyNewCommand(SubcommandABC):
                   'description' : '''Longer description for sub-command'''}
 
         # The first argument is the name of the new sub-command
-        super(MyNewCommand, self).__init__('subCmdName', subparsers, kwargs)
+        super().__init__('subCmdName', subparsers, kwargs)
 
-    def addArgs(self):
+    def addArgs(self, parser):
         '''
         Process the command-line arguments for this sub-command
         '''
-        parser = self.parser
-
         parser.add_argument('-n', '--number', type=int, default=0,
                             help='''A number to demonstrate a command line arg.
                             Replace as needed with your own plugin's args.''')

@@ -12,7 +12,6 @@ from ..energy import EN_NATURAL_GAS, EN_DIESEL
 from ..log import getLogger
 from ..process import Process
 from ..stream import PHASE_GAS
-from ..import_export import ImportExport
 
 _logger = getLogger(__name__)
 

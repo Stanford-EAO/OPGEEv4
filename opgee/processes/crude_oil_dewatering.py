@@ -10,10 +10,10 @@ from .. import ureg
 from ..core import TemperaturePressure
 from ..emissions import EM_COMBUSTION
 from ..energy import EN_NATURAL_GAS, EN_ELECTRICITY
+from ..error import OpgeeException
 from ..log import getLogger
 from ..process import Process
 from ..stream import PHASE_LIQUID
-from ..error import OpgeeException
 
 _logger = getLogger(__name__)
 
@@ -37,14 +37,13 @@ class CrudeOilDewatering(Process):
                               "Upgrading": "oil for upgrader",
                               "Dilution": "oil for dilution"}
         self.oil_sand_mine = field.attr("oil_sands_mine")
+        if self.oil_sand_mine != "None":
+            self.set_enabled(False)
+            return
 
     def run(self, analysis):
         self.print_running_msg()
         field = self.field
-
-        if self.oil_sand_mine != "None":
-            self.enabled = False
-            return
 
         # mass rate
         input = self.find_input_stream("crude oil")
@@ -71,10 +70,11 @@ class CrudeOilDewatering(Process):
         output_oil.set_liquid_flow_rate("oil", oil_rate, tp=output_tp)
         self.set_iteration_value(output_oil.total_flow_rate())
 
-        water_to_treatment = self.find_output_stream("water")
-        water_to_treatment.set_liquid_flow_rate("H2O", water_rate, tp=output_tp)
+        water_to_treatment = self.find_output_stream("water", raiseError=None)
+        if water_to_treatment is not None:
+            water_to_treatment.set_liquid_flow_rate("H2O", water_rate, tp=output_tp)
 
-        average_oil_temp = ureg.Quantity((input_T.m+self.temperature_heater_treater.m)/2, "degF")
+        average_oil_temp = ureg.Quantity((input_T.m + self.temperature_heater_treater.m) / 2, "degF")
         oil_heat_capacity = self.field.oil.specific_heat(self.field.oil.API, average_oil_temp)
         water_heat_capacity = self.field.water.specific_heat(average_oil_temp)
         delta_temp = ureg.Quantity(self.temperature_heater_treater.m - input_T.m, "delta_degF")
@@ -88,7 +88,7 @@ class CrudeOilDewatering(Process):
         # energy_use
         energy_use = self.energy
         energy_carrier = EN_NATURAL_GAS if self.prime_mover_type == "NG_engine" else EN_ELECTRICITY
-        energy_consumption =\
+        energy_consumption = \
             heat_duty / self.eta_gas if self.prime_mover_type == "NG_engine" else heat_duty / self.eta_electricity
         energy_use.set_rate(energy_carrier, energy_consumption.to("mmBtu/day"))
 

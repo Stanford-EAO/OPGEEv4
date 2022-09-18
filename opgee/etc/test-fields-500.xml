@@ -15,8 +15,8 @@
       <A name="age">12.0</A>
       <A name="depth">3937.0</A>
       <A name="oil_prod">175000.0</A>
-      <A name="num_prod_wells">24.0</A>
-      <A name="num_water_inj_wells">20.0</A>
+      <A name="num_prod_wells">24</A>
+      <A name="num_water_inj_wells">20</A>
       <A name="well_diam">8.0</A>
       <A name="prod_index">90.9</A>
       <A name="res_press">3655.0</A>
@@ -48,12 +48,13 @@
       <A name="name">Kuito</A>
       <A name="age">17.0</A>
       <A name="oil_prod">25019.48</A>
-      <A name="num_prod_wells">24.0</A>
-      <A name="num_water_inj_wells">9.0</A>
+      <A name="num_prod_wells">24</A>
+      <A name="num_water_inj_wells">9</A>
       <A name="well_diam">6.0</A>
       <A name="offshore">1.0</A>
       <A name="API">22.05</A>
       <A name="GOR">600.0</A>
+      <A name="WOR">2.025808595</A>
       <A name="WIR">2.72</A>
       <A name="GLIR">1800.0</A>
       <A name="fraction_remaining_gas_inj">1.0</A>
@@ -83,8 +84,8 @@
       <A name="age">35.0</A>
       <A name="depth">3200.0</A>
       <A name="oil_prod">105000.0</A>
-      <A name="num_prod_wells">69.0</A>
-      <A name="num_water_inj_wells">21.0</A>
+      <A name="num_prod_wells">69</A>
+      <A name="num_water_inj_wells">21</A>
       <A name="res_press">1300.0</A>
       <A name="API">32.0</A>
       <A name="WOR">4.0</A>
@@ -112,8 +113,8 @@
       <A name="age">27.0</A>
       <A name="depth">9719.0</A>
       <A name="oil_prod">60000.0</A>
-      <A name="num_prod_wells">12.0</A>
-      <A name="num_water_inj_wells">0.0</A>
+      <A name="num_prod_wells">12</A>
+      <A name="num_water_inj_wells">0</A>
       <A name="well_diam">5.0</A>
       <A name="prod_index">50.0</A>
       <A name="res_press">4000.0</A>
@@ -145,10 +146,12 @@
       <A name="age">17.0</A>
       <A name="depth">9075.0</A>
       <A name="oil_prod">655700.0</A>
-      <A name="num_prod_wells">77.0</A>
-      <A name="num_water_inj_wells">30.0</A>
+      <A name="num_prod_wells">77</A>
+      <A name="num_water_inj_wells">30</A>
+      <A name="res_press">1951.125</A>
       <A name="API">35.0</A>
       <A name="GOR">1299.0</A>
+      <A name="WOR">2.025808595</A>
       <A name="frac_transport_tanker">1.0</A>
       <A name="frac_transport_barge">0.0</A>
       <A name="frac_transport_pipeline">1.0</A>
@@ -172,8 +175,8 @@
       <A name="age">4.0</A>
       <A name="depth">6730.0</A>
       <A name="oil_prod">16912.0</A>
-      <A name="num_prod_wells">12.0</A>
-      <A name="num_water_inj_wells">7.0</A>
+      <A name="num_prod_wells">12</A>
+      <A name="num_water_inj_wells">7</A>
       <A name="res_press">2900.0</A>
       <A name="API">19.0</A>
       <A name="GOR">370.0</A>
@@ -205,8 +208,8 @@
       <A name="age">11.0</A>
       <A name="depth">19737.0</A>
       <A name="oil_prod">1050000.0</A>
-      <A name="num_prod_wells">6.0</A>
-      <A name="num_water_inj_wells">1.0</A>
+      <A name="num_prod_wells">6</A>
+      <A name="num_water_inj_wells">1</A>
       <A name="res_press">8000.0</A>
       <A name="res_temp">380.04</A>
       <A name="offshore">1.0</A>
@@ -238,8 +241,8 @@
       <A name="age">60.0</A>
       <A name="depth">4600.0</A>
       <A name="oil_prod">5000.0</A>
-      <A name="num_prod_wells">953.0</A>
-      <A name="num_water_inj_wells">83.0</A>
+      <A name="num_prod_wells">953</A>
+      <A name="num_water_inj_wells">83</A>
       <A name="res_press">2600.0</A>
       <A name="API">28.7</A>
       <A name="GOR">2000.0</A>
@@ -270,8 +273,10 @@
       <A name="age">15.0</A>
       <A name="depth">10065.0</A>
       <A name="oil_prod">135483.0</A>
+      <A name="res_press">2163.975</A>
       <A name="API">34.6</A>
       <A name="GOR">333.0</A>
+      <A name="WOR">1.742417576</A>
       <A name="fraction_remaining_gas_inj">1.0</A>
       <A name="fraction_water_reinjected">1.0</A>
       <A name="frac_transport_tanker">0.0</A>
@@ -294,8 +299,8 @@
       <A name="age">23.0</A>
       <A name="depth">10500.0</A>
       <A name="oil_prod">90000.0</A>
-      <A name="num_prod_wells">88.0</A>
-      <A name="num_water_inj_wells">36.0</A>
+      <A name="num_prod_wells">88</A>
+      <A name="num_water_inj_wells">36</A>
       <A name="well_diam">3.5</A>
       <A name="res_press">1450.0</A>
       <A name="API">17.5</A>
@@ -335,8 +340,8 @@
       <A name="name">Huizhou 21-1</A>
       <A name="age">25.0</A>
       <A name="oil_prod">12403.0</A>
-      <A name="num_prod_wells">10.0</A>
-      <A name="num_water_inj_wells">4.0</A>
+      <A name="num_prod_wells">10</A>
+      <A name="num_water_inj_wells">4</A>
       <A name="API">43.6</A>
       <A name="GOR">628.5</A>
       <A name="WOR">3.63</A>
@@ -365,7 +370,8 @@
       <A name="age">16.0</A>
       <A name="depth">3600.0</A>
       <A name="oil_prod">36000.0</A>
-      <A name="num_prod_wells">99.0</A>
+      <A name="num_prod_wells">99</A>
+      <A name="res_press">774.0</A>
       <A name="API">16.9</A>
       <A name="GOR">48.4</A>
       <A name="WOR">7.77</A>
@@ -392,7 +398,7 @@
       <A name="age">32.0</A>
       <A name="depth">7600.0</A>
       <A name="oil_prod">76533.0</A>
-      <A name="num_prod_wells">49.0</A>
+      <A name="num_prod_wells">49</A>
       <A name="prod_index">127.0</A>
       <A name="res_press">3213.0</A>
       <A name="API">29.0</A>
@@ -421,10 +427,11 @@
       <A name="age">24.0</A>
       <A name="depth">15000.0</A>
       <A name="oil_prod">220000.0</A>
-      <A name="num_prod_wells">90.0</A>
+      <A name="num_prod_wells">90</A>
       <A name="res_press">6000.0</A>
       <A name="API">44.0</A>
       <A name="GOR">1700.0</A>
+      <A name="WOR">3.131991265</A>
       <A name="frac_transport_tanker">1.0</A>
       <A name="frac_transport_barge">0.0</A>
       <A name="frac_transport_pipeline">1.0</A>
@@ -448,8 +455,9 @@
       <A name="age">42.0</A>
       <A name="depth">6600.0</A>
       <A name="oil_prod">44527.78</A>
-      <A name="num_prod_wells">85.0</A>
-      <A name="num_water_inj_wells">63.0</A>
+      <A name="num_prod_wells">85</A>
+      <A name="num_water_inj_wells">63</A>
+      <A name="res_press">1419.0</A>
       <A name="GOR">1310.72</A>
       <A name="WOR">1.31</A>
       <A name="WIR">2.51</A>
@@ -470,7 +478,8 @@
       <A name="age">29.0</A>
       <A name="depth">6600.0</A>
       <A name="oil_prod">8964.05</A>
-      <A name="num_prod_wells">52.0</A>
+      <A name="num_prod_wells">52</A>
+      <A name="res_press">1419.0</A>
       <A name="GOR">18574.91</A>
       <A name="WOR">1.77</A>
       <A name="WIR">0.0</A>
@@ -491,7 +500,8 @@
       <A name="age">49.0</A>
       <A name="depth">9700.0</A>
       <A name="oil_prod">390000.0</A>
-      <A name="num_prod_wells">300.0</A>
+      <A name="num_prod_wells">300</A>
+      <A name="res_press">2085.5</A>
       <A name="API">24.1</A>
       <A name="WOR">0.58</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -517,8 +527,8 @@
       <A name="age">41.0</A>
       <A name="depth">4624.0</A>
       <A name="oil_prod">270000.0</A>
-      <A name="num_prod_wells">580.0</A>
-      <A name="num_water_inj_wells">190.0</A>
+      <A name="num_prod_wells">580</A>
+      <A name="num_water_inj_wells">190</A>
       <A name="prod_index">4.8</A>
       <A name="res_press">2200.0</A>
       <A name="API">39.4</A>
@@ -529,6 +539,7 @@
       <A name="gas_comp_C3">4.99</A>
       <A name="gas_comp_C4">3.83</A>
       <A name="gas_comp_H2S">0.0</A>
+      <A name="WOR">6.735719488</A>
     </Field>
     <Field name="Field 20" modifies="template">
       <A name="downhole_pump">1</A>
@@ -544,8 +555,8 @@
       <A name="age">55.0</A>
       <A name="depth">600.0</A>
       <A name="oil_prod">165057.0</A>
-      <A name="num_prod_wells">2500.0</A>
-      <A name="num_water_inj_wells">1000.0</A>
+      <A name="num_prod_wells">2500</A>
+      <A name="num_water_inj_wells">1000</A>
       <A name="well_diam">4.5</A>
       <A name="res_press">500.0</A>
       <A name="API">19.0</A>
@@ -577,10 +588,11 @@
       <A name="age">58.0</A>
       <A name="depth">2000.0</A>
       <A name="oil_prod">70000.0</A>
-      <A name="num_prod_wells">1400.0</A>
+      <A name="num_prod_wells">1400</A>
       <A name="well_diam">9.63</A>
       <A name="res_press">350.0</A>
       <A name="API">34.0</A>
+      <A name="WOR">12.1550318</A>
       <A name="frac_transport_tanker">1.0</A>
       <A name="frac_transport_barge">0.0</A>
       <A name="frac_transport_pipeline">1.0</A>
@@ -604,8 +616,9 @@
       <A name="age">46.0</A>
       <A name="depth">2800.0</A>
       <A name="oil_prod">140000.0</A>
-      <A name="num_prod_wells">90.0</A>
+      <A name="num_prod_wells">90</A>
       <A name="prod_index">20.0</A>
+      <A name="res_press">602.0</A>
       <A name="API">26.0</A>
       <A name="WOR">0.11</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -631,10 +644,11 @@
       <A name="age">51.0</A>
       <A name="depth">9501.0</A>
       <A name="oil_prod">520000.0</A>
-      <A name="num_prod_wells">370.0</A>
+      <A name="num_prod_wells">370</A>
       <A name="res_press">4000.0</A>
       <A name="API">34.0</A>
       <A name="GOR">562.0</A>
+      <A name="WOR">9.653470509</A>
       <A name="GFIR">3500.0</A>
       <A name="fraction_remaining_gas_inj">1.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -660,8 +674,8 @@
       <A name="age">83.0</A>
       <A name="depth">2600.0</A>
       <A name="oil_prod">250000.0</A>
-      <A name="num_prod_wells">150.0</A>
-      <A name="num_water_inj_wells">7.0</A>
+      <A name="num_prod_wells">150</A>
+      <A name="num_water_inj_wells">7</A>
       <A name="prod_index">10000.0</A>
       <A name="res_press">1100.0</A>
       <A name="API">36.0</A>
@@ -689,7 +703,8 @@
       <A name="age">45.0</A>
       <A name="depth">9022.0</A>
       <A name="oil_prod">1060000.0</A>
-      <A name="num_prod_wells">200.0</A>
+      <A name="num_prod_wells">200</A>
+      <A name="res_press">1939.73</A>
       <A name="API">30.0</A>
       <A name="GOR">625.0</A>
       <A name="WOR">1.5</A>
@@ -716,7 +731,7 @@
       <A name="age">2.0</A>
       <A name="depth">7223.76</A>
       <A name="oil_prod">400000.0</A>
-      <A name="num_prod_wells">67.0</A>
+      <A name="num_prod_wells">67</A>
       <A name="prod_index">22.58</A>
       <A name="res_press">3965.0</A>
       <A name="API">21.6</A>
@@ -746,8 +761,8 @@
       <A name="age">60.0</A>
       <A name="depth">11000.0</A>
       <A name="oil_prod">125130.0</A>
-      <A name="num_prod_wells">30.0</A>
-      <A name="num_water_inj_wells">14.0</A>
+      <A name="num_prod_wells">30</A>
+      <A name="num_water_inj_wells">14</A>
       <A name="res_press">3800.0</A>
       <A name="API">30.2</A>
       <A name="GOR">775.0</A>
@@ -778,8 +793,8 @@
       <A name="age">22.0</A>
       <A name="depth">11843.0</A>
       <A name="oil_prod">528767.0</A>
-      <A name="num_prod_wells">70.0</A>
-      <A name="num_water_inj_wells">8.0</A>
+      <A name="num_prod_wells">70</A>
+      <A name="num_water_inj_wells">8</A>
       <A name="prod_index">6.0</A>
       <A name="res_press">9000.0</A>
       <A name="API">46.4</A>
@@ -818,8 +833,8 @@
       <A name="age">69.0</A>
       <A name="depth">4800.0</A>
       <A name="oil_prod">1400000.0</A>
-      <A name="num_prod_wells">1000.0</A>
-      <A name="num_water_inj_wells">50.0</A>
+      <A name="num_prod_wells">1000</A>
+      <A name="num_water_inj_wells">50</A>
       <A name="well_diam">3.5</A>
       <A name="prod_index">90.0</A>
       <A name="res_press">1875.0</A>
@@ -850,8 +865,8 @@
       <A name="age">57.0</A>
       <A name="depth">6500.0</A>
       <A name="oil_prod">90000.0</A>
-      <A name="num_prod_wells">140.0</A>
-      <A name="num_water_inj_wells">32.0</A>
+      <A name="num_prod_wells">140</A>
+      <A name="num_water_inj_wells">32</A>
       <A name="well_diam">6.25</A>
       <A name="res_press">2000.0</A>
       <A name="API">24.2</A>
@@ -883,8 +898,10 @@
       <A name="age">56.0</A>
       <A name="depth">6000.0</A>
       <A name="oil_prod">345000.0</A>
+      <A name="res_press">1290.0</A>
       <A name="API">36.71</A>
       <A name="GOR">3752.78</A>
+      <A name="WOR">11.39692245</A>
       <A name="frac_transport_tanker">1.0</A>
       <A name="frac_transport_barge">0.0</A>
       <A name="frac_transport_pipeline">1.0</A>
@@ -908,8 +925,8 @@
       <A name="age">35.0</A>
       <A name="depth">8100.0</A>
       <A name="oil_prod">750000.0</A>
-      <A name="num_prod_wells">210.0</A>
-      <A name="num_water_inj_wells">9.0</A>
+      <A name="num_prod_wells">210</A>
+      <A name="num_water_inj_wells">9</A>
       <A name="well_diam">9.63</A>
       <A name="prod_index">150.0</A>
       <A name="res_press">1470.0</A>
@@ -939,9 +956,10 @@
       <A name="age">33.0</A>
       <A name="depth">13100.0</A>
       <A name="oil_prod">69000.0</A>
-      <A name="num_prod_wells">19.0</A>
+      <A name="num_prod_wells">19</A>
       <A name="res_press">3925.0</A>
       <A name="API">33.0</A>
+      <A name="WOR">4.856594476</A>
       <A name="GLIR">0.0</A>
       <A name="GFIR">0.0</A>
       <A name="SOR">0.0</A>
@@ -972,8 +990,8 @@
       <A name="age">5.0</A>
       <A name="depth">13000.0</A>
       <A name="oil_prod">233000.0</A>
-      <A name="num_prod_wells">22.0</A>
-      <A name="num_water_inj_wells">11.0</A>
+      <A name="num_prod_wells">22</A>
+      <A name="num_water_inj_wells">11</A>
       <A name="well_diam">4.5</A>
       <A name="res_press">7000.0</A>
       <A name="API">47.0</A>
@@ -1007,8 +1025,9 @@
       <A name="age">9.0</A>
       <A name="depth">8200.0</A>
       <A name="oil_prod">97260.0</A>
-      <A name="num_prod_wells">13.0</A>
-      <A name="num_water_inj_wells">8.0</A>
+      <A name="num_prod_wells">13</A>
+      <A name="num_water_inj_wells">8</A>
+      <A name="res_press">1763.0</A>
       <A name="GOR">900.0</A>
       <A name="WOR">0.21</A>
       <A name="WIR">1.72</A>
@@ -1034,8 +1053,8 @@
       <A name="age">40.0</A>
       <A name="depth">11500.0</A>
       <A name="oil_prod">2234.0</A>
-      <A name="num_prod_wells">33.0</A>
-      <A name="num_water_inj_wells">0.0</A>
+      <A name="num_prod_wells">33</A>
+      <A name="num_water_inj_wells">0</A>
       <A name="res_press">2400.0</A>
       <A name="API">35.3</A>
       <A name="GOR">20848.68</A>
@@ -1064,6 +1083,7 @@
       <A name="age">45.0</A>
       <A name="depth">8175.0</A>
       <A name="oil_prod">3540.0</A>
+      <A name="res_press">1757.625</A>
       <A name="API">35.8</A>
       <A name="GOR">1311.0</A>
       <A name="WOR">1.08</A>
@@ -1088,8 +1108,8 @@
       <A name="age">47.0</A>
       <A name="depth">2050.0</A>
       <A name="oil_prod">9910.0</A>
-      <A name="num_prod_wells">56.0</A>
-      <A name="num_water_inj_wells">12.0</A>
+      <A name="num_prod_wells">56</A>
+      <A name="num_water_inj_wells">12</A>
       <A name="res_press">2610.0</A>
       <A name="API">35.3</A>
       <A name="GOR">19652.36</A>
@@ -1120,7 +1140,8 @@
       <A name="name">Pennington</A>
       <A name="depth">11000.0</A>
       <A name="oil_prod">266.0</A>
-      <A name="num_prod_wells">1.0</A>
+      <A name="num_prod_wells">1</A>
+      <A name="res_press">2365.0</A>
       <A name="API">33.7</A>
       <A name="GOR">1241.0</A>
       <A name="FOR">1081.0</A>
@@ -1144,8 +1165,8 @@
       <A name="age">42.0</A>
       <A name="depth">10000.0</A>
       <A name="oil_prod">102000.0</A>
-      <A name="num_prod_wells">80.0</A>
-      <A name="num_water_inj_wells">20.0</A>
+      <A name="num_prod_wells">80</A>
+      <A name="num_water_inj_wells">20</A>
       <A name="res_press">5150.0</A>
       <A name="API">38.4</A>
       <A name="gas_comp_N2">0.3</A>
@@ -1185,8 +1206,9 @@
       <A name="age">28.0</A>
       <A name="depth">8200.0</A>
       <A name="oil_prod">57122.0</A>
-      <A name="num_prod_wells">30.0</A>
-      <A name="num_water_inj_wells">10.0</A>
+      <A name="num_prod_wells">30</A>
+      <A name="num_water_inj_wells">10</A>
+      <A name="res_press">1763.0</A>
       <A name="GOR">4609.0</A>
       <A name="WOR">0.9</A>
       <A name="WIR">0.9</A>
@@ -1208,10 +1230,12 @@
       <A name="age">2.0</A>
       <A name="depth">11500.0</A>
       <A name="oil_prod">51000.0</A>
-      <A name="num_prod_wells">12.0</A>
-      <A name="num_water_inj_wells">4.0</A>
+      <A name="num_prod_wells">12</A>
+      <A name="num_water_inj_wells">4</A>
+      <A name="res_press">2472.5</A>
       <A name="API">38.5</A>
       <A name="GOR">5463.0</A>
+      <A name="WOR">0.197715205</A>
       <A name="frac_transport_tanker">1.0</A>
       <A name="frac_transport_barge">0.0</A>
       <A name="frac_transport_pipeline">0.0</A>
@@ -1233,7 +1257,9 @@
       <A name="age">45.0</A>
       <A name="depth">7650.0</A>
       <A name="oil_prod">45000.0</A>
+      <A name="res_press">1644.75</A>
       <A name="API">35.0</A>
+      <A name="WOR">7.819556475</A>
       <A name="frac_transport_tanker">1.0</A>
       <A name="frac_transport_barge">0.0</A>
       <A name="frac_transport_pipeline">1.0</A>
@@ -1257,10 +1283,12 @@
       <A name="age">77.0</A>
       <A name="depth">3000.0</A>
       <A name="oil_prod">335000.0</A>
-      <A name="num_prod_wells">300.0</A>
-      <A name="num_water_inj_wells">182.0</A>
+      <A name="num_prod_wells">300</A>
+      <A name="num_water_inj_wells">182</A>
+      <A name="res_press">645.0</A>
       <A name="API">40.0</A>
       <A name="GOR">2363.24</A>
+      <A name="WOR">21.50073974</A>
       <A name="frac_transport_tanker">1.0</A>
       <A name="frac_transport_barge">0.0</A>
       <A name="frac_transport_pipeline">1.0</A>
@@ -1284,8 +1312,8 @@
       <A name="age">8.0</A>
       <A name="depth">36000.0</A>
       <A name="oil_prod">250000.0</A>
-      <A name="num_prod_wells">26.0</A>
-      <A name="num_water_inj_wells">0.0</A>
+      <A name="num_prod_wells">26</A>
+      <A name="num_water_inj_wells">0</A>
       <A name="well_diam">5.5</A>
       <A name="res_press">2600.0</A>
       <A name="API">36.4</A>
@@ -1344,8 +1372,9 @@
       <A name="age">48.0</A>
       <A name="depth">6561.0</A>
       <A name="oil_prod">750000.0</A>
-      <A name="num_prod_wells">13400.0</A>
-      <A name="num_water_inj_wells">4500.0</A>
+      <A name="num_prod_wells">13400</A>
+      <A name="num_water_inj_wells">4500</A>
+      <A name="res_press">1410.615</A>
       <A name="API">35.0</A>
       <A name="GOR">481.78</A>
       <A name="WOR">9.0</A>
@@ -1372,7 +1401,7 @@
       <A name="age">64.0</A>
       <A name="depth">5100.0</A>
       <A name="oil_prod">1500000.0</A>
-      <A name="num_prod_wells">500.0</A>
+      <A name="num_prod_wells">500</A>
       <A name="well_diam">4.5</A>
       <A name="res_press">2500.0</A>
       <A name="API">27.0</A>
@@ -1408,7 +1437,7 @@
       <A name="age">63.0</A>
       <A name="depth">6920.0</A>
       <A name="oil_prod">5000000.0</A>
-      <A name="num_prod_wells">3400.0</A>
+      <A name="num_prod_wells">3400</A>
       <A name="res_press">2820.0</A>
       <A name="API">34.0</A>
       <A name="GOR">570.0</A>
@@ -1435,10 +1464,11 @@
       <A name="age">42.0</A>
       <A name="depth">5800.0</A>
       <A name="oil_prod">450000.0</A>
-      <A name="num_prod_wells">270.0</A>
+      <A name="num_prod_wells">270</A>
       <A name="prod_index">189.0</A>
       <A name="res_press">2618.0</A>
       <A name="API">32.0</A>
+      <A name="WOR">6.997003623</A>
       <A name="fraction_water_reinjected">1.0</A>
       <A name="frac_transport_tanker">1.0</A>
       <A name="frac_transport_barge">0.0</A>
@@ -1463,8 +1493,8 @@
       <A name="age">49.0</A>
       <A name="depth">8300.0</A>
       <A name="oil_prod">140000.0</A>
-      <A name="num_prod_wells">240.0</A>
-      <A name="num_water_inj_wells">140.0</A>
+      <A name="num_prod_wells">240</A>
+      <A name="num_water_inj_wells">140</A>
       <A name="well_diam">4.5</A>
       <A name="res_press">2500.0</A>
       <A name="API">31.8</A>
@@ -1495,6 +1525,7 @@
       <A name="age">54.0</A>
       <A name="depth">8000.0</A>
       <A name="oil_prod">360000.0</A>
+      <A name="res_press">1720.0</A>
       <A name="API">40.0</A>
       <A name="WOR">0.1</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -1518,8 +1549,8 @@
       <A name="age">37.0</A>
       <A name="depth">8100.0</A>
       <A name="oil_prod">1030.0</A>
-      <A name="num_prod_wells">160.0</A>
-      <A name="num_water_inj_wells">23.0</A>
+      <A name="num_prod_wells">160</A>
+      <A name="num_water_inj_wells">23</A>
       <A name="prod_index">50.0</A>
       <A name="res_press">1800.0</A>
       <A name="API">39.0</A>
@@ -1553,8 +1584,8 @@
       <A name="age">38.0</A>
       <A name="depth">7311.0</A>
       <A name="oil_prod">46410.0</A>
-      <A name="num_prod_wells">80.0</A>
-      <A name="num_water_inj_wells">11.0</A>
+      <A name="num_prod_wells">80</A>
+      <A name="num_water_inj_wells">11</A>
       <A name="well_diam">4.5</A>
       <A name="res_press">2900.0</A>
       <A name="API">35.0</A>
@@ -1588,8 +1619,8 @@
       <A name="age">38.0</A>
       <A name="depth">7311.0</A>
       <A name="oil_prod">46410.0</A>
-      <A name="num_prod_wells">80.0</A>
-      <A name="num_water_inj_wells">11.0</A>
+      <A name="num_prod_wells">80</A>
+      <A name="num_water_inj_wells">11</A>
       <A name="well_diam">4.5</A>
       <A name="res_press">2900.0</A>
       <A name="API">35.0</A>
@@ -1623,8 +1654,8 @@
       <A name="age">45.0</A>
       <A name="depth">7700.0</A>
       <A name="oil_prod">507770.0</A>
-      <A name="num_prod_wells">1515.0</A>
-      <A name="num_water_inj_wells">853.0</A>
+      <A name="num_prod_wells">1515</A>
+      <A name="num_water_inj_wells">853</A>
       <A name="res_press">3200.0</A>
       <A name="API">28.3</A>
       <A name="GOR">16576.0</A>
@@ -1662,8 +1693,8 @@
       <A name="age">5.0</A>
       <A name="depth">10533.0</A>
       <A name="oil_prod">646704.0</A>
-      <A name="num_prod_wells">3656.0</A>
-      <A name="num_water_inj_wells">0.0</A>
+      <A name="num_prod_wells">3656</A>
+      <A name="num_water_inj_wells">0</A>
       <A name="well_diam">2.75</A>
       <A name="res_press">2000.0</A>
       <A name="API">41.9</A>
@@ -1686,6 +1717,7 @@
       </Process>
       <A name="stabilizer_column">0</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">514.0</A>
       <A name="frac_transport_tanker">0.0</A>
       <A name="frac_transport_barge">0.0</A>
@@ -1710,8 +1742,8 @@
       <A name="age">5.0</A>
       <A name="depth">10533.0</A>
       <A name="oil_prod">277158.0</A>
-      <A name="num_prod_wells">2141.0</A>
-      <A name="num_water_inj_wells">0.0</A>
+      <A name="num_prod_wells">2141</A>
+      <A name="num_water_inj_wells">0</A>
       <A name="well_diam">2.75</A>
       <A name="res_press">2000.0</A>
       <A name="API">41.9</A>
@@ -1734,6 +1766,7 @@
       </Process>
       <A name="stabilizer_column">0</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">10.0</A>
       <A name="frac_transport_tanker">0.0</A>
       <A name="frac_transport_barge">0.0</A>
@@ -1758,8 +1791,8 @@
       <A name="age">5.0</A>
       <A name="depth">10533.0</A>
       <A name="oil_prod">923863.0</A>
-      <A name="num_prod_wells">5806.0</A>
-      <A name="num_water_inj_wells">0.0</A>
+      <A name="num_prod_wells">5806</A>
+      <A name="num_water_inj_wells">0</A>
       <A name="well_diam">2.75</A>
       <A name="res_press">2000.0</A>
       <A name="API">41.9</A>
@@ -1782,6 +1815,7 @@
       </Process>
       <A name="stabilizer_column">0</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">363.0</A>
       <A name="frac_transport_tanker">0.0</A>
       <A name="frac_transport_barge">0.0</A>
@@ -1806,8 +1840,8 @@
       <A name="age">6.0</A>
       <A name="depth">9978.0</A>
       <A name="oil_prod">462000.0</A>
-      <A name="num_prod_wells">3695.0</A>
-      <A name="num_water_inj_wells">0.0</A>
+      <A name="num_prod_wells">3695</A>
+      <A name="num_water_inj_wells">0</A>
       <A name="res_press">3300.0</A>
       <A name="API">46.2</A>
       <A name="gas_comp_N2">0.3</A>
@@ -1831,6 +1865,7 @@
       </Process>
       <A name="stabilizer_column">1</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">140.1</A>
       <A name="VOR">1.0</A>
       <A name="frac_transport_tanker">0.0</A>
@@ -1856,8 +1891,8 @@
       <A name="age">6.0</A>
       <A name="depth">9978.0</A>
       <A name="oil_prod">382000.0</A>
-      <A name="num_prod_wells">2855.0</A>
-      <A name="num_water_inj_wells">0.0</A>
+      <A name="num_prod_wells">2855</A>
+      <A name="num_water_inj_wells">0</A>
       <A name="res_press">3300.0</A>
       <A name="API">46.2</A>
       <A name="gas_comp_N2">0.3</A>
@@ -1881,6 +1916,7 @@
       </Process>
       <A name="stabilizer_column">1</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">140.1</A>
       <A name="VOR">1.0</A>
       <A name="frac_transport_tanker">0.0</A>
@@ -1906,8 +1942,8 @@
       <A name="age">6.0</A>
       <A name="depth">9978.0</A>
       <A name="oil_prod">82000.0</A>
-      <A name="num_prod_wells">1237.0</A>
-      <A name="num_water_inj_wells">0.0</A>
+      <A name="num_prod_wells">1237</A>
+      <A name="num_water_inj_wells">0</A>
       <A name="res_press">3300.0</A>
       <A name="API">58.0</A>
       <A name="gas_comp_N2">0.3</A>
@@ -1931,6 +1967,7 @@
       </Process>
       <A name="stabilizer_column">1</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">140.1</A>
       <A name="VOR">1.0</A>
       <A name="frac_transport_tanker">0.0</A>
@@ -1956,8 +1993,8 @@
       <A name="age">6.0</A>
       <A name="depth">9978.0</A>
       <A name="oil_prod">6750.0</A>
-      <A name="num_prod_wells">514.0</A>
-      <A name="num_water_inj_wells">0.0</A>
+      <A name="num_prod_wells">514</A>
+      <A name="num_water_inj_wells">0</A>
       <A name="res_press">3300.0</A>
       <A name="API">58.0</A>
       <A name="gas_comp_N2">0.3</A>
@@ -1981,6 +2018,7 @@
       </Process>
       <A name="stabilizer_column">1</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">140.1</A>
       <A name="VOR">1.0</A>
       <A name="frac_transport_tanker">0.0</A>
@@ -2006,10 +2044,11 @@
       <A name="age">87.0</A>
       <A name="depth">3500.0</A>
       <A name="oil_prod">97424.0</A>
-      <A name="num_prod_wells">30340.0</A>
+      <A name="num_prod_wells">30340</A>
       <A name="res_press">1375.0</A>
       <A name="API">38.9</A>
       <A name="GOR">325.0</A>
+      <A name="WOR">28.42348996</A>
       <A name="frac_transport_tanker">0.0</A>
       <A name="frac_transport_barge">0.0</A>
       <A name="frac_transport_pipeline">1.0</A>
@@ -2033,7 +2072,9 @@
       <A name="age">82.0</A>
       <A name="depth">11000.0</A>
       <A name="oil_prod">259683.0</A>
+      <A name="res_press">2365.0</A>
       <A name="API">35.6</A>
+      <A name="WOR">24.75468121</A>
       <A name="frac_transport_tanker">0.0</A>
       <A name="frac_transport_barge">0.0</A>
       <A name="frac_transport_pipeline">1.0</A>
@@ -2057,8 +2098,8 @@
       <A name="age">17.0</A>
       <A name="depth">16000.0</A>
       <A name="oil_prod">60000.0</A>
-      <A name="num_prod_wells">21.0</A>
-      <A name="num_water_inj_wells">3.0</A>
+      <A name="num_prod_wells">21</A>
+      <A name="num_water_inj_wells">3</A>
       <A name="prod_index">30.0</A>
       <A name="res_press">5800.0</A>
       <A name="API">28.8</A>
@@ -2090,8 +2131,9 @@
       <A name="age">120.0</A>
       <A name="depth">2698.0</A>
       <A name="oil_prod">78918.0</A>
-      <A name="num_prod_wells">10460.0</A>
-      <A name="num_water_inj_wells">110.0</A>
+      <A name="num_prod_wells">10460</A>
+      <A name="num_water_inj_wells">110</A>
+      <A name="res_press">580.07</A>
       <A name="API">22.6</A>
       <A name="GOR">168.0</A>
       <A name="WOR">8.0</A>
@@ -2124,8 +2166,9 @@
       <A name="age">120.0</A>
       <A name="depth">2698.0</A>
       <A name="oil_prod">78918.0</A>
-      <A name="num_prod_wells">10460.0</A>
-      <A name="num_water_inj_wells">110.0</A>
+      <A name="num_prod_wells">10460</A>
+      <A name="num_water_inj_wells">110</A>
+      <A name="res_press">580.07</A>
       <A name="API">22.6</A>
       <A name="GOR">168.0</A>
       <A name="WOR">8.0</A>
@@ -2159,8 +2202,9 @@
       <A name="age">120.0</A>
       <A name="depth">2698.0</A>
       <A name="oil_prod">78918.0</A>
-      <A name="num_prod_wells">10460.0</A>
-      <A name="num_water_inj_wells">110.0</A>
+      <A name="num_prod_wells">10460</A>
+      <A name="num_water_inj_wells">110</A>
+      <A name="res_press">580.07</A>
       <A name="API">22.6</A>
       <A name="GOR">168.0</A>
       <A name="WOR">8.0</A>
@@ -2194,8 +2238,9 @@
       <A name="age">120.0</A>
       <A name="depth">2698.0</A>
       <A name="oil_prod">78918.0</A>
-      <A name="num_prod_wells">10460.0</A>
-      <A name="num_water_inj_wells">110.0</A>
+      <A name="num_prod_wells">10460</A>
+      <A name="num_water_inj_wells">110</A>
+      <A name="res_press">580.07</A>
       <A name="API">22.6</A>
       <A name="GOR">168.0</A>
       <A name="WOR">8.0</A>
@@ -2229,8 +2274,8 @@
       <A name="age">120.0</A>
       <A name="depth">2883.0</A>
       <A name="oil_prod">12329.0</A>
-      <A name="num_prod_wells">679.0</A>
-      <A name="num_water_inj_wells">173.0</A>
+      <A name="num_prod_wells">679</A>
+      <A name="num_water_inj_wells">173</A>
       <A name="well_diam">4.5</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1146.0</A>
@@ -2257,6 +2302,7 @@
       </Process>
       <A name="stabilizer_column">0</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">16.25</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">0.0</A>
@@ -2282,8 +2328,8 @@
       <A name="age">13.0</A>
       <A name="depth">6500.0</A>
       <A name="oil_prod">26494.0</A>
-      <A name="num_prod_wells">758.0</A>
-      <A name="num_water_inj_wells">193.0</A>
+      <A name="num_prod_wells">758</A>
+      <A name="num_water_inj_wells">193</A>
       <A name="well_diam">4.5</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1300.0</A>
@@ -2310,6 +2356,7 @@
       </Process>
       <A name="stabilizer_column">1</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">300.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">0.0</A>
@@ -2335,8 +2382,9 @@
       <A name="age">103.0</A>
       <A name="depth">779.0</A>
       <A name="oil_prod">64245.0</A>
-      <A name="num_prod_wells">5135.0</A>
-      <A name="num_water_inj_wells">1090.0</A>
+      <A name="num_prod_wells">5135</A>
+      <A name="num_water_inj_wells">1090</A>
+      <A name="res_press">167.485</A>
       <A name="API">15.0</A>
       <A name="GOR">382.0</A>
       <A name="WOR">13.2</A>
@@ -2367,7 +2415,9 @@
       <A name="age">68.0</A>
       <A name="depth">7950.0</A>
       <A name="oil_prod">387000.0</A>
+      <A name="res_press">1709.25</A>
       <A name="API">37.5</A>
+      <A name="WOR">16.54276668</A>
       <A name="frac_transport_tanker">0.0</A>
       <A name="frac_transport_barge">0.0</A>
       <A name="frac_transport_pipeline">1.0</A>
@@ -2391,8 +2441,8 @@
       <A name="age">5.0</A>
       <A name="depth">16000.0</A>
       <A name="oil_prod">30098.0</A>
-      <A name="num_prod_wells">4.0</A>
-      <A name="num_water_inj_wells">2.0</A>
+      <A name="num_prod_wells">4</A>
+      <A name="num_water_inj_wells">2</A>
       <A name="well_diam">7.0</A>
       <A name="res_press">15000.0</A>
       <A name="API">34.5</A>
@@ -2424,8 +2474,8 @@
       <A name="age">82.0</A>
       <A name="depth">2824.0</A>
       <A name="oil_prod">36344.52</A>
-      <A name="num_prod_wells">1315.0</A>
-      <A name="num_water_inj_wells">715.0</A>
+      <A name="num_prod_wells">1315</A>
+      <A name="num_water_inj_wells">715</A>
       <A name="res_press">1557.0</A>
       <A name="API">19.5</A>
       <A name="GOR">292.43</A>
@@ -2454,8 +2504,8 @@
       <A name="name">Yates</A>
       <A name="age">91.0</A>
       <A name="oil_prod">20548.0</A>
-      <A name="num_prod_wells">360.0</A>
-      <A name="num_water_inj_wells">57.0</A>
+      <A name="num_prod_wells">360</A>
+      <A name="num_water_inj_wells">57</A>
       <A name="API">30.0</A>
       <A name="GOR">500.0</A>
       <A name="WOR">1.28</A>
@@ -2482,8 +2532,8 @@
       <A name="age">13.0</A>
       <A name="depth">2200.0</A>
       <A name="oil_prod">158441.0</A>
-      <A name="num_prod_wells">190.0</A>
-      <A name="num_water_inj_wells">0.0</A>
+      <A name="num_prod_wells">190</A>
+      <A name="num_water_inj_wells">0</A>
       <A name="well_diam">5.5</A>
       <A name="prod_index">10.0</A>
       <A name="res_press">950.0</A>
@@ -2518,9 +2568,10 @@
       <A name="name">Leona</A>
       <A name="age">77.0</A>
       <A name="oil_prod">33000.0</A>
-      <A name="num_prod_wells">29.0</A>
+      <A name="num_prod_wells">29</A>
       <A name="API">24.0</A>
       <A name="GOR">526.0</A>
+      <A name="WOR">21.50073974</A>
       <A name="frac_transport_tanker">1.0</A>
       <A name="frac_transport_barge">0.0</A>
       <A name="frac_transport_pipeline">0.0</A>
@@ -2544,10 +2595,11 @@
       <A name="age">97.0</A>
       <A name="depth">2400.0</A>
       <A name="oil_prod">532000.0</A>
-      <A name="num_prod_wells">662.0</A>
+      <A name="num_prod_wells">662</A>
       <A name="res_press">820.0</A>
       <A name="API">8.5</A>
       <A name="GOR">110.0</A>
+      <A name="WOR">37.2240303</A>
       <A name="SOR">0.79</A>
       <A name="upgrader_type">Delayed coking</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -2573,7 +2625,7 @@
       <A name="age">74.0</A>
       <A name="depth">15670.0</A>
       <A name="oil_prod">177000.0</A>
-      <A name="num_prod_wells">170.0</A>
+      <A name="num_prod_wells">170</A>
       <A name="well_diam">4.2</A>
       <A name="res_press">7400.0</A>
       <A name="API">29.3</A>
@@ -2604,10 +2656,11 @@
       <A name="age">72.0</A>
       <A name="depth">2250.0</A>
       <A name="oil_prod">100000.0</A>
-      <A name="num_prod_wells">1800.0</A>
+      <A name="num_prod_wells">1800</A>
       <A name="res_press">1750.0</A>
       <A name="API">12.1</A>
       <A name="GOR">145.0</A>
+      <A name="WOR">18.61475256</A>
       <A name="SOR">0.19</A>
       <A name="frac_transport_tanker">1.0</A>
       <A name="frac_transport_barge">0.0</A>
@@ -2766,7 +2819,6 @@
         <A name="heater_treater">0</A>
       </Process>
       <A name="stabilizer_column">0</A>
-      <A name="upgrader_type">Hydroconversion</A>
       <A name="gas_processing_path">Minimal</A>
       <A name="oil_processing_path">Dilution</A>
       <A name="FOR">2.0</A>
@@ -2801,9 +2853,10 @@
         <A name="heater_treater">0</A>
       </Process>
       <A name="stabilizer_column">0</A>
-      <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Minimal</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="oil_processing_path">Dilution</A>
+      <A name="FOR">0.0</A>
       <Process class="HeavyOilDilution">
         <A name="fraction_diluent">0.3</A>
       </Process>
@@ -2974,7 +3027,6 @@
         <A name="heater_treater">0</A>
       </Process>
       <A name="stabilizer_column">0</A>
-      <A name="upgrader_type">Hydroconversion</A>
       <A name="gas_processing_path">Minimal</A>
       <A name="oil_processing_path">Dilution</A>
       <A name="FOR">2.0</A>
@@ -3149,7 +3201,6 @@
         <A name="heater_treater">0</A>
       </Process>
       <A name="stabilizer_column">0</A>
-      <A name="upgrader_type">Hydroconversion</A>
       <A name="gas_processing_path">Minimal</A>
       <A name="oil_processing_path">Dilution</A>
       <A name="FOR">2.0</A>
@@ -3425,11 +3476,13 @@
       <A name="oil_sands_mine">Non-integrated with upgrader</A>
       <A name="name">Diluent Test 0% - Non-integrated mine</A>
       <A name="depth">100.0</A>
+      <A name="res_press">21.5</A>
       <A name="API">15.0</A>
       <A name="API_bitumen">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
       <A name="gas_processing_path">Minimal</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="oil_processing_path">Dilution</A>
       <A name="FOR">0.0</A>
       <Process class="HeavyOilDilution">
@@ -3442,11 +3495,13 @@
       <A name="oil_sands_mine">Non-integrated with upgrader</A>
       <A name="name">Diluent Test 25% - Non integrated mine</A>
       <A name="depth">100.0</A>
+      <A name="res_press">21.5</A>
       <A name="API">15.0</A>
       <A name="API_bitumen">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
       <A name="gas_processing_path">Minimal</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="oil_processing_path">Dilution</A>
       <A name="FOR">0.0</A>
       <Process class="HeavyOilDilution">
@@ -3459,11 +3514,13 @@
       <A name="oil_sands_mine">Non-integrated with upgrader</A>
       <A name="name">Diluent Test 50% - Non integrated mine</A>
       <A name="depth">100.0</A>
+      <A name="res_press">21.5</A>
       <A name="API">15.0</A>
       <A name="API_bitumen">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
       <A name="gas_processing_path">Minimal</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="oil_processing_path">Dilution</A>
       <A name="FOR">0.0</A>
       <Process class="HeavyOilDilution">
@@ -3476,11 +3533,13 @@
       <A name="oil_sands_mine">Non-integrated with upgrader</A>
       <A name="name">Diluent Test 75% - Non-integrated mine</A>
       <A name="depth">100.0</A>
+      <A name="res_press">21.5</A>
       <A name="API">15.0</A>
       <A name="API_bitumen">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
       <A name="gas_processing_path">Minimal</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="oil_processing_path">Dilution</A>
       <A name="FOR">0.0</A>
       <Process class="HeavyOilDilution">
@@ -3493,11 +3552,13 @@
       <A name="oil_sands_mine">Non-integrated with upgrader</A>
       <A name="name">Diluent Test 100% -Non-integrated mine</A>
       <A name="depth">100.0</A>
+      <A name="res_press">21.5</A>
       <A name="API">15.0</A>
       <A name="API_bitumen">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
       <A name="gas_processing_path">Minimal</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="oil_processing_path">Dilution</A>
       <A name="FOR">0.0</A>
       <Process class="HeavyOilDilution">
@@ -3519,6 +3580,7 @@
       <A name="API_bitumen">32.0</A>
       <A name="upgrader_type">Delayed coking</A>
       <A name="gas_processing_path">Minimal</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="oil_processing_path">Upgrading</A>
       <A name="FOR">0.0</A>
       <A name="VOR">0.0</A>
@@ -3536,8 +3598,8 @@
       <A name="name">Oil sands test: Mine, DC, non-integrated</A>
       <A name="API">32.0</A>
       <A name="API_bitumen">32.0</A>
-      <A name="upgrader_type">Delayed coking</A>
       <A name="gas_processing_path">Minimal</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="oil_processing_path">Dilution</A>
       <A name="FOR">0.0</A>
       <A name="VOR">0.0</A>
@@ -3560,6 +3622,7 @@
       <A name="API_bitumen">32.0</A>
       <A name="upgrader_type">Hydroconversion</A>
       <A name="gas_processing_path">Minimal</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="oil_processing_path">Upgrading</A>
       <A name="FOR">0.0</A>
       <A name="VOR">0.0</A>
@@ -3577,8 +3640,8 @@
       <A name="name">Oil sands test: Mine, HC, non-integrated</A>
       <A name="API">32.0</A>
       <A name="API_bitumen">32.0</A>
-      <A name="upgrader_type">Hydroconversion</A>
       <A name="gas_processing_path">Minimal</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="oil_processing_path">Dilution</A>
       <A name="FOR">0.0</A>
       <A name="VOR">0.0</A>
@@ -3601,6 +3664,7 @@
       <A name="API_bitumen">32.0</A>
       <A name="upgrader_type">Combined</A>
       <A name="gas_processing_path">Minimal</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="oil_processing_path">Upgrading</A>
       <A name="FOR">0.0</A>
       <A name="VOR">0.0</A>
@@ -3618,8 +3682,8 @@
       <A name="name">Oil sands test: Mine, HCFC, non-integrated</A>
       <A name="API">32.0</A>
       <A name="API_bitumen">32.0</A>
-      <A name="upgrader_type">Combined</A>
       <A name="gas_processing_path">Minimal</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="oil_processing_path">Dilution</A>
       <A name="FOR">0.0</A>
       <A name="VOR">0.0</A>
@@ -3641,9 +3705,11 @@
       <A name="age">50.0</A>
       <A name="depth">7000.0</A>
       <A name="oil_prod">740000.0</A>
-      <A name="num_prod_wells">486258.0</A>
+      <A name="num_prod_wells">486258</A>
+      <A name="res_press">1505.0</A>
       <A name="API">60.0</A>
       <A name="GOR">98995.0</A>
+      <A name="WOR">9.329190146</A>
     </Field>
     <Field name="Field 129" modifies="template">
       <A name="downhole_pump">1</A>
@@ -3659,9 +3725,11 @@
       <A name="age">50.0</A>
       <A name="depth">7000.0</A>
       <A name="oil_prod">8600000.0</A>
-      <A name="num_prod_wells">199413.0</A>
+      <A name="num_prod_wells">199413</A>
+      <A name="res_press">1505.0</A>
       <A name="API">30.0</A>
       <A name="GOR">2108.0</A>
+      <A name="WOR">9.329190146</A>
     </Field>
     <Field name="Field 130" modifies="template">
       <A name="downhole_pump">1</A>
@@ -3677,8 +3745,8 @@
       <A name="age">35.0</A>
       <A name="depth">8100.0</A>
       <A name="oil_prod">750000.0</A>
-      <A name="num_prod_wells">210.0</A>
-      <A name="num_water_inj_wells">9.0</A>
+      <A name="num_prod_wells">210</A>
+      <A name="num_water_inj_wells">9</A>
       <A name="well_diam">9.63</A>
       <A name="prod_index">150.0</A>
       <A name="res_press">1470.0</A>
@@ -3730,7 +3798,7 @@
       <A name="name">Brent (Oil)</A>
       <A name="age">40.0</A>
       <A name="oil_prod">369.8</A>
-      <A name="num_prod_wells">146.0</A>
+      <A name="num_prod_wells">146</A>
       <A name="offshore">1.0</A>
       <A name="API">34.0</A>
       <A name="gas_comp_CO2">11.03</A>
@@ -3775,8 +3843,8 @@
       <A name="age">8.0</A>
       <A name="depth">4347.0</A>
       <A name="oil_prod">157682.0</A>
-      <A name="num_prod_wells">22.0</A>
-      <A name="num_water_inj_wells">20.0</A>
+      <A name="num_prod_wells">22</A>
+      <A name="num_water_inj_wells">20</A>
       <A name="res_press">5365.0</A>
       <A name="res_temp">239.0</A>
       <A name="offshore">1.0</A>
@@ -3799,7 +3867,7 @@
       <A name="age">7.0</A>
       <A name="depth">18617.7</A>
       <A name="oil_prod">30.0</A>
-      <A name="num_prod_wells">38.5</A>
+      <A name="num_prod_wells">39</A>
       <A name="well_diam">7.0</A>
       <A name="res_press">8122.0</A>
       <A name="res_temp">405.12</A>
@@ -3811,6 +3879,7 @@
       <A name="gas_comp_C3">0.01</A>
       <A name="gas_comp_H2S">14.72</A>
       <A name="GOR">25900000.0</A>
+      <A name="WOR">0.735588111</A>
       <A name="fraction_elec_onsite">0.0</A>
       <A name="transport_dist_pipeline">1342.16</A>
     </Field>
@@ -3822,12 +3891,13 @@
       <A name="age">11.0</A>
       <A name="depth">11482.9</A>
       <A name="oil_prod">30.0</A>
-      <A name="num_prod_wells">9632.0</A>
+      <A name="num_prod_wells">9632</A>
       <A name="well_diam">6.0</A>
       <A name="res_press">4722.42</A>
       <A name="res_temp">276.69</A>
       <A name="offshore">0.0</A>
       <A name="GOR">73000000.0</A>
+      <A name="WOR">1.214857477</A>
       <A name="fraction_elec_onsite">0.0</A>
       <A name="FOR">69991.9</A>
       <A name="transport_dist_pipeline">1342.16</A>
@@ -3841,8 +3911,8 @@
       <A name="age">54.0</A>
       <A name="depth">9512.0</A>
       <A name="oil_prod">369.56</A>
-      <A name="num_prod_wells">258.0</A>
-      <A name="num_water_inj_wells">2.0</A>
+      <A name="num_prod_wells">258</A>
+      <A name="num_water_inj_wells">2</A>
       <A name="well_diam">4.5</A>
       <A name="res_press">1250.95</A>
       <A name="res_temp">241.22</A>
@@ -3867,7 +3937,7 @@
       <A name="age">15.0</A>
       <A name="depth">10173.0</A>
       <A name="oil_prod">223998.0</A>
-      <A name="num_prod_wells">126.0</A>
+      <A name="num_prod_wells">126</A>
       <A name="res_press">4951.0</A>
       <A name="res_temp">213.0</A>
       <A name="offshore">1.0</A>
@@ -3879,6 +3949,7 @@
       <A name="gas_comp_C4">0.4</A>
       <A name="gas_comp_H2S">0.6</A>
       <A name="GOR">50300.0</A>
+      <A name="WOR">1.742417576</A>
       <A name="fraction_elec_onsite">1.0</A>
       <A name="fraction_remaining_gas_inj">1.0</A>
       <A name="FOR">79.46</A>
@@ -3892,12 +3963,13 @@
       <A name="age">13.0</A>
       <A name="depth">10573.0</A>
       <A name="oil_prod">21000.0</A>
-      <A name="num_prod_wells">29.0</A>
+      <A name="num_prod_wells">29</A>
       <A name="well_diam">6.0</A>
       <A name="res_press">4348.0</A>
       <A name="res_temp">260.31</A>
       <A name="offshore">0.0</A>
       <A name="GOR">75674.0</A>
+      <A name="WOR">1.472308021</A>
       <A name="fraction_elec_onsite">0.0</A>
       <A name="fraction_remaining_gas_inj">1.0</A>
       <A name="FOR">0.0</A>
@@ -3911,7 +3983,7 @@
       <A name="age">4.0</A>
       <A name="depth">16210.0</A>
       <A name="oil_prod">2047.2</A>
-      <A name="num_prod_wells">5.2</A>
+      <A name="num_prod_wells">5</A>
       <A name="well_diam">7.0</A>
       <A name="res_press">8662.1</A>
       <A name="res_temp">200.0</A>
@@ -3929,7 +4001,7 @@
       <A name="age">47.0</A>
       <A name="depth">11264.0</A>
       <A name="oil_prod">653.85</A>
-      <A name="num_prod_wells">20.0</A>
+      <A name="num_prod_wells">20</A>
       <A name="res_press">4632.5</A>
       <A name="res_temp">272.76</A>
       <A name="offshore">0.0</A>
@@ -3939,6 +4011,7 @@
       <A name="gas_comp_C3">2.9</A>
       <A name="gas_comp_C4">1.1</A>
       <A name="GOR">43104.0</A>
+      <A name="WOR">8.401764396</A>
       <A name="fraction_elec_onsite">0.0</A>
       <A name="FOR">0.0</A>
       <A name="transport_dist_pipeline">226.8</A>
@@ -3958,6 +4031,7 @@
       <A name="gas_comp_C1">85.0</A>
       <A name="gas_comp_H2S">0.0</A>
       <A name="GOR">282000.0</A>
+      <A name="WOR">1.882412821</A>
       <A name="fraction_elec_onsite">0.0</A>
       <A name="fraction_remaining_gas_inj">1.0</A>
       <A name="FOR">10.53</A>
@@ -3971,7 +4045,7 @@
       <A name="age">39.0</A>
       <A name="depth">13123.0</A>
       <A name="oil_prod">21118.0</A>
-      <A name="num_prod_wells">2800.0</A>
+      <A name="num_prod_wells">2800</A>
       <A name="res_press">8817.0</A>
       <A name="res_temp">306.21</A>
       <A name="offshore">0.0</A>
@@ -4006,6 +4080,7 @@
       <A name="gas_comp_C4">0.0</A>
       <A name="gas_comp_H2S">0.0</A>
       <A name="GOR">736000.0</A>
+      <A name="WOR">4.440535243</A>
       <A name="fraction_elec_onsite">0.0</A>
       <A name="fraction_remaining_gas_inj">1.0</A>
       <A name="FOR">583.3</A>
@@ -4019,7 +4094,7 @@
       <A name="age">9.0</A>
       <A name="depth">4100.0</A>
       <A name="oil_prod">1432.83</A>
-      <A name="num_prod_wells">453.0</A>
+      <A name="num_prod_wells">453</A>
       <A name="res_press">4055.5</A>
       <A name="res_temp">201.0</A>
       <A name="offshore">0.0</A>
@@ -4028,6 +4103,7 @@
       <A name="gas_comp_C1">94.0</A>
       <A name="gas_comp_H2S">0.0</A>
       <A name="GOR">5530000.0</A>
+      <A name="WOR">0.969472666</A>
       <A name="fraction_elec_onsite">0.0</A>
       <A name="fraction_remaining_gas_inj">1.0</A>
     </Field>
@@ -4039,7 +4115,7 @@
       <A name="age">31.0</A>
       <A name="depth">13285.0</A>
       <A name="oil_prod">62168.0</A>
-      <A name="num_prod_wells">222.0</A>
+      <A name="num_prod_wells">222</A>
       <A name="res_press">8700.0</A>
       <A name="res_temp">230.0</A>
       <A name="offshore">0.0</A>
@@ -4064,7 +4140,7 @@
       <A name="age">32.0</A>
       <A name="depth">14213.0</A>
       <A name="oil_prod">217453.0</A>
-      <A name="num_prod_wells">100.0</A>
+      <A name="num_prod_wells">100</A>
       <A name="res_press">7251.9</A>
       <A name="res_temp">185.0</A>
       <A name="offshore">0.0</A>
@@ -4077,6 +4153,7 @@
       <A name="gas_comp_C4">1.17</A>
       <A name="gas_comp_H2S">3.64</A>
       <A name="GOR">3605.4</A>
+      <A name="WOR">4.646068624</A>
       <A name="fraction_elec_onsite">0.0</A>
       <A name="FOR">6.26</A>
       <A name="transport_dist_pipeline">4032.7</A>
@@ -4090,12 +4167,13 @@
       <A name="age">11.0</A>
       <A name="depth">5272.5</A>
       <A name="oil_prod">52019.0</A>
-      <A name="num_prod_wells">4.0</A>
+      <A name="num_prod_wells">4</A>
       <A name="well_diam">6.25</A>
       <A name="res_press">14000.0</A>
       <A name="res_temp">164.91</A>
       <A name="offshore">1.0</A>
       <A name="GOR">536.84</A>
+      <A name="WOR">1.214857477</A>
       <A name="fraction_elec_onsite">1.0</A>
       <A name="transport_dist_pipeline">1056.3</A>
     </Field>
@@ -4107,12 +4185,13 @@
       <A name="age">4.0</A>
       <A name="depth">14108.0</A>
       <A name="oil_prod">21830.0</A>
-      <A name="num_prod_wells">40.0</A>
+      <A name="num_prod_wells">40</A>
       <A name="res_press">5801.8</A>
       <A name="res_temp">323.94</A>
       <A name="offshore">0.0</A>
       <A name="gas_comp_H2S">6.0</A>
       <A name="GOR">420757.0</A>
+      <A name="WOR">0.405152196</A>
       <A name="fraction_elec_onsite">0.0</A>
       <A name="FOR">102.87</A>
       <A name="transport_dist_pipeline">4032.7</A>
@@ -4131,8 +4210,8 @@
       <A name="age">8.5</A>
       <A name="depth">12648.0</A>
       <A name="oil_prod">233936.0</A>
-      <A name="num_prod_wells">22.0</A>
-      <A name="num_water_inj_wells">11.0</A>
+      <A name="num_prod_wells">22</A>
+      <A name="num_water_inj_wells">11</A>
       <A name="well_diam">4.5</A>
       <A name="res_press">2700.0</A>
       <A name="res_temp">297.66</A>
@@ -4153,8 +4232,8 @@
       <A name="name">Troll</A>
       <A name="depth">6224.3</A>
       <A name="oil_prod">120875.0</A>
-      <A name="num_prod_wells">526.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">526</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="res_press">2559.8</A>
       <A name="res_temp">182.04</A>
       <A name="GOR">29495.0</A>
@@ -4170,7 +4249,7 @@
       <A name="age">95.0</A>
       <A name="depth">2650.0</A>
       <A name="oil_prod">69.62</A>
-      <A name="num_prod_wells">7897.0</A>
+      <A name="num_prod_wells">7897</A>
       <A name="res_press">211.47</A>
       <A name="res_temp">117.7</A>
       <A name="gas_comp_N2">14.62</A>
@@ -4180,6 +4259,7 @@
       <A name="gas_comp_C3">3.08</A>
       <A name="gas_comp_C4">0.93</A>
       <A name="GOR">3840000.0</A>
+      <A name="WOR">35.29103193</A>
       <A name="FOR">765.9</A>
       <A name="transport_dist_pipeline">1261.38</A>
     </Field>
@@ -4191,7 +4271,7 @@
       <A name="age">13.0</A>
       <A name="depth">8513.8</A>
       <A name="oil_prod">85000.0</A>
-      <A name="num_prod_wells">23.0</A>
+      <A name="num_prod_wells">23</A>
       <A name="res_press">3132.0</A>
       <A name="res_temp">167.0</A>
       <A name="offshore">0.0</A>
@@ -4202,6 +4282,7 @@
       <A name="gas_comp_C3">6.4</A>
       <A name="gas_comp_C4">1.7</A>
       <A name="GOR">10791.0</A>
+      <A name="WOR">1.472308021</A>
       <A name="fraction_elec_onsite">0.0</A>
       <A name="FOR">8.88</A>
       <A name="transport_dist_pipeline">2417.1</A>
@@ -4220,8 +4301,8 @@
       <A name="name">Sleipner Vest</A>
       <A name="depth">10674.0</A>
       <A name="oil_prod">14033.0</A>
-      <A name="num_prod_wells">23.0</A>
-      <A name="num_water_inj_wells">0.0</A>
+      <A name="num_prod_wells">23</A>
+      <A name="num_water_inj_wells">0</A>
       <A name="res_press">4389.9</A>
       <A name="res_temp">262.14</A>
       <A name="offshore">1.0</A>
@@ -4245,7 +4326,7 @@
       <A name="age">43.0</A>
       <A name="depth">7309.5</A>
       <A name="oil_prod">277922.0</A>
-      <A name="num_prod_wells">160.0</A>
+      <A name="num_prod_wells">160</A>
       <A name="res_press">3003.5</A>
       <A name="res_temp">201.57</A>
       <A name="offshore">0.0</A>
@@ -4258,6 +4339,7 @@
       <A name="gas_comp_C4">0.8</A>
       <A name="gas_comp_H2S">0.0</A>
       <A name="GOR">17125.0</A>
+      <A name="WOR">7.264634434</A>
       <A name="fraction_elec_onsite">0.0</A>
       <A name="FOR">212.19</A>
       <A name="transport_dist_tanker">6362.8</A>
@@ -4271,8 +4353,8 @@
       <A name="age">26.0</A>
       <A name="depth">8050.0</A>
       <A name="oil_prod">425000.0</A>
-      <A name="num_prod_wells">89.0</A>
-      <A name="num_water_inj_wells">6.0</A>
+      <A name="num_prod_wells">89</A>
+      <A name="num_water_inj_wells">6</A>
       <A name="res_press">5300.0</A>
       <A name="res_temp">220.0</A>
       <A name="offshore">1.0</A>
@@ -4283,6 +4365,7 @@
       <A name="gas_comp_C3">1.8</A>
       <A name="gas_comp_C4">0.8</A>
       <A name="GOR">56325.0</A>
+      <A name="WOR">3.483708533</A>
       <A name="fraction_elec_onsite">1.0</A>
       <A name="FOR">94.5</A>
       <A name="transport_dist_tanker">6362.8</A>
@@ -4296,7 +4379,7 @@
       <A name="age">1.0</A>
       <A name="depth">800.0</A>
       <A name="oil_prod">30.0</A>
-      <A name="num_prod_wells">2490.0</A>
+      <A name="num_prod_wells">2490</A>
       <A name="res_press">329.0</A>
       <A name="res_temp">84.4</A>
       <A name="offshore">0.0</A>
@@ -4305,6 +4388,7 @@
       <A name="gas_comp_C1">98.01</A>
       <A name="gas_comp_C2">0.0</A>
       <A name="GOR">56300000.0</A>
+      <A name="WOR">0.097671368</A>
       <A name="fraction_elec_onsite">0.0</A>
       <A name="FOR">308711.0</A>
       <A name="transport_dist_tanker">6362.84</A>
@@ -4322,7 +4406,7 @@
       <A name="name">Jansz-Io</A>
       <A name="age">2.0</A>
       <A name="oil_prod">9790.2</A>
-      <A name="num_prod_wells">10.0</A>
+      <A name="num_prod_wells">10</A>
       <A name="well_diam">9.63</A>
       <A name="res_press">4550.0</A>
       <A name="offshore">1.0</A>
@@ -4345,7 +4429,7 @@
       <A name="age">1.0</A>
       <A name="depth">14408.0</A>
       <A name="oil_prod">13077.0</A>
-      <A name="num_prod_wells">8.0</A>
+      <A name="num_prod_wells">8</A>
       <A name="well_diam">7.69</A>
       <A name="res_press">5925.3</A>
       <A name="res_temp">309.63</A>
@@ -4369,7 +4453,7 @@
       <A name="age">6.0</A>
       <A name="depth">10170.0</A>
       <A name="oil_prod">216000.0</A>
-      <A name="num_prod_wells">600.0</A>
+      <A name="num_prod_wells">600</A>
       <A name="res_press">8500.0</A>
       <A name="res_temp">253.06</A>
       <A name="offshore">0.0</A>
@@ -4396,8 +4480,8 @@
       <A name="age">5.0</A>
       <A name="depth">9978.0</A>
       <A name="oil_prod">2000000.0</A>
-      <A name="num_prod_wells">8301.0</A>
-      <A name="num_water_inj_wells">0.0</A>
+      <A name="num_prod_wells">8301</A>
+      <A name="num_water_inj_wells">0</A>
       <A name="res_press">3300.0</A>
       <A name="res_temp">249.6</A>
       <A name="API">47.32</A>
@@ -4437,8 +4521,8 @@
       <A name="age">12.0</A>
       <A name="depth">12500.0</A>
       <A name="oil_prod">42897.0</A>
-      <A name="num_prod_wells">1702.0</A>
-      <A name="num_water_inj_wells">1402.0</A>
+      <A name="num_prod_wells">1702</A>
+      <A name="num_water_inj_wells">1402</A>
       <A name="res_press">7800.0</A>
       <A name="res_temp">325.0</A>
       <A name="gas_comp_N2">0.1</A>
@@ -4460,7 +4544,7 @@
       <A name="age">14.0</A>
       <A name="depth">6950.0</A>
       <A name="oil_prod">39307.0</A>
-      <A name="num_prod_wells">2089.0</A>
+      <A name="num_prod_wells">2089</A>
       <A name="res_press">2300.0</A>
       <A name="res_temp">149.0</A>
       <A name="gas_comp_N2">0.3</A>
@@ -4471,6 +4555,7 @@
       <A name="gas_comp_C4">0.0</A>
       <A name="gas_comp_H2S">0.0</A>
       <A name="GOR">436000.0</A>
+      <A name="WOR">1.605742219</A>
       <A name="FOR">177.08</A>
       <A name="VOR">0.3</A>
       <A name="transport_dist_pipeline">1261.4</A>
@@ -4483,11 +4568,12 @@
       <A name="age">12.0</A>
       <A name="depth">7956.0</A>
       <A name="oil_prod">34000.0</A>
-      <A name="num_prod_wells">2737.0</A>
+      <A name="num_prod_wells">2737</A>
       <A name="res_press">4713.7</A>
       <A name="res_temp">213.21</A>
       <A name="offshore">0.0</A>
       <A name="GOR">139216.0</A>
+      <A name="WOR">1.34203812</A>
       <A name="fraction_elec_onsite">0.0</A>
       <A name="FOR">1310.8</A>
       <A name="transport_dist_pipeline">1261.4</A>
@@ -4511,6 +4597,7 @@
       <A name="res_temp">208.84</A>
       <A name="offshore">1.0</A>
       <A name="API">36.0</A>
+      <A name="WOR">6.997003623</A>
       <A name="flood_gas_type">CO2</A>
       <A name="fraction_elec_onsite">1.0</A>
       <A name="fraction_remaining_gas_inj">1.0</A>
@@ -4533,8 +4620,8 @@
       <A name="name">CRLP</A>
       <A name="depth">1246.7</A>
       <A name="oil_prod">83709.0</A>
-      <A name="num_prod_wells">177.0</A>
-      <A name="num_water_inj_wells">137.0</A>
+      <A name="num_prod_wells">177</A>
+      <A name="num_water_inj_wells">137</A>
       <A name="well_diam">3.5</A>
       <A name="res_press">362.59</A>
       <A name="res_temp">383.0</A>
@@ -4575,8 +4662,9 @@
       <A name="age">121.0</A>
       <A name="depth">2698.0</A>
       <A name="oil_prod">77075.0</A>
-      <A name="num_prod_wells">10460.0</A>
-      <A name="num_water_inj_wells">110.0</A>
+      <A name="num_prod_wells">10460</A>
+      <A name="num_water_inj_wells">110</A>
+      <A name="res_press">580.07</A>
       <A name="API">12.1</A>
       <A name="GOR">168.0</A>
       <A name="WOR">8.01</A>
@@ -4611,8 +4699,9 @@
       <A name="name">Midway-Sunset</A>
       <A name="depth">2698.0</A>
       <A name="oil_prod">77205.42</A>
-      <A name="num_prod_wells">10060.0</A>
-      <A name="num_water_inj_wells">107.0</A>
+      <A name="num_prod_wells">10060</A>
+      <A name="num_water_inj_wells">107</A>
+      <A name="res_press">100.0</A>
       <A name="API">19.0</A>
       <A name="GOR">186.94</A>
       <A name="WOR">9.58</A>
@@ -4642,8 +4731,9 @@
       <A name="name">Kern River</A>
       <A name="depth">850.0</A>
       <A name="oil_prod">70387.79</A>
-      <A name="num_prod_wells">9928.0</A>
-      <A name="num_water_inj_wells">15.0</A>
+      <A name="num_prod_wells">9928</A>
+      <A name="num_water_inj_wells">15</A>
+      <A name="res_press">100.0</A>
       <A name="API">13.0</A>
       <A name="GOR">10.52</A>
       <A name="WOR">11.07</A>
@@ -4681,8 +4771,8 @@
       <A name="age">14.0</A>
       <A name="depth">6148.0</A>
       <A name="oil_prod">3340.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">8.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">8</A>
       <A name="well_diam">5.0</A>
       <A name="prod_index">4.0</A>
       <A name="res_press">1900.0</A>
@@ -4800,7 +4890,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas</A>
       <A name="oil_prod">61180.0</A>
-      <A name="num_prod_wells">433430.0</A>
+      <A name="num_prod_wells">433430</A>
       <A name="gas_comp_C1">83.2</A>
       <A name="GOR">847347.0</A>
     </Field>
@@ -4809,7 +4899,7 @@
       <A name="country">United States</A>
       <A name="name">US Oil</A>
       <A name="oil_prod">7565550.0</A>
-      <A name="num_prod_wells">571758.0</A>
+      <A name="num_prod_wells">571758</A>
       <A name="gas_comp_C1">68.3</A>
       <A name="GOR">4629.81</A>
     </Field>
@@ -4827,7 +4917,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 1</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">3976.0</A>
+      <A name="num_prod_wells">3976</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">3916900.0</A>
     </Field>
@@ -4836,7 +4926,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 2</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">2714.0</A>
+      <A name="num_prod_wells">2714</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">2674037.5</A>
     </Field>
@@ -4845,7 +4935,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 3</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">31536.0</A>
+      <A name="num_prod_wells">31536</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">31071562.5</A>
     </Field>
@@ -4854,7 +4944,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 4</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">6775.0</A>
+      <A name="num_prod_wells">6775</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">46885800.0</A>
     </Field>
@@ -4863,7 +4953,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 5</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">4625.0</A>
+      <A name="num_prod_wells">4625</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">32008575.0</A>
     </Field>
@@ -4872,7 +4962,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 6</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">53739.0</A>
+      <A name="num_prod_wells">53739</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">371930625.0</A>
     </Field>
@@ -4881,7 +4971,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 7</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">4489.0</A>
+      <A name="num_prod_wells">4489</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">81442400.0</A>
     </Field>
@@ -4890,7 +4980,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 8</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">3064.0</A>
+      <A name="num_prod_wells">3064</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">55600100.0</A>
     </Field>
@@ -4899,7 +4989,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 9</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">35603.0</A>
+      <A name="num_prod_wells">35603</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">646057500.0</A>
     </Field>
@@ -4908,7 +4998,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 10</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">4631.0</A>
+      <A name="num_prod_wells">4631</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">166969400.0</A>
     </Field>
@@ -4917,7 +5007,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 11</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">3162.0</A>
+      <A name="num_prod_wells">3162</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">113988725.0</A>
     </Field>
@@ -4926,7 +5016,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 12</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">36732.0</A>
+      <A name="num_prod_wells">36732</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">1324516875.0</A>
     </Field>
@@ -4935,7 +5025,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 13</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">5944.0</A>
+      <A name="num_prod_wells">5944</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">481260000.0</A>
     </Field>
@@ -4944,7 +5034,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 14</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">4058.0</A>
+      <A name="num_prod_wells">4058</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">328552500.0</A>
     </Field>
@@ -4953,7 +5043,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 15</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">47148.0</A>
+      <A name="num_prod_wells">47148</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">3817687500.0</A>
     </Field>
@@ -4962,7 +5052,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 16</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">2899.0</A>
+      <A name="num_prod_wells">2899</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">503932000.0</A>
     </Field>
@@ -4971,7 +5061,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 17</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">1979.0</A>
+      <A name="num_prod_wells">1979</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">344030500.0</A>
     </Field>
@@ -4980,7 +5070,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 18</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">22992.0</A>
+      <A name="num_prod_wells">22992</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">3997537500.0</A>
     </Field>
@@ -4989,7 +5079,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 19</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">3269.0</A>
+      <A name="num_prod_wells">3269</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">1870232000.0</A>
     </Field>
@@ -4998,7 +5088,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 20</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">2232.0</A>
+      <A name="num_prod_wells">2232</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">1276793000.0</A>
     </Field>
@@ -5007,7 +5097,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 21</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">25929.0</A>
+      <A name="num_prod_wells">25929</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">14835975000.0</A>
     </Field>
@@ -5016,7 +5106,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 22</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">700.0</A>
+      <A name="num_prod_wells">700</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">1207414000.0</A>
     </Field>
@@ -5025,7 +5115,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 23</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">478.0</A>
+      <A name="num_prod_wells">478</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">824292250.0</A>
     </Field>
@@ -5034,7 +5124,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 24</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">5550.0</A>
+      <A name="num_prod_wells">5550</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">9578043750.0</A>
     </Field>
@@ -5043,7 +5133,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 25</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">611.0</A>
+      <A name="num_prod_wells">611</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">3928340000.0</A>
     </Field>
@@ -5052,7 +5142,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 26</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">418.0</A>
+      <A name="num_prod_wells">418</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">2681847500.0</A>
     </Field>
@@ -5061,7 +5151,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 27</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">4847.0</A>
+      <A name="num_prod_wells">4847</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">31162312500.0</A>
     </Field>
@@ -5070,7 +5160,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 28</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">10.0</A>
+      <A name="num_prod_wells">10</A>
       <A name="offshore">0.0</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">454714000.0</A>
@@ -5080,7 +5170,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 29</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">7.0</A>
+      <A name="num_prod_wells">7</A>
       <A name="offshore">0.0</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">310429750.0</A>
@@ -5090,7 +5180,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 30</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">72.0</A>
+      <A name="num_prod_wells">72</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">3607106250.0</A>
     </Field>
@@ -5099,7 +5189,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 31</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">42.0</A>
+      <A name="num_prod_wells">42</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">63879.4</A>
     </Field>
@@ -5108,7 +5198,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 32</A>
       <A name="oil_prod">0.4</A>
-      <A name="num_prod_wells">29.0</A>
+      <A name="num_prod_wells">29</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">43609.98</A>
     </Field>
@@ -5117,7 +5207,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 33</A>
       <A name="oil_prod">0.99</A>
-      <A name="num_prod_wells">330.0</A>
+      <A name="num_prod_wells">330</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">203942.89</A>
     </Field>
@@ -5126,7 +5216,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 34</A>
       <A name="oil_prod">4.07</A>
-      <A name="num_prod_wells">300.0</A>
+      <A name="num_prod_wells">300</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">221131.77</A>
     </Field>
@@ -5135,7 +5225,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 35</A>
       <A name="oil_prod">2.78</A>
-      <A name="num_prod_wells">205.0</A>
+      <A name="num_prod_wells">205</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">221131.77</A>
     </Field>
@@ -5144,7 +5234,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 36</A>
       <A name="oil_prod">32.26</A>
-      <A name="num_prod_wells">2376.0</A>
+      <A name="num_prod_wells">2376</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">221131.77</A>
     </Field>
@@ -5153,7 +5243,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 37</A>
       <A name="oil_prod">11.59</A>
-      <A name="num_prod_wells">407.0</A>
+      <A name="num_prod_wells">407</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">264649.91</A>
     </Field>
@@ -5162,7 +5252,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 38</A>
       <A name="oil_prod">7.91</A>
-      <A name="num_prod_wells">278.0</A>
+      <A name="num_prod_wells">278</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">264649.91</A>
     </Field>
@@ -5171,7 +5261,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 39</A>
       <A name="oil_prod">91.91</A>
-      <A name="num_prod_wells">3224.0</A>
+      <A name="num_prod_wells">3224</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">264649.91</A>
     </Field>
@@ -5180,7 +5270,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 40</A>
       <A name="oil_prod">51.57</A>
-      <A name="num_prod_wells">976.0</A>
+      <A name="num_prod_wells">976</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">288186.18</A>
     </Field>
@@ -5189,7 +5279,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 41</A>
       <A name="oil_prod">35.21</A>
-      <A name="num_prod_wells">667.0</A>
+      <A name="num_prod_wells">667</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">288186.18</A>
     </Field>
@@ -5198,7 +5288,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 42</A>
       <A name="oil_prod">409.08</A>
-      <A name="num_prod_wells">7742.0</A>
+      <A name="num_prod_wells">7742</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">288186.18</A>
     </Field>
@@ -5207,7 +5297,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 43</A>
       <A name="oil_prod">381.96</A>
-      <A name="num_prod_wells">3218.0</A>
+      <A name="num_prod_wells">3218</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">291012.06</A>
     </Field>
@@ -5216,7 +5306,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 44</A>
       <A name="oil_prod">260.76</A>
-      <A name="num_prod_wells">2197.0</A>
+      <A name="num_prod_wells">2197</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">291012.06</A>
     </Field>
@@ -5225,7 +5315,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 45</A>
       <A name="oil_prod">3029.98</A>
-      <A name="num_prod_wells">25524.0</A>
+      <A name="num_prod_wells">25524</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">291012.06</A>
     </Field>
@@ -5234,7 +5324,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 46</A>
       <A name="oil_prod">720.65</A>
-      <A name="num_prod_wells">3112.0</A>
+      <A name="num_prod_wells">3112</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">306885.26</A>
     </Field>
@@ -5243,7 +5333,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 47</A>
       <A name="oil_prod">491.98</A>
-      <A name="num_prod_wells">2125.0</A>
+      <A name="num_prod_wells">2125</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">306885.26</A>
     </Field>
@@ -5252,7 +5342,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 48</A>
       <A name="oil_prod">5716.67</A>
-      <A name="num_prod_wells">24681.0</A>
+      <A name="num_prod_wells">24681</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">306885.26</A>
     </Field>
@@ -5261,7 +5351,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 49</A>
       <A name="oil_prod">2166.84</A>
-      <A name="num_prod_wells">3124.0</A>
+      <A name="num_prod_wells">3124</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">285284.38</A>
     </Field>
@@ -5270,7 +5360,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 50</A>
       <A name="oil_prod">1479.29</A>
-      <A name="num_prod_wells">2133.0</A>
+      <A name="num_prod_wells">2133</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">285284.38</A>
     </Field>
@@ -5279,7 +5369,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 51</A>
       <A name="oil_prod">17188.88</A>
-      <A name="num_prod_wells">24776.0</A>
+      <A name="num_prod_wells">24776</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">285284.38</A>
     </Field>
@@ -5288,7 +5378,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 52</A>
       <A name="oil_prod">867.06</A>
-      <A name="num_prod_wells">322.0</A>
+      <A name="num_prod_wells">322</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">258519.15</A>
     </Field>
@@ -5297,7 +5387,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 53</A>
       <A name="oil_prod">591.93</A>
-      <A name="num_prod_wells">220.0</A>
+      <A name="num_prod_wells">220</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">258519.15</A>
     </Field>
@@ -5306,7 +5396,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 54</A>
       <A name="oil_prod">6878.11</A>
-      <A name="num_prod_wells">2553.0</A>
+      <A name="num_prod_wells">2553</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">258519.15</A>
     </Field>
@@ -5315,7 +5405,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 55</A>
       <A name="oil_prod">2041.0</A>
-      <A name="num_prod_wells">280.0</A>
+      <A name="num_prod_wells">280</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">325049.68</A>
     </Field>
@@ -5324,7 +5414,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 56</A>
       <A name="oil_prod">1393.38</A>
-      <A name="num_prod_wells">191.0</A>
+      <A name="num_prod_wells">191</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">325049.68</A>
     </Field>
@@ -5333,7 +5423,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 57</A>
       <A name="oil_prod">16190.63</A>
-      <A name="num_prod_wells">2215.0</A>
+      <A name="num_prod_wells">2215</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">325049.68</A>
     </Field>
@@ -5342,7 +5432,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 58</A>
       <A name="oil_prod">117.86</A>
-      <A name="num_prod_wells">3.0</A>
+      <A name="num_prod_wells">3</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">309714.99</A>
     </Field>
@@ -5351,7 +5441,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 59</A>
       <A name="oil_prod">80.46</A>
-      <A name="num_prod_wells">2.0</A>
+      <A name="num_prod_wells">2</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">309714.99</A>
     </Field>
@@ -5360,7 +5450,7 @@
       <A name="country">United States</A>
       <A name="name">US Gas 60</A>
       <A name="oil_prod">934.97</A>
-      <A name="num_prod_wells">19.0</A>
+      <A name="num_prod_wells">19</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">309714.99</A>
     </Field>
@@ -5369,7 +5459,7 @@
       <A name="country">United States</A>
       <A name="name">US Oil 1</A>
       <A name="oil_prod">192790.0</A>
-      <A name="num_prod_wells">65606.0</A>
+      <A name="num_prod_wells">65606</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">119.86</A>
     </Field>
@@ -5378,7 +5468,7 @@
       <A name="country">United States</A>
       <A name="name">US Oil 2</A>
       <A name="oil_prod">425170.0</A>
-      <A name="num_prod_wells">89163.0</A>
+      <A name="num_prod_wells">89163</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">545.26</A>
     </Field>
@@ -5387,7 +5477,7 @@
       <A name="country">United States</A>
       <A name="name">US Oil 3</A>
       <A name="oil_prod">208860.0</A>
-      <A name="num_prod_wells">38948.0</A>
+      <A name="num_prod_wells">38948</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">1343.2</A>
     </Field>
@@ -5396,7 +5486,7 @@
       <A name="country">United States</A>
       <A name="name">US Oil 4</A>
       <A name="oil_prod">294520.0</A>
-      <A name="num_prod_wells">44410.0</A>
+      <A name="num_prod_wells">44410</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">2169.46</A>
     </Field>
@@ -5405,7 +5495,7 @@
       <A name="country">United States</A>
       <A name="name">US Oil 5</A>
       <A name="oil_prod">581920.0</A>
-      <A name="num_prod_wells">54343.0</A>
+      <A name="num_prod_wells">54343</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">2982.03</A>
     </Field>
@@ -5414,7 +5504,7 @@
       <A name="country">United States</A>
       <A name="name">US Oil 6</A>
       <A name="oil_prod">856460.0</A>
-      <A name="num_prod_wells">32775.0</A>
+      <A name="num_prod_wells">32775</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">2722.25</A>
     </Field>
@@ -5423,7 +5513,7 @@
       <A name="country">United States</A>
       <A name="name">US Oil 7</A>
       <A name="oil_prod">2722700.0</A>
-      <A name="num_prod_wells">42848.0</A>
+      <A name="num_prod_wells">42848</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">3412.35</A>
     </Field>
@@ -5432,7 +5522,7 @@
       <A name="country">United States</A>
       <A name="name">US Oil 8</A>
       <A name="oil_prod">953610.0</A>
-      <A name="num_prod_wells">7280.0</A>
+      <A name="num_prod_wells">7280</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">5246.48</A>
     </Field>
@@ -5441,7 +5531,7 @@
       <A name="country">United States</A>
       <A name="name">US Oil 9</A>
       <A name="oil_prod">676700.0</A>
-      <A name="num_prod_wells">4464.0</A>
+      <A name="num_prod_wells">4464</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">14599.08</A>
     </Field>
@@ -5450,7 +5540,7 @@
       <A name="country">United States</A>
       <A name="name">US Oil 10</A>
       <A name="oil_prod">99644.0</A>
-      <A name="num_prod_wells">348.0</A>
+      <A name="num_prod_wells">348</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">53542.61</A>
     </Field>
@@ -5459,7 +5549,7 @@
       <A name="country">United States</A>
       <A name="name">US Oil 11</A>
       <A name="oil_prod">38135.0</A>
-      <A name="num_prod_wells">114480.0</A>
+      <A name="num_prod_wells">114480</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">476.2</A>
     </Field>
@@ -5468,7 +5558,7 @@
       <A name="country">United States</A>
       <A name="name">US Oil 12</A>
       <A name="oil_prod">40064.0</A>
-      <A name="num_prod_wells">27038.0</A>
+      <A name="num_prod_wells">27038</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">484.18</A>
     </Field>
@@ -5477,7 +5567,7 @@
       <A name="country">United States</A>
       <A name="name">US Oil 13</A>
       <A name="oil_prod">269770.0</A>
-      <A name="num_prod_wells">45264.0</A>
+      <A name="num_prod_wells">45264</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">495.13</A>
     </Field>
@@ -5486,7 +5576,7 @@
       <A name="country">United States</A>
       <A name="name">US Oil 14</A>
       <A name="oil_prod">205210.0</A>
-      <A name="num_prod_wells">4792.0</A>
+      <A name="num_prod_wells">4792</A>
       <A name="gas_comp_C1">79.4</A>
       <A name="GOR">522.98</A>
     </Field>
@@ -5507,8 +5597,8 @@
       <A name="age">11.0</A>
       <A name="depth">19737.0</A>
       <A name="oil_prod">1050000.0</A>
-      <A name="num_prod_wells">6.0</A>
-      <A name="num_water_inj_wells">1.0</A>
+      <A name="num_prod_wells">6</A>
+      <A name="num_water_inj_wells">1</A>
       <A name="res_press">8000.0</A>
       <A name="res_temp">380.04</A>
       <A name="offshore">1.0</A>
@@ -5548,8 +5638,8 @@
       <A name="age">35.0</A>
       <A name="depth">3200.0</A>
       <A name="oil_prod">105000.0</A>
-      <A name="num_prod_wells">69.0</A>
-      <A name="num_water_inj_wells">21.0</A>
+      <A name="num_prod_wells">69</A>
+      <A name="num_water_inj_wells">21</A>
       <A name="res_press">1300.0</A>
       <A name="API">32.0</A>
       <A name="WOR">4.0</A>
@@ -5562,7 +5652,8 @@
       <A name="age">86.0</A>
       <A name="depth">6510.0</A>
       <A name="oil_prod">1100745.0</A>
-      <A name="num_prod_wells">62345.0</A>
+      <A name="num_prod_wells">62345</A>
+      <A name="res_press">1399.65</A>
       <A name="GOR">43357.0</A>
       <A name="WOR">0.6</A>
     </Field>
@@ -5572,7 +5663,8 @@
       <A name="age">69.0</A>
       <A name="depth">8642.0</A>
       <A name="oil_prod">1063425.0</A>
-      <A name="num_prod_wells">18040.0</A>
+      <A name="num_prod_wells">18040</A>
+      <A name="res_press">1858.03</A>
       <A name="GOR">10177.0</A>
       <A name="WOR">0.7</A>
     </Field>
@@ -5582,7 +5674,8 @@
       <A name="age">86.0</A>
       <A name="depth">4936.0</A>
       <A name="oil_prod">101295.0</A>
-      <A name="num_prod_wells">41539.0</A>
+      <A name="num_prod_wells">41539</A>
+      <A name="res_press">1061.24</A>
       <A name="GOR">15054.0</A>
       <A name="WOR">16.0</A>
     </Field>
@@ -5592,7 +5685,8 @@
       <A name="age">83.0</A>
       <A name="depth">9788.0</A>
       <A name="oil_prod">87715.0</A>
-      <A name="num_prod_wells">13652.0</A>
+      <A name="num_prod_wells">13652</A>
+      <A name="res_press">2104.42</A>
       <A name="GOR">162749.0</A>
       <A name="WOR">3.3</A>
     </Field>
@@ -5602,7 +5696,8 @@
       <A name="age">83.0</A>
       <A name="depth">7320.0</A>
       <A name="oil_prod">2755883.0</A>
-      <A name="num_prod_wells">40573.0</A>
+      <A name="num_prod_wells">40573</A>
+      <A name="res_press">1573.8</A>
       <A name="GOR">56691.0</A>
       <A name="WOR">4.8</A>
     </Field>
@@ -5612,7 +5707,8 @@
       <A name="age">84.0</A>
       <A name="depth">6989.0</A>
       <A name="oil_prod">341860.0</A>
-      <A name="num_prod_wells">20447.0</A>
+      <A name="num_prod_wells">20447</A>
+      <A name="res_press">1502.635</A>
       <A name="GOR">24436.0</A>
       <A name="WOR">14.0</A>
     </Field>
@@ -5622,7 +5718,8 @@
       <A name="age">88.0</A>
       <A name="depth">9349.0</A>
       <A name="oil_prod">332189.0</A>
-      <A name="num_prod_wells">5849.0</A>
+      <A name="num_prod_wells">5849</A>
+      <A name="res_press">2010.035</A>
       <A name="GOR">20567.0</A>
       <A name="WOR">4.11</A>
     </Field>
@@ -5632,7 +5729,8 @@
       <A name="age">85.0</A>
       <A name="depth">5307.0</A>
       <A name="oil_prod">732995.0</A>
-      <A name="num_prod_wells">33002.0</A>
+      <A name="num_prod_wells">33002</A>
+      <A name="res_press">1141.005</A>
       <A name="GOR">2206.0</A>
       <A name="WOR">5.3</A>
     </Field>
@@ -5642,7 +5740,8 @@
       <A name="age">85.0</A>
       <A name="depth">7415.0</A>
       <A name="oil_prod">4032110.0</A>
-      <A name="num_prod_wells">32762.0</A>
+      <A name="num_prod_wells">32762</A>
+      <A name="res_press">1594.225</A>
       <A name="GOR">7144.0</A>
       <A name="WOR">6.1</A>
     </Field>
@@ -5652,7 +5751,8 @@
       <A name="age">83.0</A>
       <A name="depth">7525.0</A>
       <A name="oil_prod">3328637.0</A>
-      <A name="num_prod_wells">61114.0</A>
+      <A name="num_prod_wells">61114</A>
+      <A name="res_press">1617.875</A>
       <A name="GOR">6154.0</A>
       <A name="WOR">4.7</A>
     </Field>
@@ -5662,7 +5762,8 @@
       <A name="age">67.0</A>
       <A name="depth">7379.0</A>
       <A name="oil_prod">41285.0</A>
-      <A name="num_prod_wells">14447.0</A>
+      <A name="num_prod_wells">14447</A>
+      <A name="res_press">1586.485</A>
       <A name="GOR">710577.0</A>
       <A name="WOR">26.0</A>
     </Field>
@@ -5672,7 +5773,8 @@
       <A name="age">52.0</A>
       <A name="depth">4870.0</A>
       <A name="oil_prod">5263.0</A>
-      <A name="num_prod_wells">250.0</A>
+      <A name="num_prod_wells">250</A>
+      <A name="res_press">1047.05</A>
       <A name="GOR">31358.0</A>
       <A name="WOR">0.15</A>
     </Field>
@@ -5682,7 +5784,8 @@
       <A name="age">42.0</A>
       <A name="depth">6294.0</A>
       <A name="oil_prod">80.27</A>
-      <A name="num_prod_wells">782.0</A>
+      <A name="num_prod_wells">782</A>
+      <A name="res_press">1353.21</A>
       <A name="GOR">5871022.0</A>
       <A name="WOR">56.0</A>
     </Field>
@@ -5692,7 +5795,8 @@
       <A name="age">42.0</A>
       <A name="depth">2802.0</A>
       <A name="oil_prod">236038.0</A>
-      <A name="num_prod_wells">14660.0</A>
+      <A name="num_prod_wells">14660</A>
+      <A name="res_press">602.43</A>
       <A name="GOR">810.0</A>
       <A name="WOR">10.0</A>
     </Field>
@@ -5702,7 +5806,8 @@
       <A name="age">65.0</A>
       <A name="depth">8642.0</A>
       <A name="oil_prod">7925.0</A>
-      <A name="num_prod_wells">5061.0</A>
+      <A name="num_prod_wells">5061</A>
+      <A name="res_press">1858.03</A>
       <A name="GOR">358352.0</A>
       <A name="WOR">14.0</A>
     </Field>
@@ -5712,7 +5817,8 @@
       <A name="age">68.0</A>
       <A name="depth">9976.0</A>
       <A name="oil_prod">2948886.0</A>
-      <A name="num_prod_wells">21848.0</A>
+      <A name="num_prod_wells">21848</A>
+      <A name="res_press">2144.84</A>
       <A name="GOR">1446.0</A>
       <A name="WOR">1.15</A>
     </Field>
@@ -5722,7 +5828,8 @@
       <A name="age">25.0</A>
       <A name="depth">9526.0</A>
       <A name="oil_prod">14602.0</A>
-      <A name="num_prod_wells">428.0</A>
+      <A name="num_prod_wells">428</A>
+      <A name="res_press">2048.09</A>
       <A name="GOR">1784867.0</A>
       <A name="WOR">0.04</A>
     </Field>
@@ -5732,7 +5839,8 @@
       <A name="age">28.0</A>
       <A name="depth">7137.0</A>
       <A name="oil_prod">5.8</A>
-      <A name="num_prod_wells">11289.0</A>
+      <A name="num_prod_wells">11289</A>
+      <A name="res_press">1534.455</A>
       <A name="GOR">2082081.0</A>
       <A name="WOR">1.69</A>
     </Field>
@@ -5742,7 +5850,8 @@
       <A name="age">78.0</A>
       <A name="depth">10101.5</A>
       <A name="oil_prod">34122.0</A>
-      <A name="num_prod_wells">13871.0</A>
+      <A name="num_prod_wells">13871</A>
+      <A name="res_press">2171.8225</A>
       <A name="GOR">212463.0</A>
       <A name="WOR">19.7</A>
     </Field>
@@ -5752,9 +5861,8 @@
       <A name="age">99.0</A>
       <A name="depth">4661.0</A>
       <A name="oil_prod">7.66</A>
-      <A name="num_prod_wells">8809.0</A>
-      <A name="GOR">0.0</A>
-      <A name="WOR">0.0</A>
+      <A name="num_prod_wells">8809</A>
+      <A name="res_press">1002.115</A>
     </Field>
     <Field name="Field 300" modifies="template">
       <A name="oil_sands_mine">None</A>
@@ -5762,9 +5870,9 @@
       <A name="age">49.0</A>
       <A name="depth">6065.0</A>
       <A name="oil_prod">2424.0</A>
-      <A name="num_prod_wells">9424.0</A>
+      <A name="num_prod_wells">9424</A>
+      <A name="res_press">1303.975</A>
       <A name="GOR">650857.0</A>
-      <A name="WOR">0.0</A>
     </Field>
     <Field name="Field 301" modifies="template">
       <A name="oil_sands_mine">None</A>
@@ -5772,9 +5880,8 @@
       <A name="age">50.0</A>
       <A name="depth">2064.0</A>
       <A name="oil_prod">0.6</A>
-      <A name="num_prod_wells">2707.0</A>
-      <A name="GOR">0.0</A>
-      <A name="WOR">0.0</A>
+      <A name="num_prod_wells">2707</A>
+      <A name="res_press">443.76</A>
     </Field>
     <Field name="Field 302" modifies="template">
       <A name="oil_sands_mine">None</A>
@@ -5782,7 +5889,8 @@
       <A name="age">70.0</A>
       <A name="depth">2882.0</A>
       <A name="oil_prod">213.0</A>
-      <A name="num_prod_wells">6891.0</A>
+      <A name="num_prod_wells">6891</A>
+      <A name="res_press">619.63</A>
       <A name="GOR">15622571.0</A>
       <A name="WOR">9.07</A>
     </Field>
@@ -5800,8 +5908,7 @@
       <A name="age">38.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">2098.0</A>
-      <A name="num_prod_wells">24.0</A>
-      <A name="num_water_inj_wells">0.0</A>
+      <A name="num_prod_wells">24</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">17.0</A>
       <A name="res_press">1556.6</A>
@@ -5833,6 +5940,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">143.0</A>
       <A name="VOR">5.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -5853,15 +5961,15 @@
       <A name="water_flooding">0</A>
       <A name="gas_lifting">0</A>
       <A name="gas_flooding">0</A>
-      <A name="steam_flooding">1</A>
+      <A name="steam_flooding">0</A>
       <A name="oil_sands_mine">None</A>
       <A name="country">SteamFloodTest</A>
       <A name="name">SteamFloodTest</A>
       <A name="age">38.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">2098.0</A>
-      <A name="num_prod_wells">24.0</A>
-      <A name="num_water_inj_wells">8.0</A>
+      <A name="num_prod_wells">24</A>
+      <A name="num_water_inj_wells">8</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">17.0</A>
       <A name="res_press">1556.6</A>
@@ -5881,7 +5989,6 @@
       <A name="GLIR">364.0</A>
       <A name="GFIR">3644.0</A>
       <A name="flood_gas_type">NG</A>
-      <A name="SOR">0.0</A>
       <A name="fraction_elec_onsite">0.0</A>
       <A name="fraction_remaining_gas_inj">0.5</A>
       <A name="fraction_water_reinjected">1.0</A>
@@ -5893,6 +6000,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">143.0</A>
       <A name="VOR">5.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -6213,8 +6321,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -6246,6 +6354,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -6273,8 +6382,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -6306,6 +6415,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -6333,8 +6443,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -6366,6 +6476,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -6393,8 +6504,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -6426,6 +6537,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -6453,8 +6565,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -6486,6 +6598,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -6513,8 +6626,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -6546,6 +6659,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -6573,8 +6687,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -6606,6 +6720,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -6633,8 +6748,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -6666,6 +6781,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -6693,8 +6809,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -6726,6 +6842,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -6753,8 +6870,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -6786,6 +6903,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -6813,8 +6931,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -6846,6 +6964,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -6873,8 +6992,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -6906,6 +7025,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -6933,8 +7053,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -6966,6 +7086,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -6993,8 +7114,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -7026,6 +7147,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -7053,8 +7175,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -7086,6 +7208,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -7113,8 +7236,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -7146,6 +7269,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -7173,8 +7297,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -7206,6 +7330,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -7233,8 +7358,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -7266,6 +7391,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -7293,8 +7419,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -7326,6 +7452,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -7353,8 +7480,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -7386,6 +7513,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -7413,8 +7541,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1557.0</A>
@@ -7446,6 +7574,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -7710,10 +7839,15 @@
       <A name="oil_sands_mine">None</A>
       <A name="name">Test 40 - Diluent Test 0%</A>
       <A name="depth">2000.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
+      <A name="SOR">3.0</A>
       <A name="FOR">0.0</A>
+      <Process class="HeavyOilDilution">
+        <A name="fraction_diluent">0.0</A>
+      </Process>
     </Field>
     <Field name="Field 440" modifies="template">
       <A name="water_reinjection">0</A>
@@ -7722,10 +7856,16 @@
       <A name="oil_sands_mine">None</A>
       <A name="name">Test 41 - Diluent Test 25%</A>
       <A name="depth">2000.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
+      <A name="SOR">3.0</A>
+      <A name="oil_processing_path">Dilution</A>
       <A name="FOR">0.0</A>
+      <Process class="HeavyOilDilution">
+        <A name="fraction_diluent">0.25</A>
+      </Process>
     </Field>
     <Field name="Field 441" modifies="template">
       <A name="water_reinjection">0</A>
@@ -7734,10 +7874,16 @@
       <A name="oil_sands_mine">None</A>
       <A name="name">Test 42 - Diluent Test 50%</A>
       <A name="depth">2000.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
+      <A name="SOR">3.0</A>
+      <A name="oil_processing_path">Dilution</A>
       <A name="FOR">0.0</A>
+      <Process class="HeavyOilDilution">
+        <A name="fraction_diluent">0.5</A>
+      </Process>
     </Field>
     <Field name="Field 442" modifies="template">
       <A name="water_reinjection">0</A>
@@ -7746,10 +7892,16 @@
       <A name="oil_sands_mine">None</A>
       <A name="name">Test 43 - Diluent Test 75%</A>
       <A name="depth">2000.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
+      <A name="SOR">3.0</A>
+      <A name="oil_processing_path">Dilution</A>
       <A name="FOR">0.0</A>
+      <Process class="HeavyOilDilution">
+        <A name="fraction_diluent">0.75</A>
+      </Process>
     </Field>
     <Field name="Field 443" modifies="template">
       <A name="water_reinjection">0</A>
@@ -7758,10 +7910,16 @@
       <A name="oil_sands_mine">None</A>
       <A name="name">Test 44 - Diluent Test 100%</A>
       <A name="depth">2000.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
+      <A name="SOR">3.0</A>
+      <A name="oil_processing_path">Dilution</A>
       <A name="FOR">0.0</A>
+      <Process class="HeavyOilDilution">
+        <A name="fraction_diluent">1.0</A>
+      </Process>
     </Field>
     <Field name="Field 444" modifies="template">
       <A name="downhole_pump">0</A>
@@ -7778,6 +7936,7 @@
       <A name="API_bitumen">32.0</A>
       <A name="upgrader_type">Delayed coking</A>
       <A name="gas_processing_path">Minimal</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="oil_processing_path">Upgrading</A>
       <A name="FOR">0.0</A>
       <A name="VOR">0.0</A>
@@ -7795,8 +7954,8 @@
       <A name="name">Test 46 - Oil sands test: Mine, DC, non-integrated</A>
       <A name="API">32.0</A>
       <A name="API_bitumen">32.0</A>
-      <A name="upgrader_type">Delayed coking</A>
       <A name="gas_processing_path">Minimal</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="oil_processing_path">Dilution</A>
       <A name="FOR">0.0</A>
       <A name="VOR">0.0</A>
@@ -7819,6 +7978,7 @@
       <A name="API_bitumen">32.0</A>
       <A name="upgrader_type">Hydroconversion</A>
       <A name="gas_processing_path">Minimal</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="oil_processing_path">Upgrading</A>
       <A name="FOR">0.0</A>
       <A name="VOR">0.0</A>
@@ -7836,8 +7996,8 @@
       <A name="name">Test 48 - Oil sands test: Mine, HC, non-integrated</A>
       <A name="API">32.0</A>
       <A name="API_bitumen">32.0</A>
-      <A name="upgrader_type">Hydroconversion</A>
       <A name="gas_processing_path">Minimal</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="oil_processing_path">Dilution</A>
       <A name="FOR">0.0</A>
       <A name="VOR">0.0</A>
@@ -7860,6 +8020,7 @@
       <A name="API_bitumen">32.0</A>
       <A name="upgrader_type">Combined</A>
       <A name="gas_processing_path">Minimal</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="oil_processing_path">Upgrading</A>
       <A name="FOR">0.0</A>
       <A name="VOR">0.0</A>
@@ -7877,8 +8038,8 @@
       <A name="name">Test 50 - Oil sands test: Mine, HCFC, non-integrated</A>
       <A name="API">32.0</A>
       <A name="API_bitumen">32.0</A>
-      <A name="upgrader_type">Combined</A>
       <A name="gas_processing_path">Minimal</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="oil_processing_path">Dilution</A>
       <A name="FOR">0.0</A>
       <A name="VOR">0.0</A>
@@ -7898,6 +8059,7 @@
       <A name="name">Test 51 - Thermal EOR 1 / SOR = 2 / 0% Co-gen</A>
       <A name="depth">2000.0</A>
       <A name="oil_prod">1500.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
@@ -7917,6 +8079,7 @@
       <A name="name">Test 52 - Thermal EOR 2 / SOR = 4 / 0% Co-gen</A>
       <A name="depth">2000.0</A>
       <A name="oil_prod">1500.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
@@ -7936,6 +8099,7 @@
       <A name="name">Test 53 - Thermal EOR 3 / SOR = 6 / 0% Co-gen</A>
       <A name="depth">2000.0</A>
       <A name="oil_prod">1500.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
@@ -7955,6 +8119,7 @@
       <A name="name">Test 54 - Thermal EOR 4 / SOR = 2 / 50% Co-gen</A>
       <A name="depth">2000.0</A>
       <A name="oil_prod">1500.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
@@ -7974,6 +8139,7 @@
       <A name="name">Test 55 - Thermal EOR 5 / SOR = 4 / 50% Co-gen</A>
       <A name="depth">2000.0</A>
       <A name="oil_prod">1500.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
@@ -7993,6 +8159,7 @@
       <A name="name">Test 56 - Thermal EOR 6 / SOR = 6 / 50% Co-gen</A>
       <A name="depth">2000.0</A>
       <A name="oil_prod">1500.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
@@ -8012,6 +8179,7 @@
       <A name="name">Test 57 - Thermal EOR 4 / SOR = 2 / 75% Co-gen</A>
       <A name="depth">2000.0</A>
       <A name="oil_prod">1500.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
@@ -8031,6 +8199,7 @@
       <A name="name">Test 58 - Thermal EOR 5 / SOR = 4 / 75% Co-gen</A>
       <A name="depth">2000.0</A>
       <A name="oil_prod">1500.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
@@ -8050,6 +8219,7 @@
       <A name="name">Test 59 - Thermal EOR 6 / SOR = 6 / 75% Co-gen</A>
       <A name="depth">2000.0</A>
       <A name="oil_prod">1500.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
@@ -8069,6 +8239,7 @@
       <A name="name">Test 60 - Thermal EOR 4 / SOR = 2 / 100% Co-gen</A>
       <A name="depth">2000.0</A>
       <A name="oil_prod">1500.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
@@ -8087,6 +8258,7 @@
       <A name="name">Test 61 - Thermal EOR 5 / SOR = 4 / 100% Co-gen</A>
       <A name="depth">2000.0</A>
       <A name="oil_prod">1500.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
@@ -8105,6 +8277,7 @@
       <A name="name">Test 62 - Thermal EOR 6 / SOR = 6 / 100% Co-gen</A>
       <A name="depth">2000.0</A>
       <A name="oil_prod">1500.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
@@ -8123,6 +8296,7 @@
       <A name="name">Test 63 - Thermal EOR 7 / SOR = 2 / 25% solar</A>
       <A name="depth">2000.0</A>
       <A name="oil_prod">1500.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
@@ -8141,6 +8315,7 @@
       <A name="name">Test 64 - Thermal EOR 8 / SOR = 4 / 25% solar</A>
       <A name="depth">2000.0</A>
       <A name="oil_prod">1500.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
@@ -8159,6 +8334,7 @@
       <A name="name">Test 65 - Thermal EOR 9 / SOR = 6 / 25% solar</A>
       <A name="depth">2000.0</A>
       <A name="oil_prod">1500.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
@@ -8178,6 +8354,7 @@
       <A name="name">Test 66 - Thermal EOR 10 / SOR = 2 / 50% solar</A>
       <A name="depth">2000.0</A>
       <A name="oil_prod">1500.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
@@ -8197,6 +8374,7 @@
       <A name="name">Test 67 - Thermal EOR 11 / SOR = 4 / 50% solar</A>
       <A name="depth">2000.0</A>
       <A name="oil_prod">1500.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
@@ -8216,6 +8394,7 @@
       <A name="name">Test 68 - Thermal EOR 12 / SOR = 6 / 50% solar</A>
       <A name="depth">2000.0</A>
       <A name="oil_prod">1500.0</A>
+      <A name="res_press">430.0</A>
       <A name="API">15.0</A>
       <A name="GOR">100.0</A>
       <A name="WOR">1.0</A>
@@ -8281,12 +8460,12 @@
     <Field name="Field 475" modifies="template">
       <A name="oil_sands_mine">None</A>
       <A name="name">Test 76 - Depleted</A>
-      <A name="num_prod_wells">100.0</A>
+      <A name="num_prod_wells">100</A>
     </Field>
     <Field name="Field 476" modifies="template">
       <A name="oil_sands_mine">None</A>
       <A name="name">Test 77 - Very depleted</A>
-      <A name="num_prod_wells">1000.0</A>
+      <A name="num_prod_wells">1000</A>
     </Field>
     <Field name="Field 477" modifies="template">
       <A name="oil_sands_mine">None</A>
@@ -8446,8 +8625,8 @@
       <A name="age">35.0</A>
       <A name="depth">7240.0</A>
       <A name="oil_prod">1500.0</A>
-      <A name="num_prod_wells">8.0</A>
-      <A name="num_water_inj_wells">5.0</A>
+      <A name="num_prod_wells">8</A>
+      <A name="num_water_inj_wells">5</A>
       <A name="well_diam">2.78</A>
       <A name="prod_index">3.0</A>
       <A name="res_press">1556.6</A>
@@ -8479,6 +8658,7 @@
       <A name="stabilizer_column">1</A>
       <A name="upgrader_type">None</A>
       <A name="gas_processing_path">Sour Gas Reinjection</A>
+      <A name="common_gas_process_choice">None</A>
       <A name="FOR">182.0</A>
       <A name="VOR">0.0</A>
       <A name="frac_transport_tanker">1.0</A>
@@ -8492,6 +8672,5 @@
       <A name="transport_dist_rail">800.0</A>
       <A name="transport_dist_truck">100.0</A>
     </Field>
-    <Field name="Unnamed: 501" modifies="template"/>
   </Analysis>
 </Model>

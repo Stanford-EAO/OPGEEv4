@@ -6,23 +6,24 @@
 # Copyright (c) 2021-2022 The Board of Trustees of the Leland Stanford Junior University.
 # See LICENSE.txt for license details.
 #
-import pandas as pd
-import pint
 from typing import Union, Optional
 
-from . import ureg
+import pandas as pd
+import pint
+
 from .attributes import AttrDefs, AttributeMixin
+from .combine_streams import combine_streams
 from .config import getParamAsBoolean
-from .core import OpgeeObject, XmlInstantiable, elt_name, instantiate_subelts, magnitude
+from .constants import petrocoke_LHV
 from .container import Container
-from .error import OpgeeException, AbstractMethodError, OpgeeIterationConverged, ModelValidationError
+from .core import OpgeeObject, XmlInstantiable, elt_name, instantiate_subelts, magnitude
 from .emissions import Emissions
 from .energy import Energy
+from .error import OpgeeException, AbstractMethodError, OpgeeIterationConverged, ModelValidationError
+from .import_export import ImportExport
 from .log import getLogger
 from .stream import Stream
 from .utils import getBooleanXML
-from .combine_streams import combine_streams
-from .import_export import ImportExport
 
 _logger = getLogger(__name__)
 
@@ -218,7 +219,7 @@ class Process(XmlInstantiable, AttributeMixin):
     # Optional for Process subclasses
     def _after_init(self):
         self.check_attr_constraints(self.attr_dict)
-        self.validate_streams()
+        self.validate()
         self.process_EF = self.get_process_EF()
         self.field = self.get_field()
 
@@ -250,6 +251,18 @@ class Process(XmlInstantiable, AttributeMixin):
         Return the names of required output stream contents
         """
         return self._required_outputs
+
+    def validate(self):
+        self.validate_streams()
+        self.validate_proc()
+
+    def validate_proc(self):
+        """
+        Optional method to be implemented by subclasses of Process. Processes failing
+        validation should raise ModelValidationError(msg) with an explanatory message.
+        Note that required inputs and outputs are handled separately in validate_streams.
+        """
+        pass
 
     def validate_streams(self):
         """
@@ -897,42 +910,44 @@ class Boundary(Process):
     def run(self, analysis):
         is_chosen_boundary = self.is_chosen_boundary(analysis)
 
-        # TODO this logic looks wrong since the branch that tests whether "is_boundary_processed"
-        #  doesn't set the flag to indicate that it's been processed. That happens in the other branch.
-        # Also, shouldn't have to test is_chosen_boundary in both branches.
+        # Process boundary if only if the chosen boundary has not been processed
+        if self.field.get_process_data("is_chosen_boundary_processed") is None:
+            # If we're an intermediate boundary, copy all inputs to outputs based on contents
+            if not is_chosen_boundary:
+                for in_stream in self.inputs:
+                    contents = in_stream.contents
+                    if len(contents) != 1:
+                        raise ModelValidationError(f"Streams to and from boundaries must have only a single Content declaration; {self} inputs are {contents}")
 
-        # If we're an intermediate boundary, copy all inputs to outputs based on contents
-        if not is_chosen_boundary and not self.field.get_process_data("is_boundary_processed"):
-            for in_stream in self.inputs:
-                contents = in_stream.contents
-                if len(contents) != 1:
-                    raise ModelValidationError(f"Streams to and from boundaries must have only a single Content declaration; {self} inputs are {contents}")
+                    # If not exactly one stream that declares the same contents, raises error
+                    out_stream = self.find_output_stream(contents[0], raiseError=False)
 
-                # If not exactly one stream that declares the same contents, raises error
-                out_stream = self.find_output_stream(contents[0], raiseError=False)
+                    # TODO: Fix this test
+                    # if out_stream is None:
+                    #     raise ModelValidationError(f"Missing output stream for '{contents[0]}' in {self} boundary")
 
-                if out_stream is None:
-                    raise ModelValidationError(f"Missing output stream for '{contents[0]}' in {self} boundary")
+                    if out_stream:
+                        out_stream.copy_flow_rates_from(in_stream)
 
-                out_stream.copy_flow_rates_from(in_stream)
+            # Hit the user choose boundary
+            else:
+                combined_streams = combine_streams(self.inputs, self.field.attr("API"))
 
-        # Hit the user choose boundary
-        elif is_chosen_boundary and not self.field.get_process_data("export_prod_LHV_sum"):
-            export_prod_LHV_sum = ureg.Quantity(0, "mmbtu/day")
-            for in_stream in self.inputs:
-                mass_rate = in_stream.components.sum(axis=1)
-                export_prod_LHV = mass_rate[self.field.product_LHV.index].dot(self.field.product_LHV)["LHV"]
-                export_prod_LHV_sum += export_prod_LHV
+                # calculate gas energy flow rate
+                exported_gas_LHV = self.field.gas.energy_flow_rate(combined_streams)
 
-                # TODO: this is not a robust test
-                if in_stream.contents[0] == "oil":
-                    self.field.save_process_data(export_oil_LHV=export_prod_LHV)
+                # calculate oil energy flow rate (TODO: this can be replaced by composite oil)
+                exported_oil_LHV = combined_streams.liquid_flow_rate("oil") * self.field.oil.mass_energy_density()
 
-            self.field.save_process_data(export_prod_LHV_sum=export_prod_LHV_sum)
+                # calculate PC energy flow rate
+                exported_PC_LHV = combined_streams.liquid_flow_rate("PC") * petrocoke_LHV
 
-            # TODO: why isn't this on previous branch of if-else rather than here?
-            self.field.save_process_data(is_boundary_processed=True)
+                exported_prod_LHV = exported_gas_LHV + exported_oil_LHV + exported_PC_LHV
 
+                self.field.save_process_data(exported_oil_LHV=exported_oil_LHV)
+                self.field.save_process_data(exported_prod_LHV=exported_prod_LHV)
+
+                self.field.save_process_data(is_chosen_boundary_processed=True)
 
 class Reservoir(Process):
     """

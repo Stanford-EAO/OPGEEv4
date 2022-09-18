@@ -21,9 +21,13 @@ class Flaring(Process):
     def _after_init(self):
         super()._after_init()
         self.field = field = self.get_field()
+        self.FOR = field.attr("FOR")
+        if self.FOR.m == 0:
+            self.set_enabled(False)
+            return
+
         self.gas = field.gas
         self.mol_per_scf = field.model.const("mol-per-scf")
-        self.FOR = field.attr("FOR")
         self.oil_volume_rate = field.attr("oil_prod")
         self.combusted_gas_frac = field.attr("combusted_gas_frac")
 
@@ -39,7 +43,11 @@ class Flaring(Process):
 
         gas_mol_fraction = self.gas.total_molar_flow_rate(input)
         gas_volume_rate = gas_mol_fraction / self.mol_per_scf
-        volume_of_gas_flared = self.oil_volume_rate * self.FOR
+        SCO_bitumen_ratio = field.get_process_data("SCO_bitumen_ratio")
+        if SCO_bitumen_ratio:
+            volume_of_gas_flared = self.oil_volume_rate * self.FOR / SCO_bitumen_ratio
+        else:
+            volume_of_gas_flared = self.oil_volume_rate * self.FOR
         frac_gas_flared = min(ureg.Quantity(1, "frac"), volume_of_gas_flared / gas_volume_rate)
 
         methane_slip = Stream("methane_slip", tp=input.tp)
@@ -52,12 +60,14 @@ class Flaring(Process):
         gas_to_flare.multiply_flow_rates(frac_gas_flared.m)
         gas_to_flare.subtract_rates_from(methane_slip)
 
-        venting_gas = self.find_output_stream("gas")
-        venting_gas.copy_flow_rates_from(input)
-        venting_gas.subtract_rates_from(gas_to_flare)
-        venting_gas.subtract_rates_from(methane_slip)
+        output_gas = self.find_output_stream("gas for venting", raiseError=False)
+        if output_gas is None:
+            output_gas = self.find_output_stream("gas for gas gathering")
+        output_gas.copy_flow_rates_from(input)
+        output_gas.subtract_rates_from(gas_to_flare)
+        output_gas.subtract_rates_from(methane_slip)
 
-        self.set_iteration_value(venting_gas.total_flow_rate())
+        self.set_iteration_value(output_gas.total_flow_rate())
 
         # emissions
         emissions = self.emissions

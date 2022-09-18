@@ -6,13 +6,21 @@
 # Copyright (c) 2021-2022 The Board of Trustees of the Leland Stanford Junior University.
 # See LICENSE.txt for license details.
 #
+# WaterInjection class
+#
+# Author: Wennan Long
+#
+# Copyright (c) 2021-2022 The Board of Trustees of the Leland Stanford Junior University.
+# See LICENSE.txt for license details.
+#
 import numpy as np
 
+from .shared import get_energy_carrier, get_energy_consumption
 from .. import ureg
 from ..emissions import EM_COMBUSTION
+from ..error import OpgeeException
 from ..log import getLogger
 from ..process import Process
-from .shared import get_energy_carrier, get_energy_consumption
 
 _logger = getLogger(__name__)
 
@@ -25,7 +33,7 @@ class WaterInjection(Process):
         self.water_flooding = field.attr("water_flooding")
 
         if self.water_reinjection == 0 and self.water_flooding == 0:
-            self.enabled = False
+            self.set_enabled(False)
             return
 
         self.prod_index = field.attr("prod_index")
@@ -45,7 +53,9 @@ class WaterInjection(Process):
 
     def run(self, analysis):
         self.print_running_msg()
-        field = self.field
+
+        if self.num_water_inj_wells.m == 0:
+            raise OpgeeException(f"Got zero number of injector in the {self.name} process")
 
         input_prod = self.find_input_stream("produced water for water injection")
         input_makeup = self.find_input_stream("makeup water for water injection")

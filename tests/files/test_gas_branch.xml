@@ -1,92 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../opgee/etc/opgee.xsd">
+	<Analysis name="template">
+		<Field name="template"/>
+	</Analysis>
 
 	<Analysis name="test_gas_path_2">
 		<A name="functional_unit">oil</A>
 		<A name="energy_basis">LHV</A>
 		<A name="GWP_horizon">100</A>
 		<A name="GWP_version">AR5</A>
-		<Field name="test_gas_path_2"/>
+		<Field name="test_gas_path_2" modifies="template">
+			<A name="country">USA</A>
+			<A name="water_reinjection">1</A>
+			<A name="downhole_pump">0</A>
+			<A name="natural_gas_reinjection">1</A>
+			<A name="gas_lifting">1</A>
+			<A name="depth">3937.0</A>
+			<A name="oil_prod">175000.0</A>
+			<A name="num_prod_wells">24</A>
+			<A name="num_water_inj_wells">20</A>
+			<A name="well_diam">8.0</A>
+			<A name="prod_index">90.90</A>
+			<A name="res_press">3655.0</A>
+			<A name="res_temp">141.0</A>
+			<A name="API">32.0</A>
+			<A name="GOR">584.29</A>
+			<A name="WOR">0.5</A>
+			<A name="WIR">1.5</A>
+			<A name="GLIR">30.26</A>
+			<A name="FOR">218.27</A>
+			<A name="VOR">5.0</A>
+			<A name="gas_processing_path">Acid Wet Gas</A>
+			<A name="upgrader_type">Delayed coking</A>
+			<A name="frac_transport_pipeline">0.0</A>
+			<A name="transport_dist_tanker">7984.0</A>
+			<A name="transport_dist_barge">0</A>
+			<A name="transport_dist_pipeline">0</A>
+			<A name="transport_dist_rail">0</A>
+			<A name="transport_dist_truck">0</A>
+			<A name="ecosystem_richness">Low carbon</A>
+			<A name="field_development_intensity">Low</A>
+		</Field>
 	</Analysis>
 
-<!--	test gas lifting case-->
-	<Field name="test_gas_path_2">
-		<A name="country">USA</A>
-		<A name="water_reinjection">1</A>
-		<A name="downhole_pump">0</A>
-		<A name="natural_gas_reinjection">1</A>
-		<A name="gas_lifting">1</A>
-		<A name="depth">3937.0</A>
-		<A name="oil_prod">175000.0</A>
-		<A name="num_prod_wells">24</A>
-		<A name="num_water_inj_wells">20</A>
-		<A name="well_diam">8.0</A>
-		<A name="prod_index">90.90</A>
-		<A name="res_press">3655.0</A>
-		<A name="res_temp">141.0</A>
-		<A name="API">32.0</A>
-		<A name="GOR">584.29</A>
-		<A name="WOR">0.5</A>
-		<A name="WIR">1.5</A>
-		<A name="GLIR">30.26</A>
-		<A name="FOR">218.27</A>
-		<A name="VOR">5.0</A>
-		<A name="gas_processing_path">Acid Wet Gas</A>
-		<A name="upgrader_type">Delayed coking</A>
-		<A name="frac_transport_pipeline">0.0</A>
-		<A name="transport_dist_tanker">7984.0</A>
-		<A name="transport_dist_barge">0</A>
-		<A name="transport_dist_pipeline">0</A>
-		<A name="transport_dist_rail">0</A>
-		<A name="transport_dist_truck">0</A>
-		<A name="ecosystem_richness">Low carbon</A>
-		<A name="field_development_intensity">Low</A>
 
+	<Field name="template">
 		<Process class="After"/>
 
+		<Process class="Boundary" boundary="Production"/>
+		<Process class="Boundary" boundary="Transportation"/>
+		<Process class="Boundary" boundary="Distribution"/>
+
 		<ProcessChoice name="gas_processing_path">
+			<ProcessGroup name="None">
+				<ProcessRef name="GasGathering"/>
+				<StreamRef name="GasGathering => GasPartition"/>
+			</ProcessGroup>
+			<ProcessGroup name="Minimal">
+				<ProcessRef name="GasGathering"/>
+				<ProcessRef name="GasDehydration"/>
+				<StreamRef name="GasGathering => GasDehydration"/>
+				<StreamRef name="GasDehydration => GasPartition"/>
+			</ProcessGroup>
 			<ProcessGroup name="Acid Wet Gas">
+				<ProcessRef name="GasGathering"/>
+				<ProcessRef name="GasDehydration"/>
 				<ProcessRef name="AcidGasRemoval"/>
 				<ProcessRef name="Demethanizer"/>
-				<StreamRef name="gas dehydration to acid gas removal"/>
-				<StreamRef name="acid gas removal to demethanizer"/>
-				<StreamRef name="demethanizer to gas partition"/>
-				<StreamRef name="demethanizer to NGL"/>
+				<StreamRef name="GasGathering => GasDehydration"/>
+				<StreamRef name="GasDehydration => AcidGasRemoval"/>
+				<StreamRef name="AcidGasRemoval => Demethanizer"/>
+				<StreamRef name="Demethanizer => GasPartition"/>
+				<StreamRef name="Demethanizer => NGL"/>
 			</ProcessGroup>
+
 			<ProcessGroup name="Acid Gas">
+				<ProcessRef name="GasGathering"/>
+				<ProcessRef name="GasDehydration"/>
 				<ProcessRef name="AcidGasRemoval"/>
-				<StreamRef name="gas dehydration to acid gas removal"/>
-				<StreamRef name="acid gas removal to gas partition"/>
+				<StreamRef name="GasGathering => GasDehydration"/>
+				<StreamRef name="GasDehydration => AcidGasRemoval"/>
+				<StreamRef name="AcidGasRemoval => GasPartition"/>
 			</ProcessGroup>
+
 			<ProcessGroup name="Wet Gas">
+				<ProcessRef name="GasGathering"/>
+				<ProcessRef name="GasDehydration"/>
 				<ProcessRef name="Demethanizer"/>
-				<StreamRef name="gas dehydration to demethanizer"/>
-				<StreamRef name="demethanizer to gas partition"/>
-				<StreamRef name="demethanizer to NGL"/>
+				<StreamRef name="GasGathering => GasDehydration"/>
+				<StreamRef name="GasDehydration => Demethanizer"/>
+				<StreamRef name="Demethanizer => GasPartition"/>
+				<StreamRef name="Demethanizer => NGL"/>
 			</ProcessGroup>
+
 			<ProcessGroup name="CO2-EOR Ryan Holmes">
+				<ProcessRef name="GasGathering"/>
+				<ProcessRef name="GasDehydration"/>
 				<ProcessRef name="RyanHolmes"/>
 				<ProcessRef name="CO2ReinjectionCompressor"/>
 				<ProcessRef name="CO2InjectionWell"/>
-				<StreamRef name="gas dehydration to Ryan-Holmes"/>
-				<StreamRef name="Ryan-Holmes to CO2 reinjection compressor"/>
-				<StreamRef name="Ryan-Holmes to gas partition"/>
-				<StreamRef name="Ryan-Holmes to NGL"/>
-				<StreamRef name="CO2 reinjection compressor to CO2 injection well"/>
-				<StreamRef name="flooding CO2"/>
-<!--				<StreamRef name="CO2 injection well to reservoir"/>-->
-				
+				<StreamRef name="GasGathering => GasDehydration"/>
+				<StreamRef name="GasDehydration => RyanHolmes"/>
+				<StreamRef name="RyanHolmes => CO2ReinjectionCompressor"/>
+				<StreamRef name="RyanHolmes => GasPartition"/>
+				<StreamRef name="RyanHolmes => NGL"/>
+				<StreamRef name="CO2ReinjectionCompressor => CO2InjectionWell"/>
+				<StreamRef name="CO2InjectionWell => ReservoirWellInterface"/>
 			</ProcessGroup>
+
 			<ProcessGroup name="Sour Gas Reinjection">
+				<ProcessRef name="GasGathering"/>
+				<ProcessRef name="GasDehydration"/>
 				<ProcessRef name="SourGasCompressor"/>
 				<ProcessRef name="SourGasInjection"/>
-				<StreamRef name="gas dehydration to sour gas compressor"/>
-				<StreamRef name="sour gas compressor to sour gas injection"/>
-<!--				<StreamRef name="sour gas injection to reservoir"/>-->
-
+				<StreamRef name="GasGathering => GasDehydration"/>
+				<StreamRef name="GasDehydration => SourGasCompressor"/>
+				<StreamRef name="SourGasCompressor => SourGasInjection"/>
 			</ProcessGroup>
 
 			<ProcessGroup name="CO2-EOR Membrane">
+				<ProcessRef name="GasGathering"/>
+				<ProcessRef name="GasDehydration"/>
 				<ProcessRef name="PreMembraneChiller"/>
 				<ProcessRef name="PreMembraneCompressor"/>
 				<ProcessRef name="CO2Membrane"/>
@@ -94,57 +128,85 @@
 				<ProcessRef name="CO2ReinjectionCompressor"/>
 				<ProcessRef name="CO2InjectionWell"/>
 				<ProcessRef name="Demethanizer"/>
-				<StreamRef name="gas dehydration to pre membrane chiller"/>
-				<StreamRef name="pre membrane chiller to pre membrane compressor"/>
-				<StreamRef name="pre membrane compressor to CO2 membrane"/>
-				<StreamRef name="CO2 membrane to acid gas removal"/>
-				<StreamRef name="CO2 membrane to CO2 reinjection compressor"/>
-				<StreamRef name="acid gas removal to CO2 reinjection compressor"/>
-				<StreamRef name="CO2 reinjection compressor to CO2 injection well"/>
-				<StreamRef name="flooding CO2"/>
-<!--				<StreamRef name="CO2 injection well to reservoir"/>-->
-				<StreamRef name="acid gas removal to demethanizer"/>
-				<StreamRef name="demethanizer to gas partition"/>
+				<StreamRef name="GasGathering => GasDehydration"/>
+				<StreamRef name="GasDehydration => PreMembraneChiller"/>
+				<StreamRef name="PreMembraneChiller => PreMembraneCompressor"/>
+				<StreamRef name="PreMembraneCompressor => CO2Membrane"/>
+				<StreamRef name="CO2Membrane => AcidGasRemoval"/>
+				<StreamRef name="CO2Membrane => CO2ReinjectionCompressor"/>
+				<StreamRef name="CO2Membrane => CO2ReinjectionCompressor"/>
+				<StreamRef name="CO2ReinjectionCompressor => CO2InjectionWell"/>
+				<StreamRef name="CO2InjectionWell => ReservoirWellInterface"/>
+				<StreamRef name="AcidGasRemoval => Demethanizer"/>
+				<StreamRef name="Demethanizer => GasPartition"/>
+				<StreamRef name="Demethanizer => NGL"/>
 			</ProcessGroup>
+		</ProcessChoice>
 
+		<ProcessChoice name="common_gas_process_choice">
+			<ProcessGroup name="All">
+				<ProcessRef name="GasPartition"/>
+				<ProcessRef name="GasLiftingCompressor"/>
+				<ProcessRef name="GasReinjectionCompressor"/>
+				<ProcessRef name="TransmissionCompressor"/>
+				<ProcessRef name="GasReinjectionWell"/>
+				<ProcessRef name="StorageCompressor"/>
+				<ProcessRef name="LNGLiquefaction"/>
+				<ProcessRef name="GasDistribution"/>
+				<ProcessRef name="LNGRegasification"/>
+				<ProcessRef name="LNGTransport"/>
+				<ProcessRef name="StorageWell"/>
+				<ProcessRef name="StorageSeparator"/>
+				<ProcessRef name="PostStorageCompressor"/>
+				<ProcessRef name="NGL"/>
+				<StreamRef name="CO2Membrane => CO2ReinjectionCompressor"/>
+				<StreamRef name="GasPartition => GasReinjectionCompressor"/>
+				<StreamRef name="GasPartition => TransmissionCompressor"/>
+				<StreamRef name="GasPartition => ProductionBoundary"/>
+				<StreamRef name="GasLiftingCompressor => DownholePump"/>
+				<StreamRef name="GasReinjectionCompressor => GasReinjectionWell"/>
+				<StreamRef name="transmission gas for storage"/>
+				<StreamRef name="transmission gas for LNG"/>
+				<StreamRef name="transmission gas for distribution"/>
+				<StreamRef name="GasReinjectionWell => Reservoir"/>
+			</ProcessGroup>
 		</ProcessChoice>
 
 		<ProcessChoice name="oil_processing_path">
-
 			<ProcessGroup name="Stabilization">
 				<ProcessRef name="CrudeOilStabilization"/>
 				<ProcessRef name="CrudeOilStorage"/>
-				<StreamRef name="crude oil dewatering to crude oil stabilization"/>
-				<StreamRef name="crude oil stabilization to crude oil storage"/>
+				<StreamRef name="CrudeOilDewatering => CrudeOilStabilization"/>
+				<StreamRef name="CrudeOilStabilization => CrudeOilStorage"/>
 			</ProcessGroup>
 
 			<ProcessGroup name="Storage">
 				<ProcessRef name="CrudeOilStorage"/>
-				<StreamRef name="crude oil dewatering to crude oil storage"/>
+				<StreamRef name="CrudeOilDewatering => CrudeOilStorage"/>
 			</ProcessGroup>
 
 			<ProcessGroup name="Upgrading">
 				<ProcessRef name="HeavyOilUpgrading"/>
-				<StreamRef name="crude oil dewatering to heavy oil upgrading"/>
-				<StreamRef name="heavy oil upgrading to flaring"/>
+				<ProcessRef name="CrudeOilStorage"/>
+				<StreamRef name="CrudeOilDewatering => HeavyOilUpgrading"/>
 			</ProcessGroup>
 
 			<ProcessGroup name="Dilution">
 				<ProcessRef name="HeavyOilDilution"/>
-				<StreamRef name="crude oil dewatering to heavy oil dilution"/>
+				<ProcessRef name="CrudeOilStorage"/>
+				<StreamRef name="CrudeOilDewatering => HeavyOilDilution"/>
 			</ProcessGroup>
 		</ProcessChoice>
 
 		<Aggregator name="ExplorationAndDrilling">
-
 			<Process class="Exploration" after="true"/>
 			<Process class="Drilling" after="true"/>
 		</Aggregator>
 
 		<Aggregator name="ProductionExtraction">
-			<Process class="DownholePump" cycle-start="true"/>
+			<Process class="ReservoirWellInterface" cycle-start="true"/>
+			<Process class="DownholePump"/>
 			<Process class="CrudeOilStorage"/>
-			<Process class="GasLiftingCompressor"/>
 			<Process class="CO2ReinjectionCompressor"/>
 			<Process class="SourGasCompressor"/>
 			<Process class="CO2InjectionWell"/>
@@ -154,12 +216,20 @@
 			<Process class="CrudeOilStabilization"/>
 			<Process class="VRUCompressor"/>
 			<Process class="Venting"/>
+			<Process class="SourGasInjection"/>
+			<Process class="GasLiftingCompressor"/>
+			<Process class="GasReinjectionCompressor"/>
+			<Process class="WaterTreatment"/>
+			<Process class="BitumenMining"/>
+			<Process class="SteamGeneration"/>
+			<Process class="WaterInjection"/>
 		</Aggregator>
 
 		<Aggregator name="SurfaceProcessing">
 			<Process class="HeavyOilDilution"/>
 			<Process class="HeavyOilUpgrading"/>
 			<Process class="GasGathering"/>
+			<Process class="GasPartition"/>
 			<Process class="GasDehydration"/>
 			<Process class="AcidGasRemoval"/>
 			<Process class="Demethanizer"/>
@@ -167,263 +237,388 @@
 			<Process class="PreMembraneCompressor"/>
 			<Process class="CO2Membrane"/>
 			<Process class="RyanHolmes"/>
+			<Process class="GasReinjectionWell"/>
 		</Aggregator>
 
-		<Aggregator name="GasTransport">
-		</Aggregator>
+		<Aggregator name="TransportAndStorage">
+            <Process class="CrudeOilTransport"/>
+			<Process class="PetrocokeTransport"/>
+            <Process class="TransmissionCompressor"/>
+            <Process class="StorageCompressor"/>
+            <Process class="StorageWell"/>
+            <Process class="StorageSeparator"/>
+            <Process class="GasDistribution"/>
+            <Process class="PostStorageCompressor"/>
+        </Aggregator>
 
-		<Aggregator name="OilTransport">
-			<Process class="CrudeOilTransport"/>
-		</Aggregator>
+		<Aggregator name="LiquifiedNaturalGas">
+            <Process class="NGL"/>
+            <Process class="LNGLiquefaction"/>
+            <Process class="LNGRegasification"/>
+            <Process class="LNGTransport"/>
+        </Aggregator>
 
-		<Process class="ReservoirWellInterface"/>
-
-		<Process class="BitumenMining"/>
-
-		<Process class="HeavyOilUpgrading" enabled="false"/>
-		<Process class="HeavyOilDilution" enabled="false"/>
-
-		<Process class="WaterTreatment"/>
-		<Process class="NGL"/>
-		<Process class="GasPartition"/>
-		<Process class="SourGasInjection"/>
-		<Process class="GasLiftingCompressor"/>
-		<Process class="GasReinjectionCompressor"/>
-		<Process class="GasReinjectionWell"/>
-
-		<Process class="Boundary" boundary="Production"/>
-		<Process class="Boundary" boundary="Transportation"/>
-
-		<Stream src="Exploration" dst="Drilling" name="exploration to drilling">
+<!--		Mixture processing path-->
+		<Stream src="Exploration" dst="Drilling">
 			<Contains>None</Contains>
 		</Stream>
-		<Stream src="Separation" dst="CrudeOilDewatering" name="separator to crude oil dewatering">
+
+		<Stream src="Reservoir" dst="ReservoirWellInterface">
 			<Contains>crude oil</Contains>
 		</Stream>
 
-		<Stream src="CrudeOilDewatering" dst="WaterTreatment" name="crude oil dewatering to produced water treatment">
+		<Stream src="ReservoirWellInterface" dst="DownholePump">
+			<Contains>crude oil</Contains>
+		</Stream>
+
+		<Stream src="DownholePump" dst="Separation">
+			<Contains>crude oil</Contains>
+		</Stream>
+
+
+<!--		After separation-->
+		<Stream src="Separation" dst="CrudeOilDewatering">
+			<Contains>crude oil</Contains>
+		</Stream>
+
+		<Stream src="Separation" dst="WaterTreatment">
 			<Contains>water</Contains>
 		</Stream>
 
-		<Stream src="CrudeOilDewatering" dst="CrudeOilStabilization" name="crude oil dewatering to crude oil stabilization">
+		<Stream src="Separation" dst="Flaring">
+			<Contains>gas for flaring</Contains>
+		</Stream>
+
+		<Stream src="Separation" dst="Venting">
+			<Contains>gas for venting</Contains>
+		</Stream>
+
+		<Stream src="Separation" dst="GasGathering">
+			<Contains>gas for gas gathering</Contains>
+		</Stream>
+
+<!--		oil processing path-->
+		<Stream src="BitumenMining" dst="HeavyOilDilution">
+			<Contains>bitumen for dilution</Contains>
+		</Stream>
+
+		<Stream src="BitumenMining" dst="HeavyOilUpgrading">
+			<Contains>bitumen for upgrading</Contains>
+		</Stream>
+
+		<Stream src="CrudeOilDewatering" dst="WaterTreatment">
+			<Contains>water</Contains>
+		</Stream>
+
+		<Stream src="CrudeOilDewatering" dst="CrudeOilStabilization">
 			<Contains>oil for stabilization</Contains>
 		</Stream>
 
-		<Stream src="CrudeOilDewatering" dst="HeavyOilUpgrading" name="crude oil dewatering to heavy oil upgrading">
+		<Stream src="CrudeOilDewatering" dst="HeavyOilUpgrading">
 			<Contains>oil for upgrader</Contains>
 		</Stream>
 
-		<Stream src="CrudeOilDewatering" dst="HeavyOilDilution" name="crude oil dewatering to heavy oil dilution">
+		<Stream src="CrudeOilDewatering" dst="HeavyOilDilution">
 			<Contains>oil for dilution</Contains>
 		</Stream>
 
-		<Stream src="CrudeOilDewatering" dst="CrudeOilStorage" name="crude oil dewatering to crude oil storage">
+		<Stream src="CrudeOilDewatering" dst="CrudeOilStorage">
 			<Contains>oil for storage</Contains>
 		</Stream>
 
-		<Stream src="Separation" dst="WaterTreatment" name="separator to water treatment">
-			<Contains>water</Contains>
+		<Stream src="CrudeOilStabilization" dst="GasGathering">
+			<Contains>gas for gas gathering</Contains>
 		</Stream>
 
-		<Stream src="WaterTreatment" dst="After" name="water treatment to steam">
-			<Contains>water for steam generation</Contains>
-			<Contains>water for reinjection</Contains>
+		<Stream src="HeavyOilDilution" dst="CrudeOilStorage">
+			<Contains>oil for storage</Contains>
+		</Stream>
+
+		<Stream src="CrudeOilStabilization" dst="CrudeOilStorage">
+			<Contains>oil for storage</Contains>
+		</Stream>
+
+		<Stream src="CrudeOilStorage" dst="VRUCompressor">
+			<Contains>gas for VRU</Contains>
+		</Stream>
+
+		<Stream src="HeavyOilUpgrading" dst="Flaring">
+			<Contains>gas for flaring</Contains>
+		</Stream>
+
+		<Stream src="CrudeOilStorage" dst="Flaring">
+			<Contains>gas for flaring</Contains>
+		</Stream>
+
+		<Stream src="BitumenMining" dst="Flaring">
+			<Contains>gas for flaring</Contains>
+		</Stream>
+
+		<Stream src="BitumenMining" dst="VRUCompressor">
+			<Contains>gas for VRU</Contains>
+		</Stream>
+
+		<Stream src="HeavyOilUpgrading" dst="CrudeOilStorage">
+			<Contains>oil for storage</Contains>
+		</Stream>
+
+		<Stream src="HeavyOilUpgrading" dst="ProductionBoundary">
+			<Contains>petrocoke</Contains>
+		</Stream>
+
+		<Stream src="ProductionBoundary" dst="PetrocokeTransport">
+			<Contains>petrocoke</Contains>
+		</Stream>
+
+		<Stream src="CrudeOilStorage" dst="ProductionBoundary">
+			<Contains>oil</Contains>
+		</Stream>
+
+		<Stream src="ProductionBoundary" dst="CrudeOilTransport">
+			<Contains>oil</Contains>
+		</Stream>
+
+		<Stream src="CrudeOilTransport" dst="TransportationBoundary">
+			<Contains>oil</Contains>
+		</Stream>
+
+
+
+<!--		water processing path-->
+		<Stream src="WaterTreatment" dst="ProductionBoundary">
 			<Contains>water for surface disposal</Contains>
 			<Contains>water for subsurface disposal</Contains>
 		</Stream>
 
-		<Stream src="Separation" dst="Flaring" name="separation to flaring">
-			<Contains>gas for flaring</Contains>
+		<Stream src="WaterTreatment" dst="SteamGeneration">
+			<Contains>produced water for steam generation</Contains>
 		</Stream>
 
-		<Stream src="Flaring" dst="Venting" name="flaring to venting">
-			<Contains>gas</Contains>
+		<Stream src="WaterTreatment" dst="SteamGeneration" name="makeup water treatment">
+			<Contains>makeup water for steam generation</Contains>
 		</Stream>
 
-		<Stream src="Venting" dst="GasGathering" name="venting to gas gathering">
+		<Stream src="WaterTreatment" dst="WaterInjection" name="produced water treatment">
+			<Contains>produced water for water injection</Contains>
+		</Stream>
+
+		<Stream src="WaterTreatment" dst="WaterInjection">
+			<Contains>makeup water for water injection</Contains>
+		</Stream>
+
+		<Stream src="SteamGeneration" dst="WaterTreatment">
+			<Contains>water</Contains>
+		</Stream>
+
+		<Stream src="SteamGeneration" dst="ProductionBoundary">
+			<Contains>waste water</Contains>
+		</Stream>
+
+
+
+<!--		gas processing path-->
+		<Stream src="Flaring" dst="Venting">
+			<Contains>gas for venting</Contains>
+		</Stream>
+
+		<Stream src="Flaring" dst="GasGathering">
 			<Contains>gas for gas gathering</Contains>
 		</Stream>
 
-		<Stream src="CrudeOilStabilization" dst="GasGathering" name="crude oil stabilization to gas gathering">
+		<Stream src="Venting" dst="GasGathering">
 			<Contains>gas for gas gathering</Contains>
 		</Stream>
 
-		<Stream src="VRUCompressor" dst="GasGathering" name="VRU compressor to gas gathering">
+		<Stream src="VRUCompressor" dst="GasGathering">
 			<Contains>gas for gas gathering</Contains>
 		</Stream>
 
-		<Stream src="CrudeOilStabilization" dst="CrudeOilStorage" name="crude oil stabilization to crude oil storage">
-			<Contains>oil for storage</Contains>
+		<Stream src="GasGathering" dst="GasDehydration">
+			<Contains>gas for gas dehydration</Contains>
 		</Stream>
 
-		<Stream src="CrudeOilStorage" dst="ProductionBoundary" name="crude oil storage to production boundary">
-			<Contains>oil</Contains>
+		<Stream src="GasGathering" dst="GasPartition">
+			<Contains>gas for gas partition</Contains>
 		</Stream>
 
-		<Stream src="CrudeOilTransport" dst="After" name="crude oil transport to after">
-			<Contains>oil for refinery</Contains>
-		</Stream>
-
-		<Stream src="GasGathering" dst="GasDehydration" name="gas gathering to gas dehydration">
-			<Contains>gas</Contains>
-		</Stream>
-
-		<Stream src="GasDehydration" dst="AcidGasRemoval" name="gas dehydration to acid gas removal">
+		<Stream src="GasDehydration" dst="AcidGasRemoval">
 			<Contains>gas for AGR</Contains>
 		</Stream>
 
-		<Stream src="CrudeOilStorage" dst="VRUCompressor" name="crude oil storage to VRU compressor">
-			<Contains>gas for VRU</Contains>
-		</Stream>
-
-
-		<Stream src="ReservoirWellInterface" dst="DownholePump" name="reservoir well interface to downhole pump">
-			<Contains>crude oil</Contains>
-		</Stream>
-
-		<Stream src="Reservoir" dst="ReservoirWellInterface" name="reservoir to reservoir well interface">
-			<Contains>crude oil</Contains>
-		</Stream>
-
-		<Stream src="DownholePump" dst="Separation" name="downhole pump to separator">
-			<Contains>crude oil</Contains>
-		</Stream>
-
-		<Stream src="CO2InjectionWell" dst="ReservoirWellInterface" name="flooding CO2" impute="False">
+		<Stream src="CO2InjectionWell" dst="ReservoirWellInterface" impute="False">
 			<Contains>CO2</Contains>
 		</Stream>
 
-		<Stream src="CrudeOilStorage" dst="Flaring" name="crude oil storage to flaring">
-			<Contains>gas for flaring</Contains>
-		</Stream>
-
-		<Stream src="BitumenMining" dst="Flaring" name="bitumen mining to flaring">
-			<Contains>gas for flaring</Contains>
-		</Stream>
-
-		<Stream src="HeavyOilUpgrading" dst="Flaring" name="heavy oil upgrading to flaring">
-			<Contains>gas for flaring</Contains>
-		</Stream>
-
-		<Stream src="HeavyOilUpgrading" dst="ProductionBoundary" name="heavy oil upgrading to production boundary">
-			<Contains>petrocoke</Contains>
-		</Stream>
-
-		<Stream src="ProductionBoundary" dst="After" name="production boundary to petrocoke transport">
-			<Contains>petrocoke</Contains>
-		</Stream>
-
-		<Stream src="GasDehydration" dst="PreMembraneChiller" name="gas dehydration to pre membrane chiller">
+		<Stream src="GasDehydration" dst="PreMembraneChiller">
 			<Contains>gas for chiller</Contains>
 		</Stream>
 
-		<Stream src="PreMembraneChiller" dst="PreMembraneCompressor" name="pre membrane chiller to pre membrane compressor">
+		<Stream src="PreMembraneChiller" dst="PreMembraneCompressor">
 			<Contains>gas for compressor</Contains>
 		</Stream>
 
-		<Stream src="PreMembraneCompressor" dst="CO2Membrane" name="pre membrane compressor to CO2 membrane">
+		<Stream src="PreMembraneCompressor" dst="CO2Membrane">
 			<Contains>gas for CO2 membrane</Contains>
 		</Stream>
 
-
-		<Stream src="CO2Membrane" dst="AcidGasRemoval" name="CO2 membrane to acid gas removal">
+		<Stream src="CO2Membrane" dst="AcidGasRemoval">
 			<Contains>gas for AGR</Contains>
 		</Stream>
 
-		<Stream src="CO2Membrane" dst="CO2ReinjectionCompressor" name="CO2 membrane to CO2 reinjection compressor">
+		<Stream src="CO2Membrane" dst="CO2ReinjectionCompressor">
 			<Contains>gas for CO2 compressor</Contains>
 		</Stream>
 
-
-		<Stream src="AcidGasRemoval" dst="CO2ReinjectionCompressor" name="acid gas removal to CO2 reinjection compressor">
+		<Stream src="AcidGasRemoval" dst="CO2ReinjectionCompressor">
 			<Contains>gas for CO2 compressor</Contains>
 		</Stream>
 
-		<Stream src="AcidGasRemoval" dst="Demethanizer" name="acid gas removal to demethanizer">
+		<Stream src="AcidGasRemoval" dst="Demethanizer">
 			<Contains>gas for demethanizer</Contains>
 		</Stream>
 
-		<Stream src="AcidGasRemoval" dst="GasPartition" name="acid gas removal to gas partition">
+		<Stream src="AcidGasRemoval" dst="GasPartition">
 			<Contains>gas for gas partition</Contains>
 		</Stream>
 
-		<Stream src="GasDehydration" dst="RyanHolmes" name="gas dehydration to Ryan-Holmes">
+		<Stream src="GasDehydration" dst="RyanHolmes">
 			<Contains>gas for Ryan Holmes</Contains>
 		</Stream>
 
-
-		<Stream src="RyanHolmes" dst="GasPartition" name="Ryan-Holmes to gas partition">
+		<Stream src="RyanHolmes" dst="GasPartition">
 			<Contains>gas for gas partition</Contains>
 		</Stream>
 
-		<Stream src="RyanHolmes" dst="NGL" name="Ryan-Holmes to NGL">
+		<Stream src="RyanHolmes" dst="NGL">
 			<Contains>gas for NGL</Contains>
 		</Stream>
 
-		<Stream src="RyanHolmes" dst="CO2ReinjectionCompressor" name="Ryan-Holmes to CO2 reinjection compressor">
+		<Stream src="RyanHolmes" dst="CO2ReinjectionCompressor">
 			<Contains>gas for CO2 compressor</Contains>
 		</Stream>
 
-		<Stream src="CO2ReinjectionCompressor" dst="CO2InjectionWell" name="CO2 reinjection compressor to CO2 injection well">
+		<Stream src="CO2ReinjectionCompressor" dst="CO2InjectionWell">
 			<Contains>gas for CO2 injection well</Contains>
 		</Stream>
 
-		<Stream src="GasDehydration" dst="SourGasCompressor" name="gas dehydration to sour gas compressor">
+		<Stream src="CO2InjectionWell" dst="Reservoir" impute="false">
+			<Contains>gas for reservoir</Contains>
+		</Stream>
+
+		<Stream src="GasDehydration" dst="SourGasCompressor">
 			<Contains>gas for sour gas compressor</Contains>
 		</Stream>
 
-		<Stream src="SourGasCompressor" dst="SourGasInjection" name="sour gas compressor to sour gas injection">
+		<Stream src="SourGasCompressor" dst="SourGasInjection">
 			<Contains>gas for sour gas injection</Contains>
 		</Stream>
 
-		<Stream src="Demethanizer" dst="GasPartition" name="demethanizer to gas partition">
+		<Stream src="SourGasInjection" dst="Reservoir" impute="false">
+			<Contains>gas for reservoir</Contains>
+		</Stream>
+
+		<Stream src="Demethanizer" dst="GasPartition">
 			<Contains>gas for gas partition</Contains>
 		</Stream>
 
+		<Stream src="GasDehydration" dst="GasPartition">
+			<Contains>gas for gas partition</Contains>
+		</Stream>
 
-		<Stream src="Demethanizer" dst="NGL" name="demethanizer to NGL">
+		<Stream src="Demethanizer" dst="NGL">
 			<Contains>gas for NGL</Contains>
 		</Stream>
 
-<!--		Turn on the following path when AGR is not needed-->
-		<Stream src="GasDehydration" dst="Demethanizer" name="gas dehydration to demethanizer">
+		<Stream src="GasDehydration" dst="Demethanizer">
 			<Contains>gas for demethanizer</Contains>
 		</Stream>
 
-		<Stream src="GasPartition" dst="GasLiftingCompressor" name="gas partition to gas lifting compressor">
+		<Stream src="GasPartition" dst="GasLiftingCompressor">
 			<Contains>lifting gas</Contains>
 		</Stream>
 
-		<Stream src="GasLiftingCompressor" dst="DownholePump" name="gas lifting compressor to downhole pump" impute="False">
+		<Stream src="GasLiftingCompressor" dst="DownholePump" impute="False">
 			<Contains>lifting gas</Contains>
 		</Stream>
 
-
-		<Stream src="GasPartition" dst="GasReinjectionCompressor" name="gas partition to gas reinjection compressor">
+		<Stream src="GasPartition" dst="GasReinjectionCompressor">
 			<Contains>gas for gas reinjection compressor</Contains>
 		</Stream>
 
-		<Stream src="GasReinjectionCompressor" dst="GasReinjectionWell" name="gas reinjection compressor to gas reinjection well">
+		<Stream src="GasReinjectionCompressor" dst="GasReinjectionWell">
 			<Contains>gas for gas reinjection well</Contains>
 		</Stream>
 
-		<Stream src="GasPartition" dst="ProductionBoundary" name="gas partition to production boundary">
+		<Stream src="GasReinjectionWell" dst="Reservoir" impute="false">
+			<Contains>gas for reservoir</Contains>
+		</Stream>
+
+		<Stream src="GasPartition" dst="TransmissionCompressor">
+			<Contains>gas for transmission</Contains>
+		</Stream>
+
+		<Stream src="GasPartition" dst="ProductionBoundary">
 			<Contains>gas</Contains>
 		</Stream>
 
-		<Stream src="ProductionBoundary" dst="CrudeOilTransport" name="production boundary to crude oil transport">
-			<Contains>oil</Contains>
+		<Stream src="TransmissionCompressor" dst="TransportationBoundary" name="transmission gas for storage">
+			<Contains>gas for storage</Contains>
 		</Stream>
 
-		<Stream src="CrudeOilTransport" dst="TransportationBoundary" name="crude oil transport to transportation boundary">
-			<Contains>oil</Contains>
+		<Stream src="TransmissionCompressor" dst="TransportationBoundary" name="transmission gas for LNG">
+			<Contains>LNG</Contains>
 		</Stream>
 
-		<Stream src="TransportationBoundary" dst="After" name="transportation boundary to after">
-			<Contains>oil</Contains>
+		<Stream src="TransmissionCompressor" dst="TransportationBoundary" name="transmission gas for distribution">
+			<Contains>gas for distribution</Contains>
 		</Stream>
 
+		<Stream src="TransportationBoundary" dst="StorageCompressor">
+            <Contains>gas for storage</Contains>
+        </Stream>
+
+        <Stream src="TransportationBoundary" dst="LNGLiquefaction">
+            <Contains>LNG</Contains>
+        </Stream>
+
+        <Stream src="TransportationBoundary" dst="GasDistribution">
+            <Contains>gas for distribution</Contains>
+        </Stream>
+
+        <Stream src="StorageCompressor" dst="StorageWell">
+            <Contains>gas for well</Contains>
+        </Stream>
+
+        <Stream src="StorageWell" dst="StorageSeparator">
+            <Contains>gas for separator</Contains>
+        </Stream>
+
+        <Stream src="StorageSeparator" dst="PostStorageCompressor">
+            <Contains>gas for storage</Contains>
+        </Stream>
+
+        <Stream src="PostStorageCompressor" dst="GasDistribution">
+            <Contains>gas for distribution</Contains>
+        </Stream>
+
+        <Stream src="LNGLiquefaction" dst="LNGTransport">
+            <Contains>gas for transport</Contains>
+        </Stream>
+
+        <Stream src="LNGTransport" dst="LNGRegasification">
+            <Contains>gas</Contains>
+        </Stream>
+
+        <Stream src="LNGRegasification" dst="GasDistribution">
+            <Contains>gas for distribution</Contains>
+        </Stream>
+
+        <Stream src="GasDistribution" dst="DistributionBoundary">
+            <Contains>gas</Contains>
+        </Stream>
 
 	</Field>
+
+
 
 </Model>

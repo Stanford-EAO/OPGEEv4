@@ -6,14 +6,14 @@
 # Copyright (c) 2021-2022 The Board of Trustees of the Leland Stanford Junior University.
 # See LICENSE.txt for license details.
 #
+from .compressor import Compressor
+from .shared import get_energy_carrier
 from .. import ureg
 from ..core import TemperaturePressure
 from ..emissions import EM_COMBUSTION, EM_FUGITIVES
 from ..log import getLogger
 from ..process import Process
 from ..stream import Stream, PHASE_LIQUID, PHASE_GAS
-from .shared import get_energy_carrier
-from .compressor import Compressor
 
 _logger = getLogger(__name__)
 
@@ -31,14 +31,15 @@ class CrudeOilStabilization(Process):
         self.prime_mover_type = self.attr("prime_mover_type")
         self.eta_compressor = self.attr("eta_compressor")
         self.oil_sands_mine = field.attr("oil_sands_mine")
+        if self.oil_sands_mine != "None":
+            self.set_enabled(False)
+            return
 
     def run(self, analysis):
         self.print_running_msg()
         field = self.field
 
-        if self.oil_sands_mine != "None":
-            self.enabled = False
-            return
+
 
         # mass rate
         input = self.find_input_stream("oil for stabilization")

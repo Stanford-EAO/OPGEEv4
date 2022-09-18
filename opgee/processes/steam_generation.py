@@ -6,14 +6,14 @@
 # Copyright (c) 2021-2022 The Board of Trustees of the Leland Stanford Junior University.
 # See LICENSE.txt for license details.
 #
+from .shared import get_energy_consumption
 from ..core import TemperaturePressure
 from ..emissions import EM_COMBUSTION
 from ..energy import EN_NATURAL_GAS, EN_ELECTRICITY
 from ..error import BalanceError
+from ..error import OpgeeException
 from ..log import getLogger
 from ..process import Process
-from ..import_export import ImportExport
-from .shared import get_energy_consumption
 
 _logger = getLogger(__name__)
 
@@ -29,7 +29,7 @@ class SteamGeneration(Process):
         self.steam_flooding_check = field.attr("steam_flooding")
 
         if self.steam_flooding_check != 1:
-            self.enabled = False
+            self.set_enabled(False)
             return
 
         self.SOR = field.attr("SOR")
@@ -70,6 +70,9 @@ class SteamGeneration(Process):
         self.print_running_msg()
         self.set_iteration_value(0)
         field = self.field
+
+        if self.SOR.m == 0:
+            raise OpgeeException(f"Steam-oil-ratio is zero in the {self.name} process")
 
         # mass rate
         steam_injection_volume_rate = self.SOR * self.oil_volume_rate

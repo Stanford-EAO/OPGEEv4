@@ -7,8 +7,9 @@
 .. Copyright (c) 2015-2022 Richard Plevin
    See the https://opensource.org/licenses/MIT for license details.
 '''
-import pkgutil
 import io
+import pkgutil
+
 from .error import OpgeeException
 
 DFLT_ENCODING = 'utf-8'

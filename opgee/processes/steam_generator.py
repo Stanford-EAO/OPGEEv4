@@ -6,9 +6,10 @@
 # Copyright (c) 2021-2022 The Board of Trustees of the Leland Stanford Junior University.
 # See LICENSE.txt for license details.
 #
+import pandas as pd
+
 from opgee import ureg
 from opgee.core import OpgeeObject
-import pandas as pd
 
 
 class SteamGenerator(OpgeeObject):

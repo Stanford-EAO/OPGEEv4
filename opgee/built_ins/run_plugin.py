@@ -22,20 +22,26 @@ class RunCommand(SubcommandABC):
                             help='''Run only the specified analysis or analyses. Argument may be a 
                             comma-delimited list of Analysis names.''')
 
+        parser.add_argument('-c', '--save-comparison',
+                            help='''The name of a CSV file to which to save results suitable for 
+                                use with the "compare" subcommand.''')
+
         parser.add_argument('-f', '--fields', action=ParseCommaList,
                             help='''Run only the specified field or fields. Argument may be a 
-                            comma-delimited list of Field names. To specify a field within a specific Analysis,
-                            use the syntax "analysis_name.field_name". Otherwise the field will be run for each
-                            Analysis the field name occurs within (respecting the --analyses flag).''')
+                            comma-delimited list of Field names. To specify a field within a specific 
+                            Analysis, use the syntax "analysis_name.field_name". Otherwise the field 
+                            will be run for each Analysis the field name occurs within (respecting the
+                            --analyses flag).''')
 
         parser.add_argument('-i', '--ignore-errors', action='store_true',
                             help='''Keep running even if some fields raise errors when run''')
 
         parser.add_argument('-m', '--model-file', action='append',
-                            help='''XML model definition files to load. If --no_default_model is *not* specified,
-                            the built-in files etc/opgee.xml and etc/attributes.xml are loaded first, and the XML files specified 
-                            here will be merged with these. If --no_default_model is specified, only the given files are loaded;
-                            they are merged in the order stated.''')
+                            help='''XML model definition files to load. If --no_default_model is *not* 
+                                specified, the built-in files etc/opgee.xml and etc/attributes.xml are 
+                                loaded first, and the XML files specified here will be merged with these.
+                                If --no_default_model is specified, only the given files are loaded;
+                                they are merged in the order stated.''')
 
         parser.add_argument('-n', '--no-default-model', action='store_true',
                             help='''Don't load the built-in opgee.xml model definition.''')
@@ -45,8 +51,8 @@ class RunCommand(SubcommandABC):
                             and aggregators, for all fields run''')
 
         parser.add_argument('-p', '--processes',
-                            help='''Write CI output to specified CSV file for all processes, for all fields run, 
-                            rather than by top-level processes and aggregators (as with --output)''')
+                            help='''Write CI output to specified CSV file for all processes, for all fields 
+                                run, rather than by top-level processes and aggregators (as with --output)''')
 
         return parser
 
@@ -124,3 +130,6 @@ class RunCommand(SubcommandABC):
 
         if args.processes:
             model.save_results(selected_fields, args.processes, by_process=True)
+
+        if args.save_comparison:
+            model.save_for_comparison(selected_fields, args.save_comparison)

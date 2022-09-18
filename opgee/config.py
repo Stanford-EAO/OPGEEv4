@@ -5,9 +5,9 @@
 .. Copyright (c) 2015-2022 Richard Plevin
    See the https://opensource.org/licenses/MIT for license details.
 '''
+import configparser
 import os
 import platform
-import configparser
 
 from .error import ConfigFileError, OpgeeException
 from .pkg_utils import getResource

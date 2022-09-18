@@ -7,7 +7,9 @@
 # See LICENSE.txt for license details.
 #
 import os
+
 import pandas as pd
+
 from .core import OpgeeObject
 from .error import OpgeeException
 from .log import getLogger
@@ -55,12 +57,10 @@ class TableManager(OpgeeObject):
         TableDef("ryan-holmes-process", index_col=0, has_units=True),
         TableDef("imported-gas-comp", index_col=0, has_units=True),
         TableDef("upstream-CI", index_col=0, has_units=True),
-        TableDef("product-boundaries", index_col=0),
         TableDef("vertical-drilling-energy-intensity", index_col=[0,1], has_units=True),
         TableDef("horizontal-drilling-energy-intensity", index_col=[0,1], has_units=True),
         TableDef("fracture-consumption-table", index_col=0),
         TableDef("land-use-EF", index_col=[0,1], has_units=True),
-        TableDef("component-LHV", index_col=0, has_units=True),
         TableDef("pubchem-cid", index_col=0),
         TableDef("demethanizer", index_col=0, index_row=[0,1])
     ]

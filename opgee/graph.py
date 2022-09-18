@@ -7,9 +7,10 @@
 # See LICENSE.txt for license details.
 #
 import pydot
+
 from .core import OpgeeObject
-from .process import Process
 from .log import getLogger
+from .process import Process
 
 _logger = getLogger(__name__)
 

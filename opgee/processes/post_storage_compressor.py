@@ -6,13 +6,11 @@
 # Copyright (c) 2021-2022 The Board of Trustees of the Leland Stanford Junior University.
 # See LICENSE.txt for license details.
 #
+from .compressor import Compressor
+from .shared import get_energy_carrier
 from ..emissions import EM_COMBUSTION, EM_FUGITIVES
 from ..log import getLogger
 from ..process import Process
-from .compressor import Compressor
-from .shared import get_energy_carrier
-from ..core import STP
-from ..import_export import ImportExport
 
 _logger = getLogger(__name__)
 

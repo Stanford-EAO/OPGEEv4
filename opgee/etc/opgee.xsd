@@ -227,23 +227,25 @@
     </xs:complexType>
 	</xs:element>
 
-	<xs:element name='ProcessChoice'>
-    <xs:complexType>
-      <xs:choice maxOccurs='unbounded'>
+	<!-- use type forward reference to define recursive structure -->
+	<xs:element name="ProcessChoice" type="ProcessChoiceType"/>
+
+	<xs:complexType name="ProcessChoiceType">
+		<xs:choice maxOccurs="unbounded">
  				<xs:element minOccurs='1' ref='ProcessGroup'/>
-      </xs:choice>
-			<xs:attribute name='name' use='required' type='xs:string'/>
-			<xs:attribute name='extend' default='0' type='xs:boolean'/>
-			<xs:attribute name='default' type='xs:string'/>
-      <xs:attribute name='delete' type='xs:boolean'/>
-    </xs:complexType>
-  </xs:element>
+		</xs:choice>
+    <xs:attribute name='name' use='required' type='xs:string'/>
+    <xs:attribute name='extend' default='0' type='xs:boolean'/>
+    <xs:attribute name='default' type='xs:string'/>
+    <xs:attribute name='delete' type='xs:boolean'/>
+	</xs:complexType>
 
 	<xs:element name='ProcessGroup'>
     <xs:complexType>
       <xs:choice maxOccurs='unbounded'>
  				<xs:element minOccurs='1' ref='ProcessRef'/>
 				<xs:element minOccurs='0' ref='StreamRef'/>
+ 				<xs:element minOccurs='1' ref='ProcessChoice'/>
       </xs:choice>
 			<xs:attribute name='name' use='required' type='xs:string'/>
       <xs:attribute name='delete' type='xs:boolean'/>

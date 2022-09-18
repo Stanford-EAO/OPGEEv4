@@ -5,11 +5,12 @@
 # See LICENSE.txt for license details.
 #
 import re
+
 from .config import getParamAsList
 from .container import Container
 from .core import elt_name, OpgeeObject
-from .error import OpgeeException
 from .emissions import Emissions
+from .error import OpgeeException
 from .field import Field
 from .log import getLogger
 from .utils import getBooleanXML

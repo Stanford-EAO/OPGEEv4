@@ -6,9 +6,11 @@
 # Copyright (c) 2021-2022 The Board of Trustees of the Leland Stanford Junior University.
 # See LICENSE.txt for license details.
 #
-from copy import deepcopy
 import os
+from copy import deepcopy
 from pathlib import Path
+
+from .XMLFile import XMLFile
 from .attributes import AttrDefs
 from .config import getParam, unixPath
 from .error import OpgeeException, XmlFormatError
@@ -18,7 +20,6 @@ from .pkg_utils import resourceStream
 from .process import reload_subclass_dict
 from .stream import Stream
 from .utils import loadModuleFromPath, splitAndStrip
-from .XMLFile import XMLFile
 from .xml_utils import merge_elements, save_xml
 
 _logger = getLogger(__name__)

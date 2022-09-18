@@ -11,7 +11,6 @@ from ..emissions import EM_FUGITIVES
 from ..log import getLogger
 from ..process import Process
 from ..stream import PHASE_GAS
-from ..import_export import CRUDE_OIL
 from ..stream import Stream
 
 _logger = getLogger(__name__)
@@ -56,9 +55,12 @@ class CrudeOilStorage(Process):
 
         stp = field.stp
 
-        output_flare = self.find_output_stream("gas for flaring")
-        output_flare.set_rates_from_series(vapor_to_flare, PHASE_GAS)
-        output_flare.set_tp(stp)
+        output_flare = self.find_output_stream("gas for flaring", raiseError=False)
+        if output_flare:
+            output_flare.set_rates_from_series(vapor_to_flare, PHASE_GAS)
+            output_flare.set_tp(stp)
+        else:
+            output_flare = Stream("empty_stream", tp=stp)
 
         output_VRU = self.find_output_stream("gas for VRU")
         output_VRU.set_rates_from_series(vapor_to_VRU, PHASE_GAS)

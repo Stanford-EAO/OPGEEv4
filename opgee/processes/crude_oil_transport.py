@@ -1,9 +1,9 @@
-from ..emissions import EM_COMBUSTION
-from ..log import getLogger
-from ..process import Process
 from opgee.processes.transport_energy import TransportEnergy
 from .shared import get_energy_carrier
-from ..import_export import ImportExport, CRUDE_OIL
+from ..emissions import EM_COMBUSTION
+from ..import_export import CRUDE_OIL
+from ..log import getLogger
+from ..process import Process
 
 _logger = getLogger(__name__)
 

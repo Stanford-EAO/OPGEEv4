@@ -421,11 +421,11 @@ for this attribute.
 The ``<AttrDef>`` element supports several types of optional, declarative constraints
 in the form of attributes:
 
-* **synchronized** : the value of the attribute is the name of a "synchronization group"',
-  which can be any string. All the attributes declared to be in this group name must have
-  the same value.
+* **synchronized** : the value of the ``synchronized`` attribute is the name of
+  a "synchronization group"', which can be any string. All the attributes declared to be
+  in this group name must have the same value.
 
-* **exclusive** : the value of the attribute is the name of a "exclusive group"',
+* **exclusive** : the value of the ``exclusive`` attribute is the name of a "exclusive group"',
   which can be any string. All the attributes declared to be in this group must be
   binary attributes and only one of them may have a value of 1 (true).
 

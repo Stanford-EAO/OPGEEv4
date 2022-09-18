@@ -8,6 +8,7 @@
 #
 import numpy as np
 
+from .shared import get_energy_consumption
 from .. import ureg
 from ..emissions import EM_COMBUSTION, EM_FUGITIVES
 from ..energy import EN_NATURAL_GAS, EN_ELECTRICITY
@@ -16,7 +17,6 @@ from ..log import getLogger
 from ..process import Process
 from ..process import run_corr_eqns
 from ..thermodynamics import ChemicalInfo
-from .shared import get_energy_consumption
 
 _logger = getLogger(__name__)
 
@@ -47,7 +47,7 @@ class GasDehydration(Process):
         self.gas_path = field.attr("gas_processing_path")
 
         # TODO: update this after setting streams to use default names
-        self.gas_path_dict = {"None": "gas for gas partition",
+        self.gas_path_dict = {"Minimal": "gas for gas partition",
                               "Acid Gas": "gas for AGR",
                               "Acid Wet Gas": "gas for AGR",
                               "CO2-EOR Membrane": "gas for chiller",
@@ -60,7 +60,7 @@ class GasDehydration(Process):
         field = self.field
 
         # mass rate
-        input = self.find_input_stream("gas")
+        input = self.find_input_stream("gas for gas dehydration")
 
         if input.is_uninitialized():
             return

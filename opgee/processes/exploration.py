@@ -6,13 +6,13 @@
 # Copyright (c) 2021-2022 The Board of Trustees of the Leland Stanford Junior University.
 # See LICENSE.txt for license details.
 #
-from ..process import Process
-from ..log import getLogger
 from opgee import ureg
-from ..constants import year_to_day
-from ..energy import EN_DIESEL
-from ..emissions import EM_COMBUSTION
 from .transport_energy import TransportEnergy
+from ..constants import year_to_day
+from ..emissions import EM_COMBUSTION
+from ..energy import EN_DIESEL
+from ..log import getLogger
+from ..process import Process
 
 _logger = getLogger(__name__)
 
@@ -75,7 +75,7 @@ class Exploration(Process):
         ocean_tank_energy_intensity = field.get_process_data("ocean_tanker_dest_energy_intensity")
         truck_energy_intensity = field.get_process_data("energy_intensity_truck")
 
-        export_LHV = self.field.get_process_data("export_prod_LHV_sum")
+        export_LHV = field.get_process_data("exported_prod_LHV")
         cumulative_export_LHV = export_LHV * year_to_day * self.field_production_lifetime
         survey_vehicle_energy_consumption = \
             truck_energy_intensity * self.weight_land_survey * self.distance_survey if not self.offshore else \

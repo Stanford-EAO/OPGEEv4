@@ -1,9 +1,17 @@
-from ..emissions import EM_COMBUSTION
-from ..log import getLogger
-from ..process import Process
+#
+# LNGTransport class
+#
+# Author: Wennan Long
+#
+# Copyright (c) 2021-2022 The Board of Trustees of the Leland Stanford Junior University.
+# See LICENSE.txt for license details.
+#
 from opgee.processes.transport_energy import TransportEnergy
 from .shared import get_energy_carrier
-from ..import_export import ImportExport, NGL_LPG
+from ..emissions import EM_COMBUSTION
+from ..import_export import NGL_LPG
+from ..log import getLogger
+from ..process import Process
 
 _logger = getLogger(__name__)
 

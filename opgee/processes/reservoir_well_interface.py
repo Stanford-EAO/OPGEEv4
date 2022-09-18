@@ -13,7 +13,7 @@ from ..core import TemperaturePressure, STP
 from ..error import ModelValidationError
 from ..log import getLogger
 from ..process import Process
-from ..stream import Stream, PHASE_GAS
+from ..stream import PHASE_GAS
 
 _logger = getLogger(__name__)  # data logging
 
@@ -26,6 +26,9 @@ class ReservoirWellInterface(Process):
         self.res_tp = TemperaturePressure(field.attr("res_temp"),
                                           field.attr("res_press"))
         self.oil_sand_mine = field.attr("oil_sands_mine")
+        if self.oil_sand_mine != "None":
+            self.set_enabled(False)
+            return
 
         self.num_prod_wells = field.attr("num_prod_wells")
         self.productivity_index = field.attr("prod_index")
@@ -42,12 +45,12 @@ class ReservoirWellInterface(Process):
         self.print_running_msg()
         field = self.field
 
-        if self.oil_sand_mine != "None":
-            self.enabled = False
-            return
-
         # mass rate
         input = self.find_input_stream("crude oil")
+
+        if input.is_uninitialized():
+            return
+
         input.set_tp(self.res_tp)
 
         output = self.find_output_stream("crude oil")
@@ -108,7 +111,7 @@ class ReservoirWellInterface(Process):
         # reservoir and flowing pressures at wellbore interface
         prod_liquid_flowing_BHP = (input_stream.tp.P - fluid_rate_per_well / self.productivity_index).to("psia")
 
-        #TODO: replace line 112 and line 113 in the smart default
+        # TODO: replace line 112 and line 113 in the smart default
         if prod_liquid_flowing_BHP.m < 0:
             prod_liquid_flowing_BHP = ureg.Quantity(100, "psia")
 

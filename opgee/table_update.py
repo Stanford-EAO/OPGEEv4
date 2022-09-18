@@ -8,6 +8,7 @@
 #
 from .core import elt_name, XmlInstantiable, OpgeeObject
 
+
 class Cell(OpgeeObject):
 
     def __init__(self, row, col, value):
@@ -16,6 +17,7 @@ class Cell(OpgeeObject):
         self.row = row
         self.col = col
         self.value = value
+
 
 class TableUpdate(XmlInstantiable):
 

@@ -7,6 +7,7 @@
 # See LICENSE.txt for license details.
 #
 import pandas as pd
+
 from opgee import ureg
 from opgee.core import OpgeeObject
 from opgee.error import OpgeeException

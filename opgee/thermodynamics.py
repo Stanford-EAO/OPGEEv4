@@ -11,9 +11,7 @@ import math
 import pandas as pd
 import pint
 from pyXSteam.XSteam import XSteam
-import thermosteam
-from thermosteam import Chemical, Chemicals, Mixture, Thermo, Stream, MultiStream
-
+from thermosteam import Chemical, Mixture
 from . import ureg
 from .core import OpgeeObject, STP, TemperaturePressure
 from .error import ModelValidationError
@@ -713,7 +711,7 @@ class Oil(AbstractSubstance):
         :return:(float) liquid fuel composition (unit = mol/kg)
         """
         low_bound = 4
-        high_bound = 70  # 45   # TODO: changed temporarily to handle exported CSV field definitions
+        high_bound = 58 # 45   # TODO: changed temporarily to handle exported CSV field definitions
 
         if API.m < low_bound or API.m > high_bound:
             raise ModelValidationError(f"{API.m} is less than {low_bound} or greater than {high_bound}")

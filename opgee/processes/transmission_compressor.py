@@ -7,14 +7,13 @@
 # See LICENSE.txt for license details.
 #
 import math
-from ..core import STP, TemperaturePressure
+
+from .compressor import Compressor
+from .shared import get_energy_carrier
+from ..core import TemperaturePressure
 from ..emissions import EM_COMBUSTION, EM_FUGITIVES
 from ..log import getLogger
 from ..process import Process
-from ..stream import Stream
-from .compressor import Compressor
-from .shared import get_energy_carrier
-from ..import_export import ImportExport
 
 _logger = getLogger(__name__)
 

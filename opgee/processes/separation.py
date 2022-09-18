@@ -56,14 +56,13 @@ class Separation(Process):
         self.compressor_eff = self.attr("eta_compressor").to("frac")
 
         self.oil_sand_mine = field.attr("oil_sands_mine")
+        if self.oil_sand_mine != "None":
+            self.set_enabled(False)
+            return
 
     def run(self, analysis):
         self.print_running_msg()
         field = self.field
-
-        if self.oil_sand_mine != "None":
-            self.enabled = False
-            return
 
         # mass rate
         input = self.find_input_stream("crude oil")
@@ -71,17 +70,23 @@ class Separation(Process):
         loss_rate = self.venting_fugitive_rate()
         gas_fugitives = self.set_gas_fugitives(input, loss_rate)
 
-        gas_after = self.find_output_stream("gas for flaring")
-        # Check
+        gas_after = self.find_output_stream("gas for flaring", raiseError=False)
+        if gas_after is None:
+            gas_after = self.find_output_stream("gas for venting", raiseError=False)
+            if gas_after is None:
+                gas_after = self.find_output_stream("gas for gas gathering")
+
         gas_after.copy_gas_rates_from(input)
         gas_after.subtract_rates_from(gas_fugitives)
+
         self.set_iteration_value(gas_after.total_flow_rate())
 
         # energy rate
 
         free_gas_stages, final_GOR = self.get_free_gas_stages(self.field)  # (float, list) scf/bbl
         self.field.save_process_data(separator_final_SOR=final_GOR)
-        gas_compression_volume_stages = [(self.oil_volume_rate * free_gas).to("mmscf/day") for free_gas in free_gas_stages]
+        gas_compression_volume_stages = [(self.oil_volume_rate * free_gas).to("mmscf/day") for free_gas in
+                                         free_gas_stages]
         compressor_brake_horsepower_of_stages = self.compressor_brake_horsepower_of_stages(self.field,
                                                                                            gas_after,
                                                                                            gas_compression_volume_stages)
@@ -120,8 +125,7 @@ class Separation(Process):
         input.copy_flow_rates_from(output, tp=field.wellhead_tp)
         oil_LHV_rate = oil.energy_flow_rate(input)
         gas_LHV_rate = field.gas.energy_flow_rate(input)
-        field.save_process_data(wellhead_LHV_rate=gas_LHV_rate+oil_LHV_rate)
-
+        field.save_process_data(wellhead_LHV_rate=gas_LHV_rate + oil_LHV_rate)
 
     def get_stages_temperature_and_pressure(self):
 
@@ -138,7 +142,12 @@ class Separation(Process):
         gas = field.gas
         std_tp = field.stp
 
-        gas_after = self.find_output_stream("gas for flaring")
+        gas_after = self.find_output_stream("gas for flaring", raiseError=False)
+        if gas_after is None:
+            gas_after = self.find_output_stream("gas for venting", raiseError=False)
+            if gas_after is None:
+                gas_after = self.find_output_stream("gas for gas gathering")
+
         last = self.num_of_stages - 1
         stream = Stream("stage_stream", TemperaturePressure(temperature_of_stages[last],
                                                             pressure_of_stages[last]))
@@ -170,7 +179,6 @@ class Separation(Process):
         water_after = self.find_output_stream("water")
         water_after.set_liquid_flow_rate("H2O", water_mass_rate)
         water_after.set_tp(self.outlet_tp)
-
 
         return gas_after, oil_after, water_after
 
@@ -232,7 +240,7 @@ class Separation(Process):
                        gas_compression_volume_stages,
                        num_of_compression_stages):
             work_sum, _, _ = Compressor.get_compressor_work_temp(field, inlet_temp, inlet_press,
-                                                           gas_stream, compression_ratio, num_of_compression)
+                                                                 gas_stream, compression_ratio, num_of_compression)
             horsepower = work_sum * gas_compression_volume
             brake_horsepower = horsepower / self.compressor_eff
             brake_horsepower_of_stages.append(brake_horsepower)

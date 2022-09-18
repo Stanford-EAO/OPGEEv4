@@ -6,10 +6,12 @@
 '''
 from abc import ABCMeta, abstractmethod
 
+
 # Fixes help strings to display properly with sphinx-argparse
 def clean_help(s):
     lines = s.splitlines()
     return ' '.join(map(lambda s: s.strip(), lines))
+
 
 class SubcommandABC(object):
     """
@@ -31,7 +33,7 @@ class SubcommandABC(object):
     __metaclass__ = ABCMeta
 
     Instances = {}  # SubCommand instances keyed by name
-    Parsers = {}    # SubCommand parsers keyed by name
+    Parsers = {}  # SubCommand parsers keyed by name
 
     @classmethod
     def getInstance(cls, name):
@@ -50,14 +52,14 @@ class SubcommandABC(object):
         self.parser = parser = subparsers.add_parser(self.name, **kwargs)
         self.Instances[self.name] = self
 
-        self.optionInfo = {}    # OptionInfo instances keyed by option name
+        self.optionInfo = {}  # OptionInfo instances keyed by option name
         self.guiSuppress = guiSuppress
 
         # For grouping commands in the GUI. Set this in subclass' addArgs().
         # Set to None if the command should not be presented in the GUI.
         # Note: 'group' can be set as standalone var or in guiInfo['group'].
         self.group = group or 'main'
-        #self.group = group or (guiInfo.get('group') if guiInfo else 'main')
+        # self.group = group or (guiInfo.get('group') if guiInfo else 'main')
 
         self.addArgs(parser)
 
@@ -84,7 +86,7 @@ class SubcommandABC(object):
 
         :return: the populated parser
         """
-        pass    # pragma: no cover
+        pass  # pragma: no cover
 
     @abstractmethod
     def run(self, args, tool):
@@ -98,4 +100,4 @@ class SubcommandABC(object):
         :param tool: the GcamTool instance for the main command
         :return: nothing
         """
-        pass    # pragma: no cover
+        pass  # pragma: no cover

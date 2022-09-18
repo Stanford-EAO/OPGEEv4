@@ -12,7 +12,6 @@ from .. import ureg
 from ..emissions import EM_COMBUSTION, EM_FUGITIVES
 from ..log import getLogger
 from ..process import Process
-from ..import_export import ImportExport
 
 _logger = getLogger(__name__)
 
@@ -23,15 +22,14 @@ class GasLiftingCompressor(Process):
         self.field = field = self.get_field()
         self.gas = field.gas
         self.res_press = field.attr("res_press")
-        self.gas_lifting_option = field.attr("gas_lifting")
+        gas_lifting_option = field.attr("gas_lifting")
+        if not gas_lifting_option:
+            self.set_enabled(False)
+            return
 
     def run(self, analysis):
         self.print_running_msg()
         field = self.field
-
-        if not self.gas_lifting_option:
-            self.enabled = False
-            return
 
         # mass rate
         input = self.find_input_stream("lifting gas")

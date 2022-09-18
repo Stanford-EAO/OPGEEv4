@@ -7,6 +7,7 @@
 # See LICENSE.txt for license details.
 #
 from collections import OrderedDict
+
 from .core import XmlInstantiable, elt_name, instantiate_subelts
 from .error import OpgeeException
 from .log import getLogger
@@ -25,7 +26,7 @@ class ProcessChoice(XmlInstantiable):
         self.extend = extend
         self.default = default
 
-        # store the groups in a dict for fast lookup, maintaining order for display
+        # store the groups in a dict for fast lookup, but maintain order for display
         self.groups_dict = OrderedDict()
         for group in groups:
             self.groups_dict[group.name.lower()] = group
@@ -59,7 +60,7 @@ class ProcessChoice(XmlInstantiable):
         extend = getBooleanXML(a.get('extend', 'false'))
         default = a.get('default')
 
-        groups = instantiate_subelts(elt, ProcessGroup)
+        groups  = instantiate_subelts(elt, ProcessGroup)
 
         obj = ProcessChoice(name, groups, extend, default)
         return obj
@@ -70,11 +71,14 @@ class ProcessGroup(XmlInstantiable):
     Contains a set of `ProcessRef` and `StreamRef` instances defining one coherent
     choice of Processes.
     """
-    def __init__(self, name, process_refs, stream_refs):
+    def __init__(self, name, process_refs, stream_refs, choices):
         super().__init__(name)
 
         self.process_refs = process_refs
         self.stream_refs = stream_refs
+
+        # Nested process choices, if any
+        self.process_choice_dict = {choice.name.lower(): choice for choice in choices}
 
     def process_and_stream_refs(self):
         """
@@ -106,4 +110,6 @@ class ProcessGroup(XmlInstantiable):
         process_refs = [elt_name(node) for node in elt.findall('ProcessRef')]
         stream_refs  = [elt_name(node) for node in elt.findall('StreamRef')]
 
-        return ProcessGroup(name, process_refs, stream_refs)
+        choices = instantiate_subelts(elt, ProcessChoice)   # nested choices
+
+        return ProcessGroup(name, process_refs, stream_refs, choices)

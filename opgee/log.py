@@ -14,8 +14,9 @@
 .. Copyright (c) 2016-2022 Richard Plevin
    See the https://opensource.org/licenses/MIT for license details.
 """
-import os
 import logging
+import os
+
 from .config import getParam, getParamAsBoolean, configLoaded
 
 PKGNAME = __name__.split('.')[0]

@@ -8,11 +8,11 @@
    See the https://opensource.org/licenses/MIT for license details.
 '''
 import argparse
-from glob import glob
 import os
 import sys
-from .config import (pathjoin, getParam, getConfig, getParamAsBoolean, getParamAsFloat,
-                     setParam, getSection, setSection, getSections)
+from glob import glob
+
+from .config import (pathjoin, getParam, getConfig, getParamAsBoolean, setParam, getSection, setSection)
 from .error import OpgeeException, CommandlineError
 from .log import setLogLevels, configureLogs
 from .subcommand import clean_help
@@ -20,8 +20,8 @@ from .version import VERSION
 
 PROGRAM = 'opg'
 
-class Opgee(object):
 
+class Opgee(object):
     # plugin instances by command name
     _plugins = {}
 
@@ -123,7 +123,7 @@ class Opgee(object):
         #                     help=clean_help('''Specify a name for the queued batch job. Default is "gt".
         #                     (Linux only)'''))
 
-        logLevel = str(getParam('OPGEE.LogLevel'))   # so not unicode
+        logLevel = str(getParam('OPGEE.LogLevel'))  # so not unicode
         parser.add_argument('--logLevel',
                             default=logLevel,
                             help=clean_help('''Sets the log level for modules of the program. A default
@@ -142,13 +142,12 @@ class Opgee(object):
         parser.add_argument('--verbose', action='store_true',
                             help=clean_help('''Show diagnostic output'''))
 
-        parser.add_argument('--version', action='version', version=VERSION)   # goes to stderr, handled by argparse
+        parser.add_argument('--version', action='version', version=VERSION)  # goes to stderr, handled by argparse
 
-        parser.add_argument('--VERSION', action='store_true')   # goes to stdout, but handled by gt
+        parser.add_argument('--VERSION', action='store_true')  # goes to stdout, but handled by gt
 
         self.subparsers = self.parser.add_subparsers(dest='subcommand', title='Subcommands',
-                               description='''For help on subcommands, use the "-h" flag after the subcommand name''')
-
+                                                     description='''For help on subcommands, use the "-h" flag after the subcommand name''')
 
     def instantiatePlugin(self, pluginClass):
         plugin = pluginClass(self.subparsers)
@@ -160,7 +159,7 @@ class Opgee(object):
         if not pluginPath:
             return []
 
-        sep = os.path.pathsep           # ';' on Windows, ':' on Unix
+        sep = os.path.pathsep  # ';' on Windows, ':' on Unix
         items = pluginPath.split(sep)
 
         return items
@@ -190,7 +189,7 @@ class Opgee(object):
         # sub-command so we can load the module if necessary.
         parser = argparse.ArgumentParser(prog=PROGRAM, add_help=False, prefix_chars='-+')
         parser.add_argument('-h', '--help', action='store_true')
-        #parser.add_argument('+P', '--projectName', metavar='name')
+        # parser.add_argument('+P', '--projectName', metavar='name')
 
         ns, otherArgs = parser.parse_known_args(args=argv)
 
@@ -218,7 +217,7 @@ class Opgee(object):
 
         # checkWindowsSymlinks() # not needed for opgee
 
-        if argList is not None:         # might be called with empty list of subcmd args
+        if argList is not None:  # might be called with empty list of subcmd args
             # called recursively
             self._loadRequiredPlugins(argList)
             args = self.parser.parse_args(args=argList)
@@ -226,7 +225,7 @@ class Opgee(object):
         else:  # top-level call
             args.projectName = section = getParam('OPGEE.DefaultProject')
             if section:
-                 setSection(section)
+                setSection(section)
 
             logLevel = args.logLevel or getParam('OPGEE.LogLevel')
             if logLevel:
@@ -239,6 +238,7 @@ class Opgee(object):
 
         obj.run(args, self)
 
+
 def _getMainParser():
     '''
     Used only to generate documentation by sphinx' argparse, in which case
@@ -247,6 +247,7 @@ def _getMainParser():
     getConfig(allowMissing=True, systemConfigOnly=True)
     tool = Opgee.getInstance(loadPlugins=False)
     return tool.parser
+
 
 # may not be needed in opgee
 # def checkWindowsSymlinks():
@@ -278,6 +279,7 @@ def _showVersion(argv):
         print(VERSION)
         sys.exit(0)
 
+
 def _main(argv=None):
     getConfig(createDefault=True)
 
@@ -306,6 +308,7 @@ def _main(argv=None):
     args = tool.parser.parse_args(args=otherArgs)
     tool.run(args=args)
 
+
 def opg(cmdline):
     """
     A function that mimics the "opg" command-line, taking a command-line string that
@@ -318,6 +321,7 @@ def opg(cmdline):
 
     argv = shlex.split(cmdline)
     main(argv)
+
 
 def main(argv=None, raiseError=False):
     try:

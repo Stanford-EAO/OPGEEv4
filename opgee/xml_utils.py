@@ -7,9 +7,11 @@
 '''
 from copy import deepcopy
 from io import StringIO
+
 from lxml import etree as ET
-from .log import getLogger
+
 from .error import OpgeeException
+from .log import getLogger
 
 _logger = getLogger(__name__)
 

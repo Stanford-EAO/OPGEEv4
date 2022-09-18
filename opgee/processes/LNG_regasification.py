@@ -1,8 +1,15 @@
+#
+# LNGRegasification class
+#
+# Author: Wennan Long
+#
+# Copyright (c) 2021-2022 The Board of Trustees of the Leland Stanford Junior University.
+# See LICENSE.txt for license details.
+#
+from .shared import get_energy_carrier, get_energy_consumption
+from ..emissions import EM_COMBUSTION
 from ..log import getLogger
 from ..process import Process
-from .shared import get_energy_carrier, get_energy_consumption
-from ..emissions import EM_COMBUSTION, EM_FUGITIVES
-from ..import_export import ImportExport
 
 _logger = getLogger(__name__)
 
