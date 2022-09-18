@@ -823,8 +823,9 @@ class MultiOil(AbstractSubstance):
         return gas_SG
 
     @staticmethod
-    def specific_gravity(API_grav):
-        result = 141.5 / (API_grav.m + 131.5)
+    def specific_gravity(self):
+        #result = 141.5 / (API_grav.m + 131.5)
+        result = self.density().m/62.316
         return ureg.Quantity(result, "frac")
 
     def bubble_point_pressure(self):
@@ -854,6 +855,9 @@ class MultiOil(AbstractSubstance):
         """
         s1 = MultiStream("s1", thermo=self.therm)
         s1.copy_like(self.s0)
+        s1.show()
+
+        print(s1.phase)  # l
 
         t = self.res_tp.T.to('K').m if T is None else T.to('K').m
         p = self.res_tp.P.to('Pa').m if P is None else P.to('Pa').m
@@ -1024,20 +1028,18 @@ class MultiOil(AbstractSubstance):
         return result
 
     @staticmethod
-    def liquid_fuel_composition(API):
+    def liquid_fuel_composition(self):
         """
         calculate Carbon, Hydrogen, Sulfur, Nitrogen mol per crude oil
         reference: Fuel Specs, Table Crude oil chemical composition
 
         :return:(float) liquid fuel composition (unit = mol/kg)
         """
-        if API.m < 4 or API.m > 45:
-            raise OpgeeException(f"{API.m} is less than 4 or greater than 45")
-
-        carbon_mol_percent = None
-        sulfur_mol_percent = None
-        hydrogen_mol_percent = None
-        nitrogen_mol_percent = None
+        #kmol/hr / kg/hr
+        carbon_mol_percent = self.s0.get_atomic_flow('C') / self.s0.F_mass *1000
+        sulfur_mol_percent = self.s0.get_atomic_flow('S') / self.s0.F_mass *1000
+        hydrogen_mol_percent = self.s0.get_atomic_flow('H') / self.s0.F_mass *1000
+        nitrogen_mol_percent = self.s0.get_atomic_flow('N') / self.s0.F_mass *1000
 
         return pd.Series([carbon_mol_percent, sulfur_mol_percent, hydrogen_mol_percent, nitrogen_mol_percent],
                          index=["C", "S", "H", "N"], dtype="pint[mol/kg]")

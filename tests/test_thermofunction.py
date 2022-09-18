@@ -44,19 +44,20 @@ def test_bubble_point_solution_GOR(oil_instance):
 #       GOR from input is separator, this is bubble point???
 def test_bubble_point_solution_GOR_mo(moil_instance):
     GOR = moil_instance.gas_oil_ratio
-      gor_bubble = moil_instance.bubble_point_solution_GOR(GOR)
+    gor_bubble = moil_instance.bubble_point_solution_GOR(GOR)
     assert gor_bubble == ureg.Quantity(pytest.approx(2429.299), "scf/bbl_oil")
 
 
 # 2 OIL SPECIFIC GRAVITY
 def test_oil_specific_gravity(oil_instance):
     oil_SG = oil_instance.specific_gravity(oil_instance.API)
+    print(oil_instance.oil_specific_gravity.m)
     assert oil_SG == ureg.Quantity(pytest.approx(oil_instance.oil_specific_gravity.m), "frac")
 
 
 def test_oil_specific_gravity_mo(moil_instance):
-    oil_SG = moil_instance.specific_gravity(moil_instance.API)
-    assert oil_SG == ureg.Quantity(pytest.approx(moil_instance.oil_specific_gravity.m), "frac")
+    oil_SG = moil_instance.specific_gravity(moil_instance)
+    assert oil_SG == ureg.Quantity(0.409698877, "frac")
 
 
 # 5 RESERVOIR SOLUTION GOR
@@ -87,7 +88,7 @@ def test_bubble_point_pressure(oil_instance):
 def test_bubble_point_pressure_mo(moil_instance):
     # self.res_tp 200.0 °F 1556.6 psia
     p_bubblepoint = moil_instance.bubble_point_pressure()
-    assert p_bubblepoint == ureg.Quantity(pytest.approx(0.244140214), "psia")
+    assert p_bubblepoint == ureg.Quantity(pytest.approx(0.314085636), "psia")
 
 
 # 4 SOLUTION GOR
@@ -195,7 +196,7 @@ def test_oil_density(oil_instance):
 
 def test_oil_density_mo(moil_instance):
     density = moil_instance.density()
-    assert density == ureg.Quantity(pytest.approx(24.156075), "lb/ft**3")
+    assert density == ureg.Quantity(pytest.approx(25.5307952), "lb/ft**3")
 
 
 # 14 OIL MASS ENERGY DENSITY
@@ -206,7 +207,7 @@ def test_oil_mass_energy_density(oil_instance):
 
 def test_oil_mass_energy_density_mo(moil_instance):
     mass_energy_density = moil_instance.oil_LHV_mass
-    assert mass_energy_density == ureg.Quantity(pytest.approx(19144.420), "btu/lb")
+    assert mass_energy_density == ureg.Quantity(pytest.approx(19023.2489), "btu/lb")
 
 
 # 13 OIL VOLUME FLOW RATE
@@ -222,7 +223,7 @@ def test_oil_volume_flow_rate(oil_instance):
 
 def test_oil_volume_flow_rate_mo(moil_instance):
     volume_flow_rate = moil_instance.volume_flow_rate(total_flow = 276.534764)
-    assert volume_flow_rate == ureg.Quantity(pytest.approx(3073.314063), "bbl_oil/day")
+    assert volume_flow_rate == ureg.Quantity(pytest.approx(2907.69978), "bbl_oil/day")
 
 
 # 15 OIL VOLUME ENERGY DENSITY
@@ -237,7 +238,7 @@ def test_oil_volume_energy_density(oil_instance):
 
 def test_oil_volume_energy_density_mo(moil_instance):
     volume_energy_density = moil_instance.volume_energy_density()
-    assert volume_energy_density == ureg.Quantity(pytest.approx(1.94736551), "mmBtu/bbl_oil")
+    assert volume_energy_density == ureg.Quantity(pytest.approx(2.04516254), "mmBtu/bbl_oil")
 
 
 # 16 OIL ENERGY FLOW RATE
@@ -250,7 +251,7 @@ def test_oil_energy_flow_rate(oil_instance):
 
 def test_oil_energy_flow_rate_mo(moil_instance):
     energy_flow_rate = moil_instance.energy_flow_rate(total_flow=273.831958)
-    assert energy_flow_rate == ureg.Quantity(pytest.approx(10484.2422), "mmbtu/day")
+    assert energy_flow_rate == ureg.Quantity(pytest.approx(10417.852), "mmbtu/day")
 
 
 # 17 OIL HEAT CAPACITY
@@ -265,7 +266,7 @@ def test_oil_heat_capacity_mo(moil_instance):
     temp = ureg.Quantity(127.5, "degF")
     heat_capacity = moil_instance.specific_heat(moil_instance, temp)
     print(heat_capacity)
-    assert heat_capacity == ureg.Quantity(pytest.approx(0.561461258), "btu/lb/degF")
+    assert heat_capacity == ureg.Quantity(pytest.approx(0.552258379), "btu/lb/degF")
 
 
 # 18 LIQUID FUEL COMP
@@ -276,9 +277,8 @@ def test_liquid_fuel_comp(oil_instance):
 
 
 def test_liquid_fuel_comp_mo(moil_instance):
-    API = ureg.Quantity(10, "degAPI")
-    liquid_fuel_comp = moil_instance.liquid_fuel_composition(API)
-    assert liquid_fuel_comp["C"] == ureg.Quantity(pytest.approx(71.432), "mol/kg")
+    liquid_fuel_comp = moil_instance.liquid_fuel_composition(moil_instance)
+    assert liquid_fuel_comp["C"] == ureg.Quantity(pytest.approx(70.2599812), "mol/kg")
 
 
 @pytest.fixture
