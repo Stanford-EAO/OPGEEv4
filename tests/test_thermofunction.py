@@ -18,61 +18,38 @@ def moil_instance(test_model):
     return field.m_oil
 
 
-def test_thermos():
-    chem = Chemical('C18')
-    print(chem.show())
+# 0 GOR calculated from chemical composition
+def test_gor_mo(moil_instance):
+    gor = moil_instance._gas_oil_ratio()
+    assert gor == ureg.Quantity(pytest.approx(77.5, rel=1e-1), 'scf/bbl')
+
+# 0 API calc
+def test_api_mo(moil_instance):
+    api = moil_instance._API()
+    assert api == ureg.Quantity(pytest.approx(67.9, rel=1e-1), "frac")
 
 
 # 1 GAS SPECIFIC GRAVITY
 def test_gas_specific_gravity(oil_instance):
     gas_SG = oil_instance.gas_specific_gravity
-    assert gas_SG == ureg.Quantity(pytest.approx(0.622999935), "frac")
+    assert gas_SG == ureg.Quantity(pytest.approx(0.62,rel=1e-2), "frac")
 
 
 def test_gas_specific_gravity_mo(moil_instance):
     gas_SG = moil_instance.gas_specific_gravity
-    assert gas_SG == ureg.Quantity(pytest.approx(62.2999935), "percent")
-
-
-# 6 BUBBLE POINT SOLUTION GOR
-def test_bubble_point_solution_GOR(oil_instance):
-    GOR = oil_instance.gas_oil_ratio
-    gor_bubble = oil_instance.bubble_point_solution_GOR(GOR)
-    assert gor_bubble == ureg.Quantity(pytest.approx(2822.361), "scf/bbl_oil")
-
-# mo: run-able, but returns 0; should this be same implementation with Oil as well?
-#       GOR from input is separator, this is bubble point???
-def test_bubble_point_solution_GOR_mo(moil_instance):
-    GOR = moil_instance.gas_oil_ratio
-    gor_bubble = moil_instance.bubble_point_solution_GOR(GOR)
-    assert gor_bubble == ureg.Quantity(pytest.approx(2429.299), "scf/bbl_oil")
+    assert gas_SG == ureg.Quantity(pytest.approx(1.57,rel=1e-2), "frac")
 
 
 # 2 OIL SPECIFIC GRAVITY
 def test_oil_specific_gravity(oil_instance):
     oil_SG = oil_instance.specific_gravity(oil_instance.API)
-    print(oil_instance.oil_specific_gravity.m)
+    #print(oil_instance.oil_specific_gravity.m) #0.86
     assert oil_SG == ureg.Quantity(pytest.approx(oil_instance.oil_specific_gravity.m), "frac")
 
 
 def test_oil_specific_gravity_mo(moil_instance):
     oil_SG = moil_instance.specific_gravity(moil_instance)
-    assert oil_SG == ureg.Quantity(0.409698877, "frac")
-
-
-# 5 RESERVOIR SOLUTION GOR
-# TODO only used in test
-def test_reservoir_solution_GOR(oil_instance):
-    res_GOR = oil_instance.reservoir_solution_GOR()
-    assert res_GOR == ureg.Quantity(pytest.approx(291.334541), "scf/bbl_oil")
-
-# returns 0
-def test_reservoir_solution_GOR_mo(moil_instance):
-    res_GOR = moil_instance.reservoir_solution_GOR()
-    assert res_GOR == ureg.Quantity(pytest.approx(0.0116082838), "scf/bbl_oil")
-
-
-test_tp = TemperaturePressure(ureg.Quantity(200.0, "degF"), ureg.Quantity(1556.0, "psia"))
+    assert oil_SG == ureg.Quantity(pytest.approx(0.71,rel=1e-2), "frac")
 
 
 # 3 BUBBLE POINT PRESSURE
@@ -88,7 +65,7 @@ def test_bubble_point_pressure(oil_instance):
 def test_bubble_point_pressure_mo(moil_instance):
     # self.res_tp 200.0 °F 1556.6 psia
     p_bubblepoint = moil_instance.bubble_point_pressure()
-    assert p_bubblepoint == ureg.Quantity(pytest.approx(0.314085636), "psia")
+    assert p_bubblepoint == ureg.Quantity(pytest.approx(1.09,rel=1e-2), "psi")
 
 
 # 4 SOLUTION GOR
@@ -103,7 +80,54 @@ def test_solution_gas_oil_ratio(oil_instance):
 
 def test_solution_gas_oil_ratio_mo(moil_instance):
     solution_gor = moil_instance.solution_gas_oil_ratio(T=test_tp.T,P=test_tp.P)
-    assert solution_gor == ureg.Quantity(pytest.approx(0.0116082838), "scf/bbl_oil")
+    assert solution_gor == ureg.Quantity(pytest.approx(98.4,rel=1e-2), "scf/bbl_oil")
+
+
+# 5 RESERVOIR SOLUTION GOR
+# TODO only used in test
+def test_reservoir_solution_GOR(oil_instance):
+    res_GOR = oil_instance.reservoir_solution_GOR()
+    assert res_GOR == ureg.Quantity(pytest.approx(291.334541), "scf/bbl_oil")
+
+
+def test_reservoir_solution_GOR_mo(moil_instance):
+    res_GOR = moil_instance.reservoir_solution_GOR()
+    assert res_GOR == ureg.Quantity(pytest.approx(98.4,rel=1e-2), "scf/bbl_oil")
+
+
+# 6 BUBBLE POINT SOLUTION GOR
+def test_bubble_point_solution_GOR(oil_instance):
+    GOR = oil_instance.gas_oil_ratio
+    gor_bubble = oil_instance.bubble_point_solution_GOR(GOR)
+    assert gor_bubble == ureg.Quantity(pytest.approx(2822.361), "scf/bbl_oil")
+
+# mo: run-able, but returns 0; should this be same implementation with Oil as well?
+#       GOR from input is separator, this is bubble point???
+def test_bubble_point_solution_GOR_mo(moil_instance):
+    gor_bubble = moil_instance.bubble_point_solution_GOR()
+    assert gor_bubble == ureg.Quantity(pytest.approx(165.7,rel=1e-1), "scf/bbl_oil")
+
+
+# 7 FORMATION VOLUME FACTOR
+def test_formation_volume_factor(oil_instance):
+    stream = Stream("test_stream", test_tp)
+    oil_SG = oil_instance.oil_specific_gravity
+    gas_SG = oil_instance.gas_specific_gravity
+    GOR = oil_instance.gas_oil_ratio
+    fvf = oil_instance.formation_volume_factor(stream, oil_SG, gas_SG, GOR)
+    assert fvf == ureg.Quantity(pytest.approx(1.19898185), "frac")
+
+
+def test_formation_volume_factor_mo(moil_instance):
+    # stream = Stream("test_stream", test_tp)
+    # oil_SG = oil_instance.oil_specific_gravity
+    # gas_SG = oil_instance.gas_specific_gravity
+    # GOR = oil_instance.gas_oil_ratio
+    fvf = moil_instance.formation_volume_factor()
+    assert fvf == ureg.Quantity(pytest.approx(1.18694952), "frac")
+
+
+test_tp = TemperaturePressure(ureg.Quantity(200.0, "degF"), ureg.Quantity(1556.0, "psia"))
 
 
 # 8 SAT FORMATION VOLUME FACTOR
@@ -118,13 +142,9 @@ def test_saturated_formation_volume_factor(oil_instance):
 
 # TODO failed to evaluate liquid molar volume for C3 at T 366 and P 10732379Pa
 def test_saturated_formation_volume_factor_mo(moil_instance):
-    # stream = Stream("test_stream", test_tp)
-    # oil_SG = moil_instance.oil_specific_gravity
-    # gas_SG = moil_instance.gas_specific_gravity
-    # GOR = moil_instance.gas_oil_ratio
     sat_fvf = moil_instance.saturated_formation_volume_factor()
     print(sat_fvf)
-    assert sat_fvf == ureg.Quantity(pytest.approx(1.0), "frac")
+    assert sat_fvf == ureg.Quantity(pytest.approx(1.05,rel=1e-2), "frac")
 
 
 # 9 UNSAT FORMATION VOLUME FACTOR
@@ -155,33 +175,14 @@ def test_isothermal_compressibility_X(oil_instance):
 
 def test_isothermal_compressibility_X_mo(moil_instance):
     iso_compress_x = moil_instance.isothermal_compressibility_X()
-    assert iso_compress_x == ureg.Quantity(4.296622906167477e-06, "pa**-1")
+    assert iso_compress_x == ureg.Quantity(pytest.approx(9.54e-06,rel=1e-2), "Pa**-1")
 
 
 # 11 ISOTHERMAL COMPRESSIBILITY
 def test_isothermal_compressibility(oil_instance):
     oil_SG = oil_instance.oil_specific_gravity
     iso_compress = oil_instance.isothermal_compressibility(oil_SG)
-    assert iso_compress == ureg.Quantity(pytest.approx(3.0528295800365155e-6), "pa**-1")
-
-
-# 7 FORMATION VOLUME FACTOR
-def test_formation_volume_factor(oil_instance):
-    stream = Stream("test_stream", test_tp)
-    oil_SG = oil_instance.oil_specific_gravity
-    gas_SG = oil_instance.gas_specific_gravity
-    GOR = oil_instance.gas_oil_ratio
-    fvf = oil_instance.formation_volume_factor(stream, oil_SG, gas_SG, GOR)
-    assert fvf == ureg.Quantity(pytest.approx(1.19898185), "frac")
-
-
-def test_formation_volume_factor_mo(moil_instance):
-    # stream = Stream("test_stream", test_tp)
-    # oil_SG = oil_instance.oil_specific_gravity
-    # gas_SG = oil_instance.gas_specific_gravity
-    # GOR = oil_instance.gas_oil_ratio
-    fvf = moil_instance.formation_volume_factor()
-    assert fvf == ureg.Quantity(pytest.approx(1.18694952), "frac")
+    assert iso_compress == ureg.Quantity(pytest.approx(3.0528295800365155e-6), "Pa**-1")
 
 
 # 12 OIL DENSITY
@@ -196,18 +197,7 @@ def test_oil_density(oil_instance):
 
 def test_oil_density_mo(moil_instance):
     density = moil_instance.density()
-    assert density == ureg.Quantity(pytest.approx(25.5307952), "lb/ft**3")
-
-
-# 14 OIL MASS ENERGY DENSITY
-def test_oil_mass_energy_density(oil_instance):
-    mass_energy_density = oil_instance.oil_LHV_mass
-    assert mass_energy_density == ureg.Quantity(pytest.approx(18279.816), "btu/lb")
-
-
-def test_oil_mass_energy_density_mo(moil_instance):
-    mass_energy_density = moil_instance.oil_LHV_mass
-    assert mass_energy_density == ureg.Quantity(pytest.approx(19023.2489), "btu/lb")
+    assert density == ureg.Quantity(pytest.approx(44.32,rel=1e-2), "lb/ft**3")
 
 
 # 13 OIL VOLUME FLOW RATE
@@ -218,12 +208,23 @@ def test_oil_volume_flow_rate(oil_instance):
     gas_SG = oil_instance.gas_specific_gravity
     GOR = oil_instance.gas_oil_ratio
     volume_flow_rate = oil_instance.volume_flow_rate(stream, oil_SG, gas_SG, GOR)
-    assert volume_flow_rate == ureg.Quantity(pytest.approx(2315.23726), "bbl_oil/day")
+    assert volume_flow_rate == ureg.Quantity(pytest.approx(2315.2,rel=1e-1), "bbl_oil/day")
 
 
 def test_oil_volume_flow_rate_mo(moil_instance):
     volume_flow_rate = moil_instance.volume_flow_rate(total_flow = 276.534764)
-    assert volume_flow_rate == ureg.Quantity(pytest.approx(2907.69978), "bbl_oil/day")
+    assert volume_flow_rate == ureg.Quantity(pytest.approx(2963.7,rel=1e-1), "bbl_oil/day")
+
+
+# 14 OIL MASS ENERGY DENSITY
+def test_oil_mass_energy_density(oil_instance):
+    mass_energy_density = oil_instance.oil_LHV_mass
+    assert mass_energy_density == ureg.Quantity(pytest.approx(18279.8,rel=1e-1), "btu/lb")
+
+
+def test_oil_mass_energy_density_mo(moil_instance):
+    mass_energy_density = moil_instance.oil_LHV_mass
+    assert mass_energy_density == ureg.Quantity(pytest.approx(18953.4,rel=1e-1), "btu/lb")
 
 
 # 15 OIL VOLUME ENERGY DENSITY
@@ -233,12 +234,12 @@ def test_oil_volume_energy_density(oil_instance):
     gas_SG = oil_instance.gas_specific_gravity
     GOR = oil_instance.gas_oil_ratio
     volume_energy_density = oil_instance.volume_energy_density(stream, oil_SG, gas_SG, GOR)
-    assert volume_energy_density == ureg.Quantity(pytest.approx(4.81349274), "mmBtu/bbl_oil")
+    assert volume_energy_density == ureg.Quantity(pytest.approx(4.81,rel=1e-2), "mmBtu/bbl_oil")
 
 
 def test_oil_volume_energy_density_mo(moil_instance):
     volume_energy_density = moil_instance.volume_energy_density()
-    assert volume_energy_density == ureg.Quantity(pytest.approx(2.04516254), "mmBtu/bbl_oil")
+    assert volume_energy_density == ureg.Quantity(pytest.approx(0.19,rel=1e-2), "mmBtu/bbl_oil")
 
 
 # 16 OIL ENERGY FLOW RATE
@@ -251,7 +252,7 @@ def test_oil_energy_flow_rate(oil_instance):
 
 def test_oil_energy_flow_rate_mo(moil_instance):
     energy_flow_rate = moil_instance.energy_flow_rate(total_flow=273.831958)
-    assert energy_flow_rate == ureg.Quantity(pytest.approx(10417.852), "mmbtu/day")
+    assert energy_flow_rate == ureg.Quantity(pytest.approx(10376.2,rel=1e-1), "mmbtu/day")
 
 
 # 17 OIL HEAT CAPACITY
@@ -266,19 +267,19 @@ def test_oil_heat_capacity_mo(moil_instance):
     temp = ureg.Quantity(127.5, "degF")
     heat_capacity = moil_instance.specific_heat(moil_instance, temp)
     print(heat_capacity)
-    assert heat_capacity == ureg.Quantity(pytest.approx(0.552258379), "btu/lb/degF")
+    assert heat_capacity == ureg.Quantity(pytest.approx(0.54,rel=1e-1), "btu/lb/degF")
 
 
 # 18 LIQUID FUEL COMP
 def test_liquid_fuel_comp(oil_instance):
     API = ureg.Quantity(10, "degAPI")
     liquid_fuel_comp = oil_instance.liquid_fuel_composition(API)
-    assert liquid_fuel_comp["C"] == ureg.Quantity(pytest.approx(71.432), "mol/kg")
+    assert liquid_fuel_comp["C"] == ureg.Quantity(pytest.approx(71.4,rel=1e-1), "mol/kg")
 
 
 def test_liquid_fuel_comp_mo(moil_instance):
     liquid_fuel_comp = moil_instance.liquid_fuel_composition(moil_instance)
-    assert liquid_fuel_comp["C"] == ureg.Quantity(pytest.approx(70.2599812), "mol/kg")
+    assert liquid_fuel_comp["C"] == ureg.Quantity(pytest.approx(70.2,rel=1e-1), "mol/kg")
 
 
 @pytest.fixture
