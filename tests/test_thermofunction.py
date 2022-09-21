@@ -17,11 +17,6 @@ def moil_instance(test_model):
     return field.m_oil
 
 
-# df = TableManager().get_table("composite-oil")
-# chemicals = Chemicals({name: Chemical(name) for name in df.index}, cache=True)
-# Thermo = Thermo(chemicals)
-
-
 # 0 GOR calculated from chemical composition
 def test_gor_mo(moil_instance):
     gor = moil_instance._gas_oil_ratio()
