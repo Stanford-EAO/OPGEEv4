@@ -539,7 +539,7 @@ class Oil(AbstractSubstance):
 
         result = max((iso_comp_a1 * solution_gor + iso_comp_a2 * solution_gor ** 2 +
                       iso_comp_a3 * gas_SG + iso_comp_a4 * stream_temp ** 2), 0.0)
-        result = ureg.Quantity(result, "pa**-1")
+        result = ureg.Quantity(result, "Pa**-1")
         return result
 
     @staticmethod
@@ -551,7 +551,7 @@ class Oil(AbstractSubstance):
         """
         oil_SG = oil_specific_gravity.m
         result = (55.233 - 60.588 * oil_SG) / 1e6
-        result = ureg.Quantity(result, "pa**-1")
+        result = ureg.Quantity(result, "Pa**-1")
         return result
 
     def formation_volume_factor(self,
@@ -930,8 +930,7 @@ class MultiOil(AbstractSubstance):
         # TODO: didnt change
         oil_SG = oil_specific_gravity.m
         result = (55.233 - 60.588 * oil_SG) / 1e6
-        result = ureg.Quantity(result, "pa**-1")
-        return result
+        return ureg.Quantity(result, "Pa**-1")
 
     def density(self):
         """
@@ -955,7 +954,6 @@ class MultiOil(AbstractSubstance):
         if total_flow is not None:
             ratio = total_flow / s1.get_flow('ton/day').sum()
             s1.rescale(ratio)
-
         results = s1.get_property('vol', 'bbl/day').sum()
         return ureg.Quantity(results, 'bbl_oil/day')
 
