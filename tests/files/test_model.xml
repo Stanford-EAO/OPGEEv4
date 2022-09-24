@@ -44,15 +44,15 @@
 		<A name="prod_index">17</A>
 		<A name="res_press">1556.6</A>
 		<A name="res_temp">200.0</A>
-		<A name="GOR">2429.30</A>
-		<A name="gas_comp_N2">2.86</A>
-		<A name="gas_comp_CO2">0.33</A>
-		<A name="gas_comp_C1">89.18</A>
-		<A name="gas_comp_C2">5.3</A>
-		<A name="gas_comp_C3">1.62</A>
-		<A name="gas_comp_C4">0.71</A>
+		<A name="GOR">77.5</A>
+		<A name="gas_comp_N2">0.64</A>
+		<A name="gas_comp_CO2">7.36</A>
+		<A name="gas_comp_C1">26.16</A>
+		<A name="gas_comp_C2">25.51</A>
+		<A name="gas_comp_C3">40.34</A>
+		<A name="gas_comp_C4">95.79</A>
 		<A name="gas_comp_H2S">0.0</A>
-		<A name="API">32.8</A>
+		<A name="API">67.8</A>
 
 		<Process class="ProcA" desc="Test process 1"/>
 		<Process class="ProcB" desc="Test process 2"/>

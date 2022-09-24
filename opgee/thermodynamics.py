@@ -17,6 +17,7 @@ from .core import OpgeeObject, STP, TemperaturePressure
 from .error import ModelValidationError
 from .stream import PHASE_LIQUID, Stream, PHASE_GAS, PHASE_SOLID
 from .table_manager import TableManager
+import json
 
 
 class ChemicalInfo(OpgeeObject):
@@ -711,7 +712,7 @@ class Oil(AbstractSubstance):
         :return:(float) liquid fuel composition (unit = mol/kg)
         """
         low_bound = 4
-        high_bound = 58 # 45   # TODO: changed temporarily to handle exported CSV field definitions
+        high_bound = 70 # 45   # TODO: spencer - changed temporarily to handle composite oil field definitions
 
         if API.m < low_bound or API.m > high_bound:
             raise ModelValidationError(f"{API.m} is less than {low_bound} or greater than {high_bound}")
@@ -730,6 +731,18 @@ class Oil(AbstractSubstance):
 
         return pd.Series([carbon_mol_percent, sulfur_mol_percent, hydrogen_mol_percent, nitrogen_mol_percent],
                          index=["C", "S", "H", "N"], dtype="pint[mol/kg]")
+
+    def property_json(self):
+        with open('black_oil.json', 'w') as blk:
+            json.dump({'API': self.API.m,
+                   'LHV': self.oil_LHV_mass.m,
+                   'oil_SG': self.oil_specific_gravity.m,
+                   'gas_SG': self.gas_specific_gravity.m,
+                   'MW': self.total_molar_weight,
+                   'bp':self.bubble_point_pressure().m,
+                   'solution GOR':self.solution_gas_oil_ratio().m,
+                   'isothermal_compressibility': self.isothermal_compressibility_X().m,
+                   'FVF': self.saturated_formation_volume_factor().m}, blk)
 
 
 class MultiOil(AbstractSubstance):
@@ -1019,6 +1032,18 @@ class MultiOil(AbstractSubstance):
 
         return pd.Series([carbon_mol_percent, sulfur_mol_percent, hydrogen_mol_percent, nitrogen_mol_percent],
                          index=["C", "S", "H", "N"], dtype="pint[mol/kg]")
+
+    def property_json(self):
+        with open('multi_oil.json', 'w') as fp:
+            json.dump({'API': self.API.m,
+                       'LHV': self.oil_LHV_mass.m,
+                       'oil_SG': self.oil_specific_gravity.m,
+                       'gas_SG': self.gas_specific_gravity.m,
+                       'MW': self.total_molar_weight,
+                       'bp':self.bubble_point_pressure().m,
+                       'solution GOR':self.solution_gas_oil_ratio().m,
+                       'isothermal_compressibility': self.isothermal_compressibility_X().m,
+                       'FVF': self.saturated_formation_volume_factor().m}, fp)
 
 
 class Gas(AbstractSubstance):
