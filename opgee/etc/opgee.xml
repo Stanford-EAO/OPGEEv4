@@ -16,6 +16,7 @@
 		<A name="energy_basis">LHV</A>
 		<A name="GWP_horizon">100</A>
 		<A name="GWP_version">AR5</A>
+		<A name="oil_mode">comp_oil</A>
 
 		<Field name="gas_lifting_field" modifies="template">
 <!--			<A name="country">USA</A>-->

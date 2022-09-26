@@ -166,7 +166,7 @@ class Field(Container):
 
         self.imported_gas_comp = model.imported_gas_comp
 
-        self.oil = Oil(self) if self.oil_mode == "black_oil" else MultiOil(self)
+        self.oil = Oil(self)
         self.gas = Gas(self)
         self.water = Water(self)
         self.m_oil = MultiOil(self)
@@ -254,6 +254,10 @@ class Field(Container):
             # this information in compute_carbon_intensity() to ignore irrelevant procs.
             boundary_proc = self.boundary_process(analysis)
             self.oil_mode = self.set_oil_mode(analysis)
+
+            if self.oil_mode == "comp_oil":
+                self.oil = self.m_oil
+
             self.procs_beyond_boundary = boundary_proc.beyond_boundary()
 
             self.reset()
