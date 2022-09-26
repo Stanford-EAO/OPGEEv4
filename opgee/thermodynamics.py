@@ -877,7 +877,7 @@ class MultiOil(AbstractSubstance):
         bp = s1.bubble_point_at_T(T=self.res_tp.T.to('K').m)
         return ureg.Quantity(bp.P, 'Pa').to('psi')
 
-    def solution_gas_oil_ratio(self, stream, oil_specific_gravity=None, gas_specific_gravity=None, gas_oil_ratio=None,T=None, P=None):
+    def solution_gas_oil_ratio(self, stream=None, oil_specific_gravity=None, gas_specific_gravity=None, gas_oil_ratio=None,T=None, P=None):
         """
         The amount of 'gas comp' dissolved in the oil solution. Reservoir condition
         unless otherwise stated.
@@ -888,10 +888,13 @@ class MultiOil(AbstractSubstance):
         """
         s1 = MultiStream("s1", thermo=self.therm)
         s1.copy_like(self.s0['l'])
-        t = stream.tp.T.to("rankine").m
-        p = stream.tp.P.m
-        #t = self.res_tp.T.to('K').m if T is None else T.to('K').m
-        #p = self.res_tp.P.to('Pa').m if P is None else P.to('Pa').m
+        if stream is None:
+            t = self.res_tp.T.to('K').m if T is None else T.to('K').m
+            p = self.res_tp.P.to('Pa').m if P is None else P.to('Pa').m
+        else:
+            t = stream.tp.T.to("rankine").m
+            p = stream.tp.P.m
+
         s1.vle(T=t, P=p)
         g = ureg.Quantity(self.s0['g'].F_vol, 'm3').to('scf')
         l = ureg.Quantity(s1['l'].F_vol, 'm3').to('bbl_oil')
