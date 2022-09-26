@@ -59,6 +59,7 @@ class Field(Container):
         # Remember streams that declare themselves as system boundaries. Keys must be one of the
         # values in the tuples in the _known_boundaries dictionary above.
         self.boundary_dict = boundary_dict = {}
+        self.oil_mode = None
 
         # DOCUMENT: boundary names must be predefined, but can be set in configuration.
         #   Each name must appear 0 or 1 times, and at least one boundary must be defined.
@@ -165,7 +166,7 @@ class Field(Container):
 
         self.imported_gas_comp = model.imported_gas_comp
 
-        self.oil = Oil(self)
+        self.oil = Oil(self) if self.oil_mode == "black_oil" else MultiOil(self)
         self.gas = Gas(self)
         self.water = Water(self)
         self.m_oil = MultiOil(self)
@@ -252,6 +253,7 @@ class Field(Container):
             # Cache the sets of processes within and outside the current boundary. We use
             # this information in compute_carbon_intensity() to ignore irrelevant procs.
             boundary_proc = self.boundary_process(analysis)
+            self.oil_mode = self.set_oil_mode(analysis)
             self.procs_beyond_boundary = boundary_proc.beyond_boundary()
 
             self.reset()
@@ -312,6 +314,19 @@ class Field(Container):
             return self.boundary_dict[analysis.boundary]
         except KeyError:
             raise OpgeeException(f"{self} does not declare boundary process '{analysis.boundary}'.")
+
+    def set_oil_mode(self, analysis) -> str:
+        # TODO sz parallel implementation not finished
+        """
+        Return the currently chosen oil mode.
+
+        :return: (str) the currently chosen oil mode
+        """
+        try:
+            analysis.oil_mode in ["black_oil", "comp_oil"]
+            return analysis.oil_mode
+        except KeyError:
+            raise OpgeeException(f"{self} does not declare oil mode '{analysis.oil_mode}'.")
 
     def defined_boundaries(self):
         """

@@ -11,6 +11,7 @@
 		<A name="functional_unit">oil</A>
 		<A name="boundary">Production</A>
 		<A name="energy_basis">LHV</A>
+		<A name="oil_mode">black_oil</A>
 	  <A name="GWP_horizon">100</A>
 	  <A name="GWP_version">AR5</A>
 		<Field name="test"/>

@@ -56,6 +56,7 @@ class Analysis(Container):
         # indexed by gas name. Must be set after initialization since we reference the Model
         # object which isn't fully instantiated until after we are.
         self.gwp = None
+        self.oil_mode = None
 
     def _after_init(self):
         self.check_attr_constraints(self.attr_dict)
@@ -88,7 +89,7 @@ class Analysis(Container):
 
         self.fn_unit = self.attr("functional_unit")
         self.boundary = self.attr("boundary")
-
+        self.oil_mode = self.attr("oil_mode")
         self.validate()
 
     def validate(self):

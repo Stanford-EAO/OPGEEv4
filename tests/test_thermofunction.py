@@ -38,7 +38,7 @@ def test_api_mo(moil_instance):
 # 1 GAS SPECIFIC GRAVITY
 def test_gas_specific_gravity(oil_instance):
     gas_SG = oil_instance.gas_specific_gravity
-    assert gas_SG == ureg.Quantity(pytest.approx(3.07,rel=1e-2), "frac")
+    assert gas_SG == ureg.Quantity(pytest.approx(1.57,rel=1e-2), "frac")
 
 
 def test_gas_specific_gravity_mo(moil_instance):
@@ -241,7 +241,7 @@ def test_oil_volume_energy_density(oil_instance):
 
 def test_oil_volume_energy_density_mo(moil_instance):
     volume_energy_density = moil_instance.volume_energy_density()
-    assert volume_energy_density == ureg.Quantity(pytest.approx(0.191,rel=1e-2), "mmBtu/bbl_oil")
+    assert volume_energy_density == ureg.Quantity(pytest.approx(2.959,rel=1e-2), "mmBtu/bbl_oil")
 
 
 # 16 OIL ENERGY FLOW RATE
@@ -280,7 +280,7 @@ def test_liquid_fuel_comp(oil_instance):
 
 
 def test_liquid_fuel_comp_mo(moil_instance):
-    liquid_fuel_comp = moil_instance.liquid_fuel_composition(moil_instance)
+    liquid_fuel_comp = moil_instance.liquid_fuel_composition(moil_instance,moil_instance.API)
     assert liquid_fuel_comp["C"] == ureg.Quantity(pytest.approx(70.2,rel=1e-1), "mol/kg")
 
 

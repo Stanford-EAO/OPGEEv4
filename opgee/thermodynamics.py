@@ -12,6 +12,8 @@ import pandas as pd
 import pint
 from pyXSteam.XSteam import XSteam
 from thermosteam import Chemical, Chemicals, Thermo, Stream, MultiStream, Mixture
+
+import opgee.thermodynamics
 from . import ureg
 from .core import OpgeeObject, STP, TemperaturePressure
 from .error import ModelValidationError
@@ -379,6 +381,7 @@ class Oil(AbstractSubstance):
 
     @staticmethod
     def bubble_point_solution_GOR(gas_oil_ratio):
+        # TODO: only used in test
         """
         R_sb = 1.1618 * R_sp
         R_Sb is GOR at bubblepoint, R_sp is GOR at separator
@@ -403,8 +406,8 @@ class Oil(AbstractSubstance):
         result = 141.5 / (API_grav_value + 131.5)
         return ureg.Quantity(result, "frac")
 
-    # TODO used only in tests
     def reservoir_solution_GOR(self):
+        # TODO used only in tests
         """
         The solution gas oil ratio (GOR) at resevoir condition is
         the minimum of empirical correlation and bubblepoint GOR
@@ -704,7 +707,7 @@ class Oil(AbstractSubstance):
     # Combustion properties as a fuel
 
     @staticmethod
-    def liquid_fuel_composition(API):
+    def liquid_fuel_composition(self,API):
         """
         calculate Carbon, Hydrogen, Sulfur, Nitrogen mol per crude oil
         reference: Fuel Specs, Table Crude oil chemical composition
@@ -773,17 +776,18 @@ class MultiOil(AbstractSubstance):
         # gas_specific_gravity: (Quantity, float) gas components relative density to dry air at
         # standard condition; unit = frac
 
-        self.therm, self.s0 = self._create_stream() #: read input from csv table; stand-alone function
-        self.API = field.attr("API") #: can be calculated
-        self.gas_comp = field.attrs_with_prefix('gas_comp_')  #: get the list of gas compositions
-        self.gas_oil_ratio = field.attr('GOR')  #: (scf/bbl_oil) get the ratio of gas to oil
+        self.therm, self.s0 = self._create_stream  #: read input from csv table; stand-alone function
+        self.gas_comp = field.attrs_with_prefix('gas_comp_')
+        self.gas_oil_ratio = self._gas_oil_ratio()  #: (scf/bbl_oil) get the ratio of gas to oil
         self.oil_LHV_mass = self.mass_energy_density()  #: called s0 inside function
         self.component_LHV_mass['oil'] = self.oil_LHV_mass.to("joule/gram")
         self.oil_specific_gravity = self.specific_gravity(self)
+        self.API = self._API()  #: can be calculated
         self.total_molar_weight = self.s0['g'].MW
         self.gas_specific_gravity = self._gas_specific_gravity()
 
-    def _create_stream(self,composition=None):
+    @property
+    def _create_stream(self):
         """
         Create a MultiStream obj with specified oil composition (gas components and carbohydrates)
         at standard conditions (T=298K, P=101325.0Pa)
@@ -803,6 +807,14 @@ class MultiOil(AbstractSubstance):
                          units='kmol/hr',
                          thermo=therm)
         return therm, s0
+
+    def _gas_comp(self):
+        """
+        return a series of gas composition percentage
+        :return: (pd.Series)
+        """
+        # TODO currently hardcoded in test_field.xml
+        return None
 
     def _gas_oil_ratio(self):
         """
@@ -829,9 +841,14 @@ class MultiOil(AbstractSubstance):
         returns oil specific gravity given composite oil
         :return: (pint.Quantity) unit:frac
         """
-        water_density = ureg.Quantity(0.9998, 'g/ml').to('lb/ft**3')
-        result = self.density()/water_density
-        return ureg.Quantity(result, "frac")
+        if isinstance(self, opgee.thermodynamics.MultiOil):
+            water_density = ureg.Quantity(0.9998, 'g/ml').to('lb/ft**3')
+            result = self.density() / water_density
+            return ureg.Quantity(result, "frac")
+        else:
+            API_grav_value = self.m if isinstance(self, pint.Quantity) else self
+            result = 141.5 / (API_grav_value + 131.5)
+            return ureg.Quantity(result, "frac")
 
     def _API(self):
         """
@@ -860,7 +877,7 @@ class MultiOil(AbstractSubstance):
         bp = s1.bubble_point_at_T(T=self.res_tp.T.to('K').m)
         return ureg.Quantity(bp.P, 'Pa').to('psi')
 
-    def solution_gas_oil_ratio(self, T=None, P=None):
+    def solution_gas_oil_ratio(self, stream=None, oil_specific_gravity=None, gas_specific_gravity=None, gas_oil_ratio=None,T=None, P=None):
         """
         The amount of 'gas comp' dissolved in the oil solution. Reservoir condition
         unless otherwise stated.
@@ -945,7 +962,7 @@ class MultiOil(AbstractSubstance):
         result = (55.233 - 60.588 * oil_SG) / 1e6
         return ureg.Quantity(result, "Pa**-1")
 
-    def density(self):
+    def density(self,stream=None, oil_specific_gravity=None, gas_specific_gravity=None, gas_oil_ratio=None):
         """
         get density of oil solution at standard condition
 
@@ -954,7 +971,7 @@ class MultiOil(AbstractSubstance):
         result = self.s0['l'].get_property('rho', 'lb/ft3')
         return ureg.Quantity(result, 'lb/ft**3')
 
-    def volume_flow_rate(self, total_flow=None):
+    def volume_flow_rate(self,stream=None, oil_specific_gravity=None, gas_specific_gravity=None, gas_oil_ratio=None, total_flow=None):
         """
         Calculate the oil volume flow rate
         :param total_flow: (float) total flow rate for oil liquid phase (unit: ton/day)
@@ -970,7 +987,7 @@ class MultiOil(AbstractSubstance):
         results = s1.get_property('vol', 'bbl/day').sum()
         return ureg.Quantity(results, 'bbl_oil/day')
 
-    def mass_energy_density(self, use_LHV=True, with_unit=True):
+    def mass_energy_density(self, API=None, use_LHV=True, with_unit=True):
         """
         Calculate oil heating value
         """
@@ -988,7 +1005,7 @@ class MultiOil(AbstractSubstance):
         result = ureg.Quantity(result, 'mmBtu/bbl_oil')
         return result
 
-    def energy_flow_rate(self, total_flow=None):
+    def energy_flow_rate(self, stream = None, total_flow=None):
         # unit: mmBtu/day
         s1 = self.s0['l']
 
@@ -999,25 +1016,25 @@ class MultiOil(AbstractSubstance):
         result = s1.get_property('LHV', 'british_thermal_unit/day') / 1000000
         return ureg.Quantity(result, 'mmBtu/day')
 
-    @staticmethod
-    def specific_heat(oil_instance, T=None):
+
+    def specific_heat(self, API=None, temperature=None):
         """
         Calculates oil specific heat in unit: btu/lb/degF at given temperature T
         :param T: (ureg.Quantity, unit:anything)
 
         :return: (ureg.Quantity, unit:btu/lb/degF)
         """
-        s1 = oil_instance.s0
+        s1 = self.s0
 
-        if T is not None:
-            T = T.to('K').m
+        if temperature is not None:
+            T = temperature.to('K').m
             s1.set_property('T', T, units='K')
         result = s1.get_property('Cp', 'british_thermal_unit/lb/degF')
         result = ureg.Quantity(result, "btu/lb/degF")
         return result
 
     @staticmethod
-    def liquid_fuel_composition(self):
+    def liquid_fuel_composition(self,API):
         """
         calculate Carbon, Hydrogen, Sulfur, Nitrogen mol per crude oil
         reference: Fuel Specs, Table Crude oil chemical composition

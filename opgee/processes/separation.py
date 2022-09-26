@@ -151,7 +151,7 @@ class Separation(Process):
         last = self.num_of_stages - 1
         stream = Stream("stage_stream", TemperaturePressure(temperature_of_stages[last],
                                                             pressure_of_stages[last]))
-
+        print(type(oil))
         density = oil.density(stream,  # lb/ft3
                               oil.oil_specific_gravity,
                               oil.gas_specific_gravity,

@@ -88,7 +88,7 @@ class SteamGenerator(OpgeeObject):
         self.prod_combustion_coeff = model.prod_combustion_coeff
         self.reaction_combustion_coeff = model.reaction_combustion_coeff
         self.gas_turbine_tlb = model.gas_turbine_tbl
-        self.liquid_fuel_comp = self.oil.liquid_fuel_composition(self.API)
+        self.liquid_fuel_comp = self.oil.liquid_fuel_composition(self.oil,self.API)
         self.steam_press_upper = model.const("steam-press-upper-limit")
 
         self.steam_generator_press_outlet = min((self.res_press + self.steam_injection_delta_press) *
