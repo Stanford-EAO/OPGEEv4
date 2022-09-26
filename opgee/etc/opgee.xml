@@ -16,7 +16,7 @@
 		<A name="energy_basis">LHV</A>
 		<A name="GWP_horizon">100</A>
 		<A name="GWP_version">AR5</A>
-		<A name="oil_mode">comp_oil</A>
+		<A name="oil_mode">black_oil</A>
 
 		<Field name="gas_lifting_field" modifies="template">
 <!--			<A name="country">USA</A>-->
@@ -70,15 +70,15 @@
       <A name="res_press">1556.6</A>
       <A name="res_temp">150.0</A>
       <A name="offshore">0.0</A>
-      <A name="API">30.0</A>
-      <A name="gas_comp_N2">2.0</A>
-      <A name="gas_comp_CO2">6.0</A>
-      <A name="gas_comp_C1">84.0</A>
-      <A name="gas_comp_C2">4.0</A>
-      <A name="gas_comp_C3">2.0</A>
-      <A name="gas_comp_C4">1.0</A>
-      <A name="gas_comp_H2S">1.0</A>
-      <A name="GOR">908.0</A>
+      <A name="API">67.8</A>
+      <A name="gas_comp_N2">0.33</A>
+      <A name="gas_comp_CO2">3.76</A>
+      <A name="gas_comp_C1">13.36</A>
+      <A name="gas_comp_C2">13.03</A>
+      <A name="gas_comp_C3">20.60</A>
+      <A name="gas_comp_C4">48.92</A>
+      <A name="gas_comp_H2S">0.0</A>
+      <A name="GOR">77.5</A>
       <A name="WOR">4.31</A>
       <A name="WIR">5.31</A>
       <A name="GLIR">1500.0</A>
