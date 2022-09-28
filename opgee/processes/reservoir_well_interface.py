@@ -121,7 +121,7 @@ class ReservoirWellInterface(Process):
             delta_P_square = (gas_viscosity * z_factor * std_P * stream_temp *
                               np.log(1000 / 0.5) * gas_rate_per_well /
                               (np.pi * self.permeability * self.thickness * std_T)).to("psia**2")
-            prod_gas_flowing_BHP = np.sqrt(res_press ** 2 - delta_P_square) # TODO
+            prod_gas_flowing_BHP = np.sqrt(abs(res_press ** 2 - delta_P_square))  #: TODO
         else:
             # flowing bottomhole pressure at producer (gas phase, high pressure)
             delta_P_high = (gas_viscosity * gas_formation_volume_factor * np.log(1000 / 0.5) * gas_rate_per_well /

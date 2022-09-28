@@ -1131,9 +1131,10 @@ class Gas(AbstractSubstance):
         :return:(float) Panda Series component molar fractions
         """
 
-        total_molar_flow_rate = self.total_molar_flow_rate(stream)
+        total_molar_flow_rate = self.total_molar_flow_rate(stream) # TODO negative value
         gas_flow_rates = stream.gas_flow_rates()
 
+        # TODO
         if len(gas_flow_rates) == 0:
             raise ModelValidationError("Can't compute molar fractions on an empty stream")
 
@@ -1299,10 +1300,10 @@ class Gas(AbstractSubstance):
 
         :return:(float) gas z_factor (unit = frac)
         """
-        reduced_temp = reduced_temperature.m
-        reduced_press = reduced_pressure.m
+        reduced_temp = reduced_temperature.m if isinstance(reduced_temperature, ureg.Quantity) else reduced_temperature
+        reduced_press = reduced_pressure.m if isinstance(reduced_pressure, ureg.Quantity) else reduced_pressure
 
-        z_factor_A = 1.39 * (reduced_temp - 0.92) ** 0.5 - 0.36 * reduced_temp - 0.101
+        z_factor_A = 1.39 * abs(reduced_temp - 0.92) ** 0.5 - 0.36 * reduced_temp - 0.101 # TODO abs
         z_factor_B = (reduced_press * (0.62 - 0.23 * reduced_temp) +
                       reduced_press ** 2 * (0.066 / (reduced_temp - 0.86) - 0.037) +
                       0.32 * reduced_temp ** 6 / (10 ** (9 * reduced_temp - 9)))
