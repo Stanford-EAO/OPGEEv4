@@ -1,0 +1,18 @@
+<Stream src="Before" dst="CO2ReinjectionCompressor" name="AGR to CO2 compressor">
+   <Contains>gas for CO2 compressor</Contains>
+   <Component name="CO2" phase="gas">2770.14636</Component>
+   <A name="temperature">90</A>
+   <A name="pressure">500</A>
+</Stream>
+
+<Stream src="Before" dst="CO2ReinjectionCompressor" name="CO2 membrane to CO2 compressor">
+   <Contains>gas for CO2 compressor</Contains>
+   <Component name="N2" phase="gas">525.318807</Component>
+   <Component name="CO2" phase="gas">5594.456607</Component>
+   <Component name="C1" phase="gas">354.916584</Component>
+   <Component name="C2" phase="gas">74.644754</Component>
+   <Component name="C3" phase="gas">49.183948</Component>
+   <Component name="C4" phase="gas">38.116475</Component>
+   <A name="temperature">60</A>
+   <A name="pressure">165</A>
+</Stream>
