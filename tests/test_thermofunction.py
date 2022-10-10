@@ -17,11 +17,11 @@ def moil_instance(test_model):
     return field.m_oil
 
 # 0 json writing
-def test_properties(oil_instance):
-    oil_instance.property_json()
-
-def test_properties(moil_instance):
-    moil_instance.property_json()
+# def test_properties(oil_instance):
+#     oil_instance.property_json()
+#
+# def test_properties(moil_instance):
+#     moil_instance.property_json()
 
 # 0 GOR calculated from chemical composition
 def test_gor_mo(moil_instance):
@@ -275,12 +275,12 @@ def test_oil_heat_capacity_mo(moil_instance):
 # 18 LIQUID FUEL COMP
 def test_liquid_fuel_comp(oil_instance):
     API = ureg.Quantity(67.8, "degAPI")
-    liquid_fuel_comp = oil_instance.liquid_fuel_composition(API)
+    liquid_fuel_comp = oil_instance.liquid_fuel_composition(oil_instance,API)
     assert liquid_fuel_comp["C"] == ureg.Quantity(pytest.approx(71.9136667,rel=1e-5), "mol/kg")
 
 
 def test_liquid_fuel_comp_mo(moil_instance):
-    liquid_fuel_comp = moil_instance.liquid_fuel_composition(moil_instance)
+    liquid_fuel_comp = moil_instance.liquid_fuel_composition(moil_instance,moil_instance.API)
     assert liquid_fuel_comp["C"] == ureg.Quantity(pytest.approx(70.2,rel=1e-1), "mol/kg")
 
 

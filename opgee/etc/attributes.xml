@@ -42,6 +42,10 @@
         <Option label="Lower heating value">LHV</Option>
         <Option label="Higher heating value">HHV</Option>
       </Options>
+      <Options name="Oil mode" default="black_oil">
+        <Option label="Black oil">black_oil</Option>
+        <Option label="Multi-compositional oil">comp_oil</Option>
+      </Options>
 
       <AttrDef name="GWP_horizon" options="GWP horizon" type="int" unit="years"/>
       <AttrDef name="GWP_version" options="GWP version" type="str"/>
@@ -49,6 +53,7 @@
 
 <!--      TODO: Deprecated!-->
       <AttrDef name="energy_basis" options="Energy basis" type="str"/>
+      <AttrDef name="oil_mode" options="Oil mode" type="str"/>
 
       <!-- We need this at the Analysis level to ensure all fields are evaluated to same bounds -->
       <Options name="boundaries" default="Production">

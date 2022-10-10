@@ -14,6 +14,9 @@ from .error import OpgeeException
 from .log import getLogger
 from .stream import PHASE_LIQUID, Stream
 from .thermodynamics import Oil, Gas, Water
+from thermosteam import Chemical, Chemicals, Stream as str
+import thermosteam as tmo
+from .table_manager import TableManager
 
 _logger = getLogger(__name__)
 
@@ -76,3 +79,19 @@ def mixture_specific_heat_capacity(API, stream):
 
     heat_capacity = oil_heat_capacity + water_heat_capacity + gas_heat_capacity
     return heat_capacity.to("btu/delta_degF/day")
+
+
+def combine_thm_streams(streams):
+    """
+    combine two thermosteam.Stream objects into one
+
+    :param streams: (a list of Stream) the Stream objects to combine
+    """
+
+    df = TableManager().get_table("composite-oil")
+    chemicals = Chemicals({name: Chemical(name) for name in df.index}, cache=True)
+    tmo.settings.set_thermo(chemicals, cache=True)
+
+    s_sum = str.sum(streams, 's_sum')
+
+    return s_sum

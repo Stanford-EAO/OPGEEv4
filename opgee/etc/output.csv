@@ -668,7 +668,7 @@ test-fields,Field 94,TransportAndStorage,0.0
 test-fields,Field 94,LiquifiedNaturalGas,0.0
 test-fields,Field 94,After,0.0
 test-fields,Field 94,CrudeOilDewatering,0.0
-test-fields,Field 95,TOTAL,24.06762823863381
+test-fields,Field 95,TOTAL,24.067628238633816
 test-fields,Field 95,ExplorationAndDrilling,1.7217222806155374
 test-fields,Field 95,ProductionExtraction,18.30708188746562
 test-fields,Field 95,SurfaceProcessing,0.0
