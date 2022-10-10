@@ -63,6 +63,7 @@ class TableManager(OpgeeObject):
         TableDef("land-use-EF", index_col=[0,1], has_units=True),
         TableDef("pubchem-cid", index_col=0),
         TableDef("composite-oil", index_col=0),
+        TableDef("general-chemicals", index_col=0),
         TableDef("demethanizer", index_col=0, index_row=[0,1])
     ]
 

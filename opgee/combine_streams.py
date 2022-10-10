@@ -14,7 +14,7 @@ from .error import OpgeeException
 from .log import getLogger
 from .stream import PHASE_LIQUID, Stream
 from .thermodynamics import Oil, Gas, Water
-from thermosteam import MultiStream, Thermo, Chemical, Chemicals, Stream as str
+from thermosteam import Chemical, Chemicals, Stream as str
 import thermosteam as tmo
 from .table_manager import TableManager
 
@@ -80,36 +80,16 @@ def mixture_specific_heat_capacity(API, stream):
     heat_capacity = oil_heat_capacity + water_heat_capacity + gas_heat_capacity
     return heat_capacity.to("btu/delta_degF/day")
 
-def create_stream(table_name):
-    """
-    Create a MultiStream obj with specified oil composition (gas components and carbohydrates)
-    at standard conditions (T=298K, P=101325.0Pa)
-    then using VLE (vapor liquid equilibrium to convert to reservoir condition)
 
-    :return: (MultiStream) at reservoir condition, liquid phase
-    """
-
-    df = TableManager().get_table(table_name)
-
-    # TODO: duplicated create Stream from csv
-    chemicals = Chemicals({name: Chemical(name) for name in df.index}, cache=True)
-    therm = Thermo(chemicals)
-
-    s0 = MultiStream(ID=table_name,
-                     g=[(comp, df.loc[comp].iloc[0]) for comp in df.index[:8]],
-                     l=[(comp, df.loc[comp].iloc[0]) for comp in df.index[8:]],
-                     units='kmol/hr',
-                     thermo=therm)
-    return therm, s0
-
-def combine_thm_streams(streams):
+def combine_streams_thm(streams):
     """
     combine two thermosteam.Stream objects into one
-
     :param streams: (a list of Stream) the Stream objects to combine
+    :return: (Stream) mixture Stream object
     """
-
-    df = TableManager().get_table("composite-oil")
+    # TODO: dont perform input inspection
+    #   currently an input of [s1] wouldn't fail, but an input of s1 would
+    df = TableManager().get_table("general-chemicals")
     chemicals = Chemicals({name: Chemical(name) for name in df.index}, cache=True)
     tmo.settings.set_thermo(chemicals, cache=True)
 
