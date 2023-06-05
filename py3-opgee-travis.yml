@@ -34,6 +34,9 @@ dependencies:
   - pip:
     - dash-cytoscape==0.3.0
     - pyXSteam==0.4.9
-    - thermo==0.2.10
+    # See https://github.com/CalebBell/thermo/issues/135 for details
+    - thermo==0.2.25
+    - fluids==1.0.24
+    - chemicals==1.1.4
     - thermosteam==0.30.1
 

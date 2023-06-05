@@ -31,5 +31,8 @@ dependencies:
     - dash-cytoscape>=0.3.0
     - nuitka            # moved here because conda version is very outdated
     - pyXSteam>=0.4.8
-    - thermo==0.2.10    # several tests fail when using v0.2.21
+    # See https://github.com/CalebBell/thermo/issues/135 for details
+    - thermo==0.2.25
+    - fluids==1.0.24
+    - chemicals==1.1.4
     - thermosteam>=0.28.12
