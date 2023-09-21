@@ -48,7 +48,7 @@ notifications:
 branches:
   only:
   - master
-  - test-travis
+  - test
   - /v(\d+)\.(\d+)\.*/
 
 matrix:
