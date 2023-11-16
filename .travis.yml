@@ -5,12 +5,13 @@ os:
   # - osx
 python :
   - "3.9"
+  - "3.10"
   #- "nightly"
 
 install:
   # could try
   # - conda install mamba=1.2.0 -c conda-forge -y
-  # the use micromamba instead, which should be faster
+  # to use micromamba instead, which should be faster
 
   - wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
   - bash miniconda.sh -b -p $HOME/miniconda
